@@ -1,7 +1,6 @@
 // importing express
 const express = require('express');
 const UserRouter = require('./routers/userRouter');
-const BusinessRouter = require('./routers/businessRouter');
 const cors = require('cors');
 
 // initializing express
@@ -16,7 +15,7 @@ app.use(cors({
 );
 app.use(express.json());
 app.use('/user', UserRouter);
-app.use('/business', BusinessRouter);
+
 
 // route or endpoint
 app.get('/', (req, res) => {
