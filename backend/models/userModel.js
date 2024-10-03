@@ -3,12 +3,8 @@ const { model, Schema } = require('../connection');
 const mySchema = new Schema({
 
         name: String,
-        version: { type: String, unique: true },
-        author: { type: String, required: true },
-        image: { type: String, default: 'unknown' },
-        downloads: { type: String, unique: true },
-        updated: { type: Date, default: Date.now },
-        price: { type: Number, unique: true },
+        email : {type : String, unique : true},
+        password : {type : String, required : true},
         createdAt: { type: Date, default: Date.now }
       });
 
