@@ -36,9 +36,19 @@ router.get('/getall', verifyToken, (req, res) => {
         });
 
 });
-
-router.get('/getbyemail/:email', (req, res) => {
-    Model.findOne({ email: req.params.email })
+//name
+router.get('/getbyname/:name', (req, res) => {
+    Model.findOne({ email: req.params.name })
+        .then((result) => {
+            res.status(200).json(result);
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+///version
+router.get('/getbyversion/:version', (req, res) => {
+    Model.find({ city: req.params.version })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -47,8 +57,29 @@ router.get('/getbyemail/:email', (req, res) => {
         });
 });
 
-router.get('/getbycity/:city', (req, res) => {
-    Model.find({ city: req.params.city })
+//author
+router.get('/getbyauthor/:author', (req, res) => {
+    Model.find({ city: req.params.author })
+        .then((result) => {
+            res.status(200).json(result);
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+//image
+router.get('/getbyimage/:image', (req, res) => {
+    Model.find({ city: req.params.image })
+        .then((result) => {
+            res.status(200).json(result);
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+//downloads
+router.get('/getbydownloads/:downloads', (req, res) => {
+    Model.find({ city: req.params.downloads })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -57,6 +88,36 @@ router.get('/getbycity/:city', (req, res) => {
         });
 });
 
+//updated
+router.get('/getbyupdated/:updated', (req, res) => {
+    Model.find({ city: req.params.updated })
+        .then((result) => {
+            res.status(200).json(result);
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+//price
+router.get('/getbyprice/:price', (req, res) => {
+    Model.find({ city: req.params.price })
+        .then((result) => {
+            res.status(200).json(result);
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+//createdAt
+router.get('/getbycreatedAt/:createdAt', (req, res) => {
+    Model.find({ city: req.params.createdAt })
+        .then((result) => {
+            res.status(200).json(result);
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 // : denotes url parameter
 router.get('/getbyid/:id', (req, res) => {
     Model.findById(req.params.id)
