@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import React, { useState } from 'react';
 
 const AddTemplate = () => {
@@ -50,21 +50,28 @@ const AddTemplate = () => {
   };
 
   return (
-    <div className={`${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-800'} min-h-screen p-6 flex items-center justify-center`}>
-      <button
-        onClick={toggleDarkMode}
-        className={`absolute top-4 right-4 py-2 px-4 rounded-md transition-all duration-300 ${isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-300 text-gray-800'}`}
+    <div className={`min-h-screen p-6 flex items-center justify-center ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-800'}`}>
+      <div className="absolute top-4 right-4">
+        <button
+          onClick={toggleDarkMode}
+          className={`py-2 px-4 rounded-md font-semibold transition-all duration-300 ${isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-300 text-gray-800'}`}
+        >
+          {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+        </button>
+      </div>
+
+      <form
+        onSubmit={handleSubmit}
+        className={`w-full max-w-xl p-6 shadow-lg rounded-lg transition-all duration-300 ease-in-out ${isDarkMode ? 'bg-black' : 'bg-white'}`}
       >
-        {isDarkMode ? '🌞 Light Mode' : '🌙 Dark Mode'}
-      </button>
-      <form onSubmit={handleSubmit} className="w-full max-w-xl p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg transition-all duration-300 ease-in-out">
-        <h1 className="text-center text-3xl font-bold mb-8">
+        <h1 className={`text-center text-3xl font-bold mb-8 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
           Add Template
         </h1>
         {message && <div className="text-green-500 text-center mb-4">{message}</div>}
+
         <div className="space-y-6">
           <div>
-            <label htmlFor="title" className="block text-lg font-semibold">
+            <label htmlFor="title" className={`block text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
               Title:
             </label>
             <input
@@ -78,8 +85,9 @@ const AddTemplate = () => {
               required
             />
           </div>
+
           <div>
-            <label htmlFor="description" className="block text-lg font-semibold">
+            <label htmlFor="description" className={`block text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
               Description:
             </label>
             <textarea
@@ -94,8 +102,9 @@ const AddTemplate = () => {
               required
             />
           </div>
+
           <div>
-            <label htmlFor="name" className="block text-lg font-semibold">
+            <label htmlFor="name" className={`block text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
               Name:
             </label>
             <input
@@ -109,8 +118,9 @@ const AddTemplate = () => {
               required
             />
           </div>
+
           <div>
-            <label htmlFor="email" className="block text-lg font-semibold">
+            <label htmlFor="email" className={`block text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
               Email:
             </label>
             <input
@@ -124,8 +134,9 @@ const AddTemplate = () => {
               required
             />
           </div>
+
           <div>
-            <label htmlFor="image" className="block text-lg font-semibold">
+            <label htmlFor="image" className={`block text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
               Upload Image:
             </label>
             <input
@@ -141,8 +152,9 @@ const AddTemplate = () => {
               <img src={imagePreview} alt="Preview" className="mt-4 rounded-md h-32 object-cover" />
             )}
           </div>
+
           <div>
-            <label htmlFor="codeSnippet" className="block text-lg font-semibold">
+            <label htmlFor="codeSnippet" className={`block text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
               Code Snippet:
             </label>
             <textarea
@@ -157,7 +169,8 @@ const AddTemplate = () => {
               required
             />
           </div>
-          <button className={`w-full py-3 px-6 rounded-md text-lg font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition-all duration-300`}>
+
+          <button className="w-full py-3 px-6 rounded-md text-lg font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition-all duration-300">
             Add Template
           </button>
         </div>
