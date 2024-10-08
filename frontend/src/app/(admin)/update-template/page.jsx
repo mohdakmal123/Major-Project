@@ -1,8 +1,8 @@
 import React from 'react'
 
-const updateTemolate = () => {
+const updateTemplate = () => {
   return (
-    <div>updateTemolate</div>
+    <div>updateTemplate</div>
   )
 }
 

@@ -1,6 +1,7 @@
 // importing express
 const express = require('express');
 const UserRouter = require('./routers/userRouter');
+const templateRouter = require('./routers/templateRouter');
 const cors = require('cors');
 
 // initializing express
@@ -15,6 +16,7 @@ app.use(cors({
 );
 app.use(express.json());
 app.use('/user', UserRouter);
+app.use('/template',templateRouter);
 
 
 // route or endpoint
