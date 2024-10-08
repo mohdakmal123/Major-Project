@@ -1,106 +1,109 @@
 'use client'
-import React, { useState } from 'react';
-import axios from 'axios';
 
-function FeedbackForm() {
-  const [feedback, setFeedback] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
+import { Star } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-  const [responseMessage, setResponseMessage] = useState('');
+const formSchema = z.object({
+  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
+  email: z.string().email({ message: 'Please enter a valid email address.' }),
+  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
+  rating: z.number().min(1, { message: 'Please provide a rating.' }).max(5, { message: 'Rating must be between 1 and 5.' }),
+})
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFeedback({ ...feedback, [name]: value });
-  };
+export default function FeedbackForm() {
+  const [submitted, setSubmitted] = useState(false)
+  const [rating, setRating] = useState(0)
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post('/api/feedback', feedback);
-      setResponseMessage('Thank you for your feedback!');
-      setFeedback({
-        name: '',
-        email: '',
-        message: '',
-      });
-    } catch (err) {
-      setResponseMessage('Something went wrong. Please try again.');
-    }
-  };
+  const { register, handleSubmit, formState: { errors }, getValues, setValue } = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      message: '',
+      rating: 0,  // Default value for the rating
+    },
+  })
+
+  const onSubmit = (values) => {
+    console.log(values)
+    setSubmitted(true)
+  }
+
+  if (submitted) {
+    return (
+      <Card className="max-w-md mx-auto">
+        <CardHeader>
+          <CardTitle>Thank You!</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-green-600">Thank you for your feedback, {getValues('name')}!</p>
+        </CardContent>
+      </Card>
+    )
+  }
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center bg-black p-4"
-      style={{ backgroundImage: `url('/path/to/your/image.jpg')`, backgroundSize: 'cover' }}
-    >
-      <div className="bg-gray-800 bg-opacity-80 p-8 rounded-md max-w-lg w-full">
-        <h2 className="text-3xl font-bold text-gray-300 text-center mb-6">
-          Feedback Form
-        </h2>
-        {responseMessage && (
-          <p className="text-center text-sm mb-4 text-gray-300 bg-opacity-90 py-2 px-4 rounded-md border border-white">
-            {responseMessage}
-          </p>
-        )}
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={feedback.name}
-              onChange={handleChange}
-              required
-              className="w-full p-3 bg-transparent text-gray-300 border border-white rounded-md focus:outline-none focus:border-gray-500"
-              placeholder="Your Name"
-            />
+    <Card className="max-w-md mx-auto p-6 shadow-lg rounded-lg">
+      <CardHeader>
+        <CardTitle className="text-xl font-semibold text-gray-800">Feedback Form</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          
+          {/* Name field */}
+          <div className="space-y-1">
+            <label className="block text-sm font-medium text-gray-700">Name</label>
+            <Input placeholder="Your name" {...register('name')} />
+            {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
           </div>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={feedback.email}
-              onChange={handleChange}
-              required
-              className="w-full p-3 bg-transparent text-gray-300 border border-white rounded-md focus:outline-none focus:border-gray-500"
-              placeholder="you@example.com"
-            />
-          </div>
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={feedback.message}
-              onChange={handleChange}
-              required
-              rows="4"
-              className="w-full p-3 bg-transparent text-gray-300 border border-white rounded-md focus:outline-none focus:border-gray-500"
-              placeholder="Your feedback..."
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            className="w-full py-3 px-6 bg-transparent border border-white rounded-md text-gray-300 hover:bg-gray-700 transition-all duration-300"
-          >
-            Submit Feedback
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-}
 
-export default FeedbackForm;
+          {/* Email field */}
+          <div className="space-y-1">
+            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <Input type="email" placeholder="Your email" {...register('email')} />
+            {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+          </div>
+
+          {/* Message field */}
+          <div className="space-y-1">
+            <label className="block text-sm font-medium text-gray-700">Message</label>
+            <textarea 
+              placeholder="Your message" 
+              {...register('message')} 
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              rows="4"
+            />
+            {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
+          </div>
+
+          {/* Rating field */}
+          <div className="space-y-1">
+            <label className="block text-sm font-medium text-gray-700">Rating</label>
+            <div className="flex space-x-1">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <Star
+                  key={star}
+                  className={`cursor-pointer ${star <= rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`}
+                  onClick={() => {
+                    setRating(star)  // Update rating state for UI
+                    setValue('rating', star)  // Sync with form field value
+                  }}
+                />
+              ))}
+            </div>
+            {errors.rating && <p className="text-red-500 text-sm">{errors.rating.message}</p>}
+          </div>
+
+          {/* Submit button */}
+          <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg">Submit Feedback</Button>
+        </form>
+      </CardContent>
+    </Card>
+  )
+}

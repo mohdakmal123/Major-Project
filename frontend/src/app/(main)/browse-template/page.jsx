@@ -1,99 +1,80 @@
-'use client'
-import React from 'react'
+"use client"
+import React, { useState, useEffect } from 'react'
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Search, ShoppingCart } from "lucide-react"
 
-const BrowseTemplate = () => {
+// Simulated data for browsing items
+const items = [
+  { id: 1, name: 'Product 1', description: 'Description of Product 1', price: 50 },
+  { id: 2, name: 'Product 2', description: 'Description of Product 2', price: 100 },
+  { id: 3, name: 'Product 3', description: 'Description of Product 3', price: 150 },
+  { id: 4, name: 'Product 4', description: 'Description of Product 4', price: 200 },
+  { id: 5, name: 'Product 5', description: 'Description of Product 5', price: 250 },
+]
+
+export default function BrowseTemplate() {
+  const [search, setSearch] = useState('')
+  const [filteredItems, setFilteredItems] = useState(items)
+
+  useEffect(() => {
+    setFilteredItems(
+      items.filter(item =>
+        item.name.toLowerCase().includes(search.toLowerCase())
+      )
+    )
+  }, [search])
+
   return (
-    <div>
-        
-        <div classname="flex h-screen bg-background">
-    {"{"}/* Sidebar */{"}"}
-    <aside classname="w-64 border-r">
-      <div classname="flex h-14 items-center border-b px-4">
-        <button variant="ghost" size="icon" classname="mr-2">
-          <menu classname="h-6 w-6">
-            <span classname="sr-only">Toggle sidebar</span>
-          </menu>
-        </button>
-        <h1 classname="text-lg font-semibold">Browse App</h1>
-      </div>
-      <scrollarea classname="h-[calc(100vh-3.5rem)]">
-        <nav classname="space-y-2 p-2">
-          <button variant="ghost" classname="w-full justify-start">
-            <home classname="mr-2 h-4 w-4">Home</home>
-          </button>
-          <button variant="ghost" classname="w-full justify-start">
-            <folder classname="mr-2 h-4 w-4">Projects</folder>
-          </button>
-          <button variant="ghost" classname="w-full justify-start">
-            <settings classname="mr-2 h-4 w-4">Settings</settings>
-          </button>
-          <button variant="ghost" classname="w-full justify-start">
-            <helpcircle classname="mr-2 h-4 w-4">Help</helpcircle>
-          </button>
-        </nav>
-      </scrollarea>
-    </aside>
-    <div classname="flex flex-col flex-1">
-      {"{"}/* Header */{"}"}
-      <header classname="flex h-14 items-center gap-4 border-b px-6">
-        <form classname="flex-1">
-          <div classname="relative">
-            <search classname="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground">
-              <input
-                classname="w-full bg-background pl-8 sm:w-[300px]"
-                placeholder="Search..."
-                type="search"
-              />
-            </search>
-          </div>
-        </form>
-        <button variant="ghost" size="icon">
-          <bell classname="h-4 w-4">
-            <span classname="sr-only">Notifications</span>
-          </bell>
-        </button>
-        <button variant="ghost" size="icon">
-          <user classname="h-4 w-4">
-            <span classname="sr-only">Profile</span>
-          </user>
-        </button>
-      </header>
-      {"{"}/* Main Content */{"}"}
-      <main classname="flex-1 overflow-auto p-6">
-        <h2 classname="text-2xl font-bold mb-4">Browse Content</h2>
-        <div classname="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {"{"}[...Array(6)].map((_, i) =&gt; (
-          <div
-            key="{i}"
-            classname="rounded-lg border bg-card text-card-foreground shadow-sm"
-          >
-            <div classname="p-6">
-              <h3 classname="text-lg font-semibold">
-                Item {"{"}i + 1{"}"}
-              </h3>
-              <p classname="text-sm text-muted-foreground">
-                This is a brief description of Item {"{"}i + 1{"}"}. Click to
-                view more details.
-              </p>
-            </div>
-            <div classname="flex items-center p-6 pt-0">
-              <button variant="ghost">View Details</button>
-            </div>
-          </div>
-          )){"}"}
+    <div className="min-h-screen bg-background">
+      {/* Navbar */}
+      <nav className="bg-primary text-primary-foreground p-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <h1 className="text-2xl font-bold">Browse Template</h1>
+          <Button variant="secondary" size="icon">
+            <ShoppingCart className="h-5 w-5" />
+            <span className="sr-only">Shopping cart</span>
+          </Button>
         </div>
-      </main>
-      {"{"}/* Footer */{"}"}
-      <footer classname="border-t py-4 px-6">
-        <p classname="text-center text-sm text-muted-foreground">
-          © 2024 Browse App. All rights reserved.
-        </p>
-      </footer>
-    </div>
-  </div>
+      </nav>
 
+      {/* Search Bar and Items */}
+      <main className="container mx-auto my-8 px-4">
+        {/* Search Input */}
+        <div className="relative mb-6">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+          <Input
+            type="search"
+            placeholder="Search items"
+            className="pl-10"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+
+        {/* Browse Items */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredItems.map(item => (
+            <Card key={item.id}>
+              <CardHeader>
+                <CardTitle>{item.name}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{item.description}</p>
+              </CardContent>
+              <CardFooter className="flex justify-between">
+                <span className="text-green-600 font-semibold">${item.price}</span>
+                <Button>Add to Cart</Button>
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
+
+        {filteredItems.length === 0 && (
+          <p className="text-center text-muted-foreground mt-8">No items found. Try a different search term.</p>
+        )}
+      </main>
     </div>
   )
 }
-
-export default BrowseTemplate;
