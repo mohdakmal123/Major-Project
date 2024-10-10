@@ -30,8 +30,8 @@ const HomePage = () => {
         <a href="#hire" className="hover:underline text-lg font-semibold">Hire Us</a>
         <a href="#blog" className="hover:underline text-lg font-semibold">Blog</a>
         <a href="#support" className="hover:underline text-lg font-semibold">Support</a>
-        <a href="#login" className="hover:underline text-lg font-semibold">Login</a>
-        <a href="#signup" className="hover:underline text-lg font-semibold">Signup</a>
+        <a href="signin" className="hover:underline text-lg font-semibold">Login</a>
+        <a href="signup" className="hover:underline text-lg font-semibold">Signup</a>
         <a href="#feedback" className="hover:underline text-lg font-semibold">Feedback</a>
         <a href="#add-template" className="hover:underline text-lg font-semibold">Add Template</a>
       </nav>

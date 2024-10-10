@@ -3,8 +3,12 @@ import { useFormik } from 'formik';
 import React from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 const Signup = () => {
+
+  const router = useRouter();
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -17,6 +21,7 @@ const Signup = () => {
         .then((result) => {
           console.log(result.status);
           toast.success('Signup Successfully');
+          router.push('/signin');
         }).catch((err) => {
           toast.error('Some Error Occurred');
         });
@@ -24,8 +29,8 @@ const Signup = () => {
   });
 
   return (
-    <div 
-      className="flex items-center justify-center min-h-screen bg-cover rounded-lg bg-black" 
+    <div
+      className="flex items-center justify-center min-h-screen bg-cover rounded-lg bg-black"
       style={{
         backgroundImage: 'url("")'
       }}

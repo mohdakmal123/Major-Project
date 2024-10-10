@@ -3,19 +3,30 @@ import { useFormik } from 'formik';
 import React from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
+
+  const router = useRouter();
+
   const formik = useFormik({
     initialValues: {
-     
       email: '',
       password: '',
     },
     onSubmit: (values) => {
       console.log(values);
-      axios.post('http://localhost:5000/user/add', values)
+      axios.post('http://localhost:5000/user/authenticate', values)
         .then((result) => {
-          console.log(result.status);
+          console.log(result.data);
+          if (result.data.role === 'admin') {
+            localStorage.setItem('token', result.data.token);
+            localStorage.setItem('user', JSON.stringify(result.data));
+            document.cookie = `token=${result.data.token}`;
+            router.push('/admin/add-template');
+          } else {
+            router.push('/');
+          }
           toast.success('Login Successfully');
         }).catch((err) => {
           toast.error('Some Error Occurred');
@@ -24,8 +35,8 @@ const Login = () => {
   });
 
   return (
-    <div 
-      className="flex items-center justify-center min-h-screen bg-cover bg-black" 
+    <div
+      className="flex items-center justify-center min-h-screen bg-cover bg-black"
       style={{
         backgroundImage: 'url("https://scontent.flko11-1.fna.fbcdn.net/v/t39.30808-6/460499278_453298471193103_1927094701927232585_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=e1afaa&_nc_ohc=o03zHfGyIMAQ7kNvgGfBtaL&_nc_ht=scontent.flko11-1.fna&_nc_gid=AzcTdhXjOp7qhZinHC-YaZC&oh=00_AYBJufMNffiU7fTyuVGKRKk3_9Y2bui8soGXpxByjIqQlw&oe=66F75FB2")'
       }}
@@ -34,7 +45,7 @@ const Login = () => {
         <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Login</h1>
         <form onSubmit={formik.handleSubmit} className="space-y-6">
           {/* Name */}
-      
+
 
           {/* Email */}
           <div>

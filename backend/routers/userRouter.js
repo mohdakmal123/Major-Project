@@ -25,7 +25,7 @@ router.post('/add', (req, res) => {
 
 });
 
-router.get('/getall', verifyToken, (req, res) => {
+router.get('/getall', (req, res) => {
 
     Model.find()
         .then((result) => {
@@ -154,7 +154,7 @@ router.post('/authenticate', (req, res) => {
         .then((result) => {
             if (result) {
 
-                const { _id, name, email, password } = result;
+                const { _id, name, email, password, role } = result;
 
                 const payload = { _id, name, email, password };
 
@@ -164,14 +164,13 @@ router.post('/authenticate', (req, res) => {
                 jwt.sign(
                     payload,
                     process.env.JWT_SECRET,
-                    { expiresIn: 10 },
+                    { expiresIn: '2 days' },
                     (err, token) => {
                         if (err) {
                             console.log(err);
                             res.status(500).json(err);
                         } else {
-
-                            res.status(200).json({ token });
+                            res.status(200).json({ token, role, name, email });
                         }
                     }
                 )
