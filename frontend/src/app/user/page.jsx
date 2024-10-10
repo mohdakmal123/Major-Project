@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
-export default function DetailedProfilePage() {
+export default function ProfilePage() {
   const [darkMode, setDarkMode] = useState(false)
 
   useEffect(() => {
@@ -41,11 +41,11 @@ export default function DetailedProfilePage() {
       <div className="max-w-4xl mx-auto">
         <div className="relative bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
           <div className="relative">
-            <img
-              src="/placeholder.svg?height=300&width=1200"
-              alt="Profile background"
-              className="w-full h-48 object-cover"
-            />
+          <img 
+        src="https://www.portotheme.com/wordpress/porto/shortcodes/wp-content/uploads/sites/32/2016/06/team-1.jpg" 
+        alt="Profile" 
+        className="w-32 h-32 rounded-full mx-auto mb-4"
+      />
             <div className="absolute top-2 right-2 flex items-center space-x-2 bg-black bg-opacity-50 rounded-full p-1">
               <Moon className="w-4 h-4 text-white" />
               <Switch
@@ -55,12 +55,7 @@ export default function DetailedProfilePage() {
               />
               <Sun className="w-4 h-4 text-white" />
             </div>
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
-              <Avatar className="w-24 h-24 border-4 border-white dark:border-gray-800">
-                <AvatarImage src="/placeholder.svg?height=96&width=96" alt="Miranda West" />
-                <AvatarFallback>MW</AvatarFallback>
-              </Avatar>
-            </div>
+            
           </div>
           <div className="pt-16 pb-8 px-4 text-center">
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Miranda West</h1>
