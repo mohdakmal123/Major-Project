@@ -25,12 +25,12 @@ const Signup = () => {
 
   return (
     <div 
-      className="flex items-center justify-center min-h-screen bg-cover bg-black" 
+      className="flex items-center justify-center min-h-screen bg-cover rounded-lg bg-black" 
       style={{
-        backgroundImage: 'url("https://scontent.flko11-1.fna.fbcdn.net/v/t39.30808-6/460499278_453298471193103_1927094701927232585_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=e1afaa&_nc_ohc=o03zHfGyIMAQ7kNvgGfBtaL&_nc_ht=scontent.flko11-1.fna&_nc_gid=AzcTdhXjOp7qhZinHC-YaZC&oh=00_AYBJufMNffiU7fTyuVGKRKk3_9Y2bui8soGXpxByjIqQlw&oe=66F75FB2")'
+        backgroundImage: 'url("")'
       }}
     >
-      <div className="p-12 max-w-lg mx-auto bg-white rounded-lg shadow-lg bg-opacity-80">
+      <div className="p-14 max-w-lg mx-auto bg-gray-900 rounded-lg ">
         <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Signup</h1>
         <form onSubmit={formik.handleSubmit} className="space-y-6">
           {/* Name */}
