@@ -14,6 +14,7 @@ const AddTemplate = () => {
       name: '',
       author: '',
       image: '',
+      price: '',
       codeSnippet: ''
     },
     onSubmit: (values) => {
@@ -65,137 +66,137 @@ const AddTemplate = () => {
 
 
   return (
-    <div className={`min-h-screen p-6 flex items-center justify-center ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-800'}`}>
-      <div className="absolute top-4 right-4">
-        <button
-          onClick={toggleDarkMode}
-          className={`py-2 px-4 rounded-md font-semibold transition-all duration-300 ${isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-300 text-gray-800'}`}
-        >
-          {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+    <div className="min-h-screen p-6 flex items-center justify-center bg-gray-100 text-gray-800">
+    <form
+      onSubmit={templateForm.handleSubmit}
+      className="w-full max-w-xl p-6 shadow-lg rounded-lg bg-white transition-all duration-300 ease-in-out"
+    >
+      <h1 className="text-center text-3xl font-bold mb-8 text-gray-900">
+        Add Template
+      </h1>
+      {message && <div className="text-green-500 text-center mb-4">{message}</div>}
+
+      <div className="space-y-6">
+        <div>
+          <label htmlFor="title" className="block text-lg font-semibold text-gray-800">
+            Title:
+          </label>
+          <input
+            type="text"
+            name="title"
+            placeholder="Enter Title"
+            id="title"
+            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
+            value={templateForm.values.title}
+            onChange={templateForm.handleChange}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="description" className="block text-lg font-semibold text-gray-800">
+            Description:
+          </label>
+          <textarea
+            id="description"
+            name="description"
+            cols={30}
+            rows={5}
+            placeholder="Write your description..."
+            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
+            value={templateForm.values.description}
+            onChange={templateForm.handleChange}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="author" className="block text-lg font-semibold text-gray-800">
+            Author:
+          </label>
+          <textarea
+            id="author"
+            name="author"
+            cols={30}
+            rows={5}
+            placeholder="author..."
+            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
+            value={templateForm.values.author}
+            onChange={templateForm.handleChange}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="name" className="block text-lg font-semibold text-gray-800">
+            Name:
+          </label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter Your Name"
+            id="name"
+            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
+            value={templateForm.values.name}
+            onChange={templateForm.handleChange}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="image" className="block text-lg font-semibold text-gray-800">
+            Upload Image:
+          </label>
+          <input
+            type="file"
+            name="image"
+            id="image"
+            className="mt-2 w-full border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
+            onChange={handleUpload}
+            accept="image/*"
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="price" className="block text-lg font-semibold text-gray-800">
+            Price:
+          </label>
+          <input
+            type="number"
+            name="price"
+            placeholder="Enter Your price"
+            id="price"
+            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
+            value={templateForm.values.price}
+            onChange={templateForm.handleChange}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="codeSnippet" className="block text-lg font-semibold text-gray-800">
+            Code Snippet:
+          </label>
+          <textarea
+            id="codeSnippet"
+            name="codeSnippet"
+            cols={30}
+            rows={5}
+            placeholder="Write your code here..."
+            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
+            onChange={templateForm.handleChange}
+            value={templateForm.values.codeSnippet}
+            required
+          />
+        </div>
+
+        <button type="submit" className="w-full py-3 px-6 rounded-md text-lg font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition-all duration-300">
+          Add Template
         </button>
       </div>
-
-      <form
-        onSubmit={templateForm.handleSubmit}
-        className={`w-full max-w-xl p-6 shadow-lg rounded-lg transition-all duration-300 ease-in-out ${isDarkMode ? 'bg-black' : 'bg-white'}`}
-      >
-        <h1 className={`text-center text-3xl font-bold mb-8 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-          Add Template
-        </h1>
-        {message && <div className="text-green-500 text-center mb-4">{message}</div>}
-
-        <div className="space-y-6">
-          <div>
-            <label htmlFor="title" className={`block text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
-              Title:
-            </label>
-            <input
-              type="text"
-              name="title"
-              placeholder="Enter Title"
-              id="title"
-              className={`w-full mt-2 p-2 border rounded-md focus:outline-none ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-gray-200 border-gray-300 text-gray-800'} focus:ring-2 focus:ring-indigo-500`}
-              value={templateForm.values.title}
-              onChange={templateForm.handleChange}
-              required
-            />
-          </div>
-
-          <div>
-            <label htmlFor="description" className={`block text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
-              Description:
-            </label>
-            <textarea
-              id="description"
-              name="description"
-              cols={30}
-              rows={5}
-              placeholder="Write your description..."
-              className={`w-full mt-2 p-2 border rounded-md focus:outline-none ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-gray-200 border-gray-300 text-gray-800'} focus:ring-2 focus:ring-indigo-500`}
-              value={templateForm.values.description}
-              onChange={templateForm.handleChange}
-              required
-            />
-          </div>
-
-
-
-          <div>
-            <label htmlFor="author" className={`block text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
-              Author:
-            </label>
-            <textarea
-              id="author"
-              name="author"
-              cols={30}
-              rows={5}
-              placeholder="author..."
-              className={`w-full mt-2 p-2 border rounded-md focus:outline-none ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-gray-200 border-gray-300 text-gray-800'} focus:ring-2 focus:ring-indigo-500`}
-              value={templateForm.values.author}
-              onChange={templateForm.handleChange}
-              required
-            />
-          </div>
-
-
-
-          <div>
-            <label htmlFor="name" className={`block text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
-              Name:
-            </label>
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter Your Name"
-              id="name"
-              className={`w-full mt-2 p-2 border rounded-md focus:outline-none ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-gray-200 border-gray-300 text-gray-800'} focus:ring-2 focus:ring-indigo-500`}
-              value={templateForm.values.name}
-              onChange={templateForm.handleChange}
-              required
-            />
-          </div>
-
-
-
-          <div>
-            <label htmlFor="image" className={`block text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
-              Upload Image:
-            </label>
-            <input
-              type="file"
-              name="image"
-              id="image"
-              className={`mt-2 w-full border rounded-md focus:outline-none ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-gray-200 border-gray-300 text-gray-800'} focus:ring-2 focus:ring-indigo-500`}
-              onChange={handleUpload}
-              accept="image/*"
-              required
-            />
-
-          </div>
-
-          <div>
-            <label htmlFor="codeSnippet" className={`block text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
-              Code Snippet:
-            </label>
-            <textarea
-              id="codeSnippet"
-              name="codeSnippet"
-              cols={30}
-              rows={5}
-              placeholder="Write your code here..."
-              className={`w-full mt-2 p-2 border rounded-md focus:outline-none ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-gray-200 border-gray-300 text-gray-800'} focus:ring-2 focus:ring-indigo-500`}
-              onChange={templateForm.handleChange}
-              value={templateForm.values.codeSnippet}
-              required
-            />
-          </div>
-
-          <button type="submit" className="w-full py-3 px-6 rounded-md text-lg font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition-all duration-300">
-            Add Template
-          </button>
-        </div>
-      </form>
-    </div>
+    </form>
+  </div>
   );
 };
 
