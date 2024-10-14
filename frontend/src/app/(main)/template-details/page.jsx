@@ -1,174 +1,217 @@
-'use client'
+"use client"
+import * as React from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Badge } from "@/components/ui/badge"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { ChevronRight, Download, Eye, Star } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Sun, Moon, Star, Check } from "lucide-react"
+import { useTheme } from "next-themes"
 
-export default function TemplateDetailsPage() {
+export default function TemplateDetails() {
+  const { theme, setTheme } = useTheme()
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex flex-col lg:flex-row gap-8">
-        {/* Left Column */}
-        <div className="lg:w-2/3 space-y-6">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold">Template Name</h1>
-            <div className="flex items-center space-x-2">
-              <div className="flex">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                ))}
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
+      <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container flex h-14 items-center justify-between">
+          <a className="flex items-center space-x-2" href="/">
+            <span className="font-bold text-xl">Template Details</span>
+          </a>
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label="Toggle Theme"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          >
+            <Sun className="h-[1.5rem] w-[1.3rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+            <Moon className="absolute h-[1.5rem] w-[1.3rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+            <span className="sr-only">Toggle theme</span>
+          </Button>
+        </div>
+      </header>
+
+      <main className="flex-grow">
+        {/* Hero Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-primary">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-primary-foreground">
+                  Awesome Template
+                </h1>
+                <p className="mx-auto max-w-[700px] text-primary-foreground/80 md:text-xl dark:text-primary-foreground/90">
+                  A versatile and responsive template for your next project.
+                </p>
               </div>
-              <span className="text-sm text-muted-foreground">(4.5 average, 24 ratings)</span>
+              <div className="space-x-4">
+                <Button variant="outline" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">Get Started</Button>
+                <Button variant="outline" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">Learn More</Button>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div className="flex flex-wrap gap-2">
-            <Badge variant="secondary">Category 1</Badge>
-            <Badge variant="secondary">Category 2</Badge>
-            <Badge variant="secondary">Category 3</Badge>
+        {/* Features Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container px-4 md:px-6">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">
+              Key Features
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                "Responsive Design",
+                "Dark/Light Mode",
+                "Customizable Components",
+                "SEO Optimized",
+                "Fast Performance",
+                "Regular Updates",
+              ].map((feature, index) => (
+                <Card key={index}>
+                  <CardHeader>
+                    <CardTitle className="flex items-center">
+                      <Check className="mr-2 h-4 w-4 text-primary" />
+                      {feature}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
+        </section>
 
-          <Card>
-            <CardContent className="p-0">
-              <Image
-                src="/placeholder.svg?height=400&width=800"
-                alt="Template Preview"
-                width={800}
-                height={400}
-                className="w-full h-auto object-cover rounded-t-lg"
-              />
-              <div className="p-4 flex justify-between items-center">
-                <Button variant="outline" className="text-blue-600">
-                  <Eye className="w-4 h-4 mr-2" />
-                  Preview
+        {/* Preview Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary">
+  <div className="container px-4 md:px-6">
+    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">
+      Template Preview
+    </h2>
+    <div className="flex justify-center">
+    <img
+  src="https://xnbbqnlqbpjlzlvvvjhk.supabase.co/storage/v1/object/public/images/template-details/dashboard-layout.jpg"
+  alt="Modern dashboard layout with charts, statistics, and user interface elements"
+  className="rounded-lg shadow-xl"
+  width={800}
+  height={400}
+/>
+    </div>
+  </div>
+</section>
+
+        {/* Pricing Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container px-4 md:px-6">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">
+              Pricing Plans
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { name: "Basic", price: "$49", features: ["5 pages", "Basic support", "1 month updates"] },
+                { name: "Pro", price: "$99", features: ["15 pages", "Priority support", "6 months updates"] },
+                { name: "Enterprise", price: "$199", features: ["Unlimited pages", "24/7 support", "Lifetime updates"] },
+              ].map((plan, index) => (
+                <Card key={index} className={index === 1 ? "no-border" : ""}>
+                  <CardHeader>
+                    <CardTitle>{plan.name}</CardTitle>
+                    <CardDescription>
+                      <span className="text-3xl font-bold">{plan.price}</span> / one-time
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2">
+                      {plan.features.map((feature, fIndex) => (
+                        <li key={fIndex} className="flex items-center">
+                          <Check className="mr-2 h-4 w-4 text-primary" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <Button className="w-full mt-4" variant={index === 3 ? "default" : "outline"}>
+                      Choose Plan
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonial Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary">
+          <div className="container px-4 md:px-6">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">
+              What Our Customers Say
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                { name: "Alex Johnson", role: "Frontend Developer", content: "This template saved me weeks of work!" },
+                { name: "Sarah Lee", role: "UX Designer", content: "The design is sleek and highly customizable." },
+                { name: "Mike Brown", role: "Project Manager", content: "Our team's productivity skyrocketed!" },
+              ].map((testimonial, index) => (
+                <Card key={index}>
+                  <CardHeader>
+                    <CardTitle>{testimonial.name}</CardTitle>
+                    <CardDescription>{testimonial.role}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{testimonial.content}</p>
+                    <div className="flex mt-2">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Call-to-Action Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                  Ready to Get Started?
+                </h2>
+                <p className="mx-auto max-w-[700px] text-primary-foreground/80 md:text-xl dark:text-primary-foreground/90">
+                  Get your copy of the Awesome Template today and transform your workflow.
+                </p>
+              </div>
+              <div className="space-x-4">
+                <Button variant="outline" size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
+                  Buy Now
                 </Button>
-                <Button>
-                  <Download className="w-4 h-4 mr-2" />
-                  Download
+                <Button variant="outline" size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
+                  Contact Sales
                 </Button>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
+        </section>
+      </main>
 
-          <Tabs defaultValue="description">
-            <TabsList className="w-full justify-start">
-              <TabsTrigger value="description">Description</TabsTrigger>
-              <TabsTrigger value="changelog">Changelog</TabsTrigger>
-            </TabsList>
-            <TabsContent value="description" className="text-sm text-muted-foreground">
-              <p>
-                This is a detailed description of the template. It includes information about its features,
-                use cases, and any other relevant details that would help a potential user understand the
-                template's capabilities and benefits.
-              </p>
-              <p className="mt-4">
-                The description can be multiple paragraphs long, providing comprehensive information about
-                the template's design, functionality, and potential applications.
-              </p>
-            </TabsContent>
-            <TabsContent value="changelog" className="text-sm text-muted-foreground">
-              <ul className="list-disc pl-5 space-y-2">
-                <li>Version 2.0: Added responsive design for mobile devices</li>
-                <li>Version 1.5: Implemented dark mode support</li>
-                <li>Version 1.2: Fixed minor bugs and improved performance</li>
-                <li>Version 1.0: Initial release</li>
-              </ul>
-            </TabsContent>
-          </Tabs>
+      <footer className="w-full py-6 bg-background border-t">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <p className="text-sm text-muted-foreground">© 2024 Awesome Template. All rights reserved.</p>
+            <div className="flex gap-4">
+              <a href="#" className="text-sm text-muted-foreground hover:underline">
+                Terms
+              </a>
+              <a href="#" className="text-sm text-muted-foreground hover:underline">
+                Privacy
+              </a>
+              <a href="#" className="text-sm text-muted-foreground hover:underline">
+                Contact
+              </a>
+            </div>
+          </div>
         </div>
-
-        {/* Right Column */}
-        <div className="lg:w-1/3 space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Template Details</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm">
-              <dl className="space-y-2">
-                <div className="flex justify-between">
-                  <dt className="font-medium">Created:</dt>
-                  <dd>Jan 15, 2023</dd>
-                </div>
-                <div className="flex justify-between">
-                  <dt className="font-medium">Last Updated:</dt>
-                  <dd>Mar 20, 2023</dd>
-                </div>
-                <div className="flex justify-between">
-                  <dt className="font-medium">Category:</dt>
-                  <dd>Web Templates</dd>
-                </div>
-                <div className="flex justify-between">
-                  <dt className="font-medium">Compatible Browsers:</dt>
-                  <dd>Chrome, Firefox, Safari</dd>
-                </div>
-                <div className="flex justify-between">
-                  <dt className="font-medium">Layout:</dt>
-                  <dd>Responsive</dd>
-                </div>
-              </dl>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Files Included</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm">
-              <ul className="list-disc pl-5 space-y-1">
-                <li>HTML Files</li>
-                <li>CSS Files</li>
-                <li>JavaScript Files</li>
-                <li>Documentation</li>
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Tags</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                <Badge variant="outline">Responsive</Badge>
-                <Badge variant="outline">Bootstrap</Badge>
-                <Badge variant="outline">Modern</Badge>
-                <Badge variant="outline">Business</Badge>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-
-      {/* Related Templates Section */}
-      <div className="mt-12">
-        <h2 className="text-2xl font-bold mb-4">Related Templates</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[1, 2, 3].map((item) => (
-            <Card key={item}>
-              <CardContent className="p-0">
-                <Image
-                  src={`/placeholder.svg?height=200&width=400&text=Template ${item}`}
-                  alt={`Related Template ${item}`}
-                  width={400}
-                  height={200}
-                  className="w-full h-auto object-cover rounded-t-lg"
-                />
-                <div className="p-4">
-                  <h3 className="font-semibold mb-2">Related Template {item}</h3>
-                  <Link href="#" className="text-blue-600 hover:underline text-sm flex items-center">
-                    View Details
-                    <ChevronRight className="w-4 h-4 ml-1" />
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
+      </footer>
     </div>
   )
 }
