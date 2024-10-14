@@ -126,7 +126,7 @@ const HomePage = () => {
             {Array(3).fill().map((_, index) => (
               <div key={index} className={`p-4 rounded-lg hover:shadow-lg transition duration-300 transform hover:-translate-y-1 flex flex-col items-center justify-center ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-gray-200 text-black'}`}>
                 <p className="text-xl">⭐⭐⭐⭐⭐</p>
-                <p className="text-center">"This is a review from a user."</p>
+                <p className="text-center">`&quot;`This is a review from a user.`&quot;`</p>
               </div>
             ))}
           </div>

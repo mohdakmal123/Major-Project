@@ -80,9 +80,9 @@ export default function ProfilePage() {
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 dark:text-gray-400">
-                I'm a passionate photographer and content creator with over 5 years of experience. 
+                I`&apos;`m a passionate photographer and content creator with over 5 years of experience. 
                 I specialize in landscape and portrait photography, and I love to capture the beauty of the world around us. 
-                When I'm not behind the camera, you can find me editing photos or exploring new locations for my next shoot.
+                When I`&apos;`m not behind the camera, you can find me editing photos or exploring new locations for my next shoot.
               </p>
               <div className="mt-4 space-y-2">
                 <div className="flex items-center">
