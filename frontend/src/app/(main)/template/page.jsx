@@ -27,7 +27,7 @@ const TemplateCart = () => {
     const [templateList, setTemplateList] = useState([]);
 
     const templatesData = async () => {
-        const res = await axios.get('http://localhost:5000/add-template/getall');
+        const res = await axios.get('http://localhost:5000/template/getall');
         console.log(res.status);
         console.table(res.data);
         setTemplateList(res.data);

@@ -1,195 +1,252 @@
-// src/HomePage.js
 'use client'
-import React, { useState, useEffect  } from 'react';
-
+import React from 'react'
 
 const HomePage = () => {
-  const [isDarkMode, setIsDarkMode] = useState(true); // State to track dark mode
-
-  const toggleTheme = () => {
-    setIsDarkMode((prevMode) => !prevMode);
-  };
-
-// Fetch business data when the component mounts
-useEffect(() => {
-  axios
-    .get('http://localhost:5000/template/getall')
-    .then((response) => {
-      console.log(response.data);
-
-      setData(response.data);
-      setFilteredData(response.data); // Initially show all data
-    })
-    .catch((err) => {
-      console.log(err.response);
-    });
-}, []);
-
-// Filter the businesses based on the search term
-const handleSearch = () => {
-  const filtered = data.filter((template) =>
-    template.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-  setFilteredData(filtered);
-};
-
-
-
   return (
-    <div className={`min-h-screen flex flex-col ${isDarkMode ? 'bg-black text-white' : 'bg-white text-black'}`}>
-      {/* Header */}
-      <header className="flex justify-between items-center p-4 border-b border-gray-700">
-        <h1 className="text-xl font-bold">ReactNet</h1>
-        <div className="flex items-center space-x-4">
-          <button
-            onClick={toggleTheme}
-            className={`p-2 rounded transition duration-300 ${isDarkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : 'bg-white text-black hover:bg-gray-300'}`}
-          >
-            {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-          </button>
-        </div>
-      </header>
-
-      {/* Navigation Links */}
-      <nav className={`space-x-8 p-4 border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-300'}`}>
-        <a href="#about" className="hover:underline text-lg font-semibold">About Us</a>
-        <a href="#hire" className="hover:underline text-lg font-semibold">Hire Us</a>
-        <a href="#blog" className="hover:underline text-lg font-semibold">Blog</a>
-        <a href="#support" className="hover:underline text-lg font-semibold">Support</a>
-        <a href="signin" className="hover:underline text-lg font-semibold">Login</a>
-        <a href="signup" className="hover:underline text-lg font-semibold">Signup</a>
-        <a href="#feedback" className="hover:underline text-lg font-semibold">Feedback</a>
-        <a href="#add-template" className="hover:underline text-lg font-semibold">Add Template</a>
-      </nav>
-
-      {/* Main Content */}
-      <main className="flex-grow p-4">
-        {/* Hero Section */}
-        <section className="flex flex-col md:flex-row justify-between items-center my-8">
-          <div className="w-full md:w-1/2 text-center md:text-left">
-            <h2 className="hero-text font-bold text-5xl">React Template Website</h2>
-            <p className="text-lg md:text-xl text-gray-500">Your one-stop solution for premium React templates.</p>
-          </div>
-          <div className="w-full md:w-1/2 flex justify-end">
-            <img
-              src="https://i.pinimg.com/564x/1d/80/d6/1d80d63bc2a34e6c3cb43f9f8d379ebb.jpg"
-              alt="React Template"
-              className="w-1/2 md:w-3/5 lg:w-1/2 h-auto"
-            />
-          </div>
-        </section>
-
-        {/* Latest Offers Button */}
-        <div className="my-8 text-center">
-          <a href="#offers" className="bg-blue-600 p-3 rounded hover:bg-blue-700">
-            Latest Offers
-          </a>
-        </div>
-
-        {/* Offer Cards Section */}
-        <section id="offers" className="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
-          {Array(3).fill().map((_, index) => (
-            <div
-              key={index}
-              className={`p-4 rounded-lg transition duration-300 transform hover:-translate-y-1 ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-gray-200 text-black'}`}
-            >
-              <h3 className="text-xl font-bold text-center">React Template {index + 1}</h3>
-              <p className="text-center">Description of the template.</p>
-              <p className="text-lg font-semibold text-center">$49</p>
-            </div>
-          ))}
-        </section>
-
-        {/* Latest Templates Section */}
-        <section id="products" className="py-16 "
-        style={{
-          backgroundImage:
-            'url("https://scontent.flko5-1.fna.fbcdn.net/o1/v/t0/f1/m250/upload_img_32995991_09_17_2024_02_39_55_926153_946479994681188210.jpeg?_nc_ht=scontent.flko5-1.fna.fbcdn.net&_nc_cat=101&ccb=9-4&oh=00_AYDug_H8hbFFLYbByXMOrj2NJkw-pBhDOGdl15n0m5hzwg&oe=66EB19F6&_nc_sid=5b3566")'
-
-        }}
+    <div>
+<header className="px-4 lg:px-6 h-14 flex items-center">
+    <a href="#" className="flex items-center justify-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={24}
+        height={24}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-6 w-6"
       >
-        <div className="container mx-auto"
-
-        >
-           <h3 className=" w-96 mx-auto text-3xl text-center text-white shadow-md p-2 mb-4 font-bold bg-green-800 rounded-lg">Our Latest Templates</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {filteredData.map((template, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <img src={template.image} alt={template.name} className="w-full h-48 object-cover rounded-md mb-4" />
-                <h4 className="text-xl font-bold mb-2 text-green-700">{template.name}</h4>
-                <p className="text-gray-600 mb-4">{product.description}</p>
-                <p className="text-lg font-bold text-blue-500">₹{template.price}</p>
-                <Link href={'/details/' + template._id} className="text-green-600 hover:text-green-800 hover:underline text-lg md:text-md lg:text-xl font-semibold flex items-center space-x-2 transition-colors duration-300">View Details</Link>
-              </div>
-            ))}
+        <circle cx={8} cy={21} r={1} />
+        <circle cx={19} cy={21} r={1} />
+        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+      </svg>
+      <span className="sr-only">Acme Inc</span>
+    </a>
+    <nav className="ml-auto flex gap-4 sm:gap-6">
+      <a
+        className="text-sm font-medium hover:underline underline-offset-4"
+        href="signin"
+      >
+        Login
+      </a>
+      <a
+        className="text-sm font-medium hover:underline underline-offset-4"
+        href="signup"
+      >
+        SignUp
+      </a>
+      <a
+        className="text-sm font-medium hover:underline underline-offset-4"
+        href="About"
+      >
+        About
+      </a>
+      <a
+        className="text-sm font-medium hover:underline underline-offset-4"
+        href="ContactUs"
+      >
+        Contact
+      </a>
+    </nav>
+  </header>
+  <main className="flex-1">
+    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-black text-white">
+      <div className="container px-4 md:px-6 mx-auto">
+        <div className="flex flex-col items-center space-y-4 text-center">
+          <div className="space-y-2">
+            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+              Welcome to TemplateWave
+            </h1>
+            <p className="mx-auto max-w-[700px] text-gray-300 md:text-xl">
+              Discover amazing templates across various categories. Shop now and
+              enjoy great deals!
+            </p>
+          </div>
+          <div className="space-x-4">
+            <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-10 py-2 px-4">
+              Explore
+            </button>
+            <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4">
+              Learn More
+            </button>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+    <section className="w-full py-12 md:py-24 lg:py-32 ">
+      <div className="container px-4 md:px-6 mx-auto">
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
+          Featured Templates
+        </h2>
+        <div class="flex flex-col space-y-6 p-6">
+  <div class="rounded-lg border bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
+    <h3 class="text-2xl font-semibold leading-none tracking-tight">React Template</h3>
+    <img
+      src="https://i.pinimg.com/enabled/564x/83/71/2b/83712bc0f934de891b2ea1e6d728e935.jpg"
+      alt="Electronics"
+      class="w-full h-64 object-cover rounded-lg"
+    />
+    <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-12 py-2 px-4 w-full">
+    React Template
+    </button>
+  </div>
 
-        {/* Why Choose Us Section */}
-        <section className="my-8">
-          <h2 className="text-2xl font-bold text-center">Why Choose Our React Template Website?</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-4">
-            {[
-              { title: "Friendly Support", description: "We offer 24/7 support to assist you with any queries." },
-              { title: "Modern Designs", description: "Our templates are built with modern design trends." },
-              { title: "Regular Updates", description: "We regularly update our templates with new features." },
-              { title: "Easy Setup", description: "Get started quickly with easy installation." },
-              { title: "Powerful Admin Panel", description: "Manage your site effortlessly with our admin panel." },
-              { title: "Well Documented", description: "Comprehensive documentation for a smooth experience." },
-            ].map((feature, index) => (
-              <div
-                key={index}
-                className={`p-6 rounded-lg transform transition duration-300 hover:bg-gray-200 hover:shadow-lg flex flex-col items-center justify-center text-center ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black border border-gray-300'}`}
-              >
-                <h3 className="font-bold text-xl mb-2">{feature.title}</h3>
-                <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>{feature.description}</p>
+  <div class="rounded-lg border bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
+    <h3 class="text-2xl font-semibold leading-none tracking-tight">React Template</h3>
+    <img
+      src="/placeholder.svg"
+      alt="Clothing"
+      class="w-full h-64 object-cover rounded-lg"
+    />
+    <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-12 py-2 px-4 w-full">
+    React Template
+    </button>
+  </div>
+
+  <div class="rounded-lg border bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
+    <h3 class="text-2xl font-semibold leading-none tracking-tight">React Template</h3>
+    <img
+      src="/placeholder.svg"
+      alt="Home & Garden"
+      class="w-full h-64 object-cover rounded-lg"
+    />
+    <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-12 py-2 px-4 w-full">
+    React Template
+    </button>
+  </div>
+</div>
+</div>
+
+    </section>
+    <section className="w-full py-12 md:py-24 lg:py-32">
+      <div className="container px-4 md:px-6 mx-auto">
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
+          New Arrivals
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div
+            className="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-v0-t="card"
+          >
+            <div className="p-6">
+              <img
+                src="/placeholder.svg"
+                alt="Product 1"
+                className="w-full h-48 object-cover mb-4"
+                width={200}
+                height={200}
+                style={{ aspectRatio: "200 / 200", objectFit: "cover" }}
+              />
+              <h3 className="text-lg font-semibold mb-2">Product 1</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+              <div className="flex justify-between items-center">
+                <span className="text-lg font-bold">$99.99</span>
+                <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-3">
+                  Add to Cart
+                </button>
               </div>
-            ))}
+            </div>
           </div>
-        </section>
-
-        {/* Reviews Section */}
-        <section className="my-8">
-          <h2 className="text-2xl font-bold text-center">User Reviews and Ratings</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-4">
-            {Array(3).fill().map((_, index) => (
-              <div key={index} className={`p-4 rounded-lg hover:shadow-lg transition duration-300 transform hover:-translate-y-1 flex flex-col items-center justify-center ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-gray-200 text-black'}`}>
-                <p className="text-xl">⭐⭐⭐⭐⭐</p>
-                <p className="text-center">`&quot;`This is a review from a user.`&quot;`</p>
+          <div
+            className="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-v0-t="card"
+          >
+            <div className="p-6">
+              <img
+                src="/placeholder.svg"
+                alt="Product 2"
+                className="w-full h-48 object-cover mb-4"
+                width={200}
+                height={200}
+                style={{ aspectRatio: "200 / 200", objectFit: "cover" }}
+              />
+              <h3 className="text-lg font-semibold mb-2">Product 2</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+              <div className="flex justify-between items-center">
+                <span className="text-lg font-bold">$79.99</span>
+                <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-3">
+                  Add to Cart
+                </button>
               </div>
-            ))}
+            </div>
           </div>
-        </section>
-
-        {/* FAQ Section */}
-        <section className="my-8">
-          <h2 className="text-2xl font-bold text-center">Frequently Asked Questions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4 text-center">
-            {["What is a React Template?", "How do I install the template?", "Can I customize the template?"].map((question, index) => (
-              <div key={index} className={`p-2 rounded-lg my-2 ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-gray-200 text-black border border-gray-300'}`}>
-                <h3 className="font-bold text-center">{question}</h3>
-                <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>This is the answer to the question.</p>
+          <div
+            className="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-v0-t="card"
+          >
+            <div className="p-6">
+              <img
+                src="/placeholder.svg"
+                alt="Product 3"
+                className="w-full h-48 object-cover mb-4"
+                width={200}
+                height={200}
+                style={{ aspectRatio: "200 / 200", objectFit: "cover" }}
+              />
+              <h3 className="text-lg font-semibold mb-2">Product 3</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+              <div className="flex justify-between items-center">
+                <span className="text-lg font-bold">$129.99</span>
+                <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-3">
+                  Add to Cart
+                </button>
               </div>
-            ))}
+            </div>
           </div>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className={`p-4 text-center ${isDarkMode ? 'bg-gray-900 text-gray-300' : 'bg-gray-200 text-gray-700'}`}>
-        <div className="mb-2">
-          <p>&copy; 2024 ReactNet. All rights reserved.</p>
+          <div
+            className="rounded-lg border bg-card text-card-foreground shadow-sm"
+            data-v0-t="card"
+          >
+            <div className="p-6">
+              <img
+                src="/placeholder.svg"
+                alt="Product 4"
+                className="w-full h-48 object-cover mb-4"
+                width={200}
+                height={200}
+                style={{ aspectRatio: "200 / 200", objectFit: "cover" }}
+              />
+              <h3 className="text-lg font-semibold mb-2">Product 4</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+              <div className="flex justify-between items-center">
+                <span className="text-lg font-bold">$149.99</span>
+                <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-3">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex justify-center space-x-4">
-          <a href="#about" className="hover:underline">About Us</a>
-          <a href="#support" className="hover:underline">Support</a>
-          <a href="#privacy" className="hover:underline">Privacy Policy</a>
-          <a href="#terms" className="hover:underline">Terms of Service</a>
-        </div>
-      </footer>
+      </div>
+    </section>
+  </main>
+  <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
+    <p className="text-xs text-gray-500 dark:text-gray-400">
+      © 2024 Acme Inc. All rights reserved.
+    </p>
+    <nav className="sm:ml-auto flex gap-4 sm:gap-6">
+      <a className="text-xs hover:underline underline-offset-4" href="#">
+        Terms of Service
+      </a>
+      <a className="text-xs hover:underline underline-offset-4" href="#">
+        Privacy
+      </a>
+    </nav>
+  </footer>
+
+
     </div>
-  );
-};
+  )
+}
 
 export default HomePage;

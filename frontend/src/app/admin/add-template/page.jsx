@@ -70,7 +70,7 @@ const AddTemplate = () => {
 
       <div className="space-y-6">
         <div>
-          <label htmlFor="title" className="block text-lg font-semibold text-white">
+          <label htmlFor="title" className="block text-lg font-semibold text-">
             Title:
           </label>
           <input
