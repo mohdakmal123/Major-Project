@@ -30,12 +30,12 @@ const Signup = () => {
 
   return (
     <div
-      className="flex items-center justify-center min-h-screen bg-cover rounded-lg bg-black"
+      className="flex items-center justify-center min-h-screen bg-gray-200 rounded-lg "
       style={{
         backgroundImage: 'url("")'
       }}
     >
-      <div className="p-14 max-w-lg mx-auto bg-gray-900 rounded-lg ">
+      <div className="p-12 max-w-lg mx-auto bg-white rounded-lg shadow-lg bg-opacity-80 ">
         <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Signup</h1>
         <form onSubmit={formik.handleSubmit} className="space-y-6">
           {/* Name */}

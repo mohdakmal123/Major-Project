@@ -36,61 +36,76 @@ const Login = () => {
 
   return (
     <div
-      className="flex items-center justify-center min-h-screen bg-cover bg-black"
-      style={{
-        backgroundImage: 'url("https://scontent.flko11-1.fna.fbcdn.net/v/t39.30808-6/460499278_453298471193103_1927094701927232585_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=e1afaa&_nc_ohc=o03zHfGyIMAQ7kNvgGfBtaL&_nc_ht=scontent.flko11-1.fna&_nc_gid=AzcTdhXjOp7qhZinHC-YaZC&oh=00_AYBJufMNffiU7fTyuVGKRKk3_9Y2bui8soGXpxByjIqQlw&oe=66F75FB2")'
-      }}
-    >
-      <div className="p-12 max-w-lg mx-auto bg-white rounded-lg shadow-lg bg-opacity-80">
-        <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Login</h1>
-        <form onSubmit={formik.handleSubmit} className="space-y-6">
-          {/* Name */}
-
-
-          {/* Email */}
-          <div>
-            <label htmlFor="email" className="block text-lg font-semibold text-gray-700">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              onChange={formik.handleChange}
-              value={formik.values.email}
-              className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
-              placeholder="Email"
-              required
-            />
-          </div>
-
-          {/* Password */}
-          <div>
-            <label htmlFor="password" className="block text-lg font-semibold text-gray-700">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              onChange={formik.handleChange}
-              value={formik.values.password}
-              className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
-              placeholder="Enter password"
-              required
-            />
-          </div>
-
-          {/* Submit Button */}
-          <div>
-            <button
-              type="submit"
-              className="w-full bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-200"
-            >
-              Login
-            </button>
-          </div>
-        </form>
+    className="flex items-center justify-center min-h-screen bg-gray-200 rounded-lg "
+    style={{
+      backgroundImage: 'url("https://scontent.flko11-1.fna.fbcdn.net/v/t39.30808-6/460499278_453298471193103_1927094701927232585_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=e1afaa&_nc_ohc=o03zHfGyIMAQ7kNvgGfBtaL&_nc_ht=scontent.flko11-1.fna&_nc_gid=AzcTdhXjOp7qhZinHC-YaZC&oh=00_AYBJufMNffiU7fTyuVGKRKk3_9Y2bui8soGXpxByjIqQlw&oe=66F75FB2")'
+    }}
+  >
+    <div className="p-12 max-w-lg mx-auto bg-white rounded-lg shadow-lg bg-opacity-80">
+      <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Login</h1>
+      <form onSubmit={formik.handleSubmit} className="space-y-6 ">
+        {/* Email */}
+        <div>
+          <label htmlFor="email" className="block text-lg font-semibold text-gray-700">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            onChange={formik.handleChange}
+            value={formik.values.email}
+            className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
+            placeholder="Email"
+            required
+          />
+        </div>
+  
+        {/* Password */}
+        <div>
+          <label htmlFor="password" className="block text-lg font-semibold text-gray-700">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            onChange={formik.handleChange}
+            value={formik.values.password}
+            className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
+            placeholder="Enter password"
+            required
+          />
+        </div>
+  
+        {/* Submit Button */}
+        <div>
+          <button
+            type="submit"
+            className="w-full bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-200"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+  
+      {/* Forgot Password Link */}
+      <div className="mt-4 text-center">
+        <a href="#" className="text-sm text-indigo-600 hover:underline">
+          Forgot password?
+        </a>
+      </div>
+  
+      {/* Sign Up Section */}
+      <div className="mt-6 text-center">
+        <p className="text-sm text-gray-600">
+          Don't have an account?{' '}
+          <a href="signup" className="text-indigo-600 hover:underline">
+            Sign up
+          </a>
+        </p>
       </div>
     </div>
+  </div>
+  
   );
 }
 

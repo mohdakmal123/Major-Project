@@ -30,14 +30,6 @@ const AddTemplate = () => {
         });
     },
   })
-  const [imagePreview, setImagePreview] = useState(null);
-  const [message, setMessage] = useState('');
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
 
 
   //upload (shahan@mail.com/1234)
@@ -66,7 +58,7 @@ const AddTemplate = () => {
 
 
   return (
-    <div className="min-h-screen p-6 flex items-center justify-center bg-gray-100 text-gray-800">
+    <div className="min-h-screen p-6 flex items-center justify-center bg-gray-200 text-gray-800">
     <form
       onSubmit={templateForm.handleSubmit}
       className="w-full max-w-xl p-6 shadow-lg rounded-lg bg-white transition-all duration-300 ease-in-out"
@@ -74,11 +66,11 @@ const AddTemplate = () => {
       <h1 className="text-center text-3xl font-bold mb-8 text-gray-900">
         Add Template
       </h1>
-      {message && <div className="text-green-500 text-center mb-4">{message}</div>}
+      
 
       <div className="space-y-6">
         <div>
-          <label htmlFor="title" className="block text-lg font-semibold text-gray-800">
+          <label htmlFor="title" className="block text-lg font-semibold text-white">
             Title:
           </label>
           <input
