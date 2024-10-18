@@ -13,6 +13,8 @@ const AddTemplate = () => {
       description: '',
       name: '',
       author: '',
+      version: '',
+      createdAt: '',
       image: '',
       price: '',
       codeSnippet: ''

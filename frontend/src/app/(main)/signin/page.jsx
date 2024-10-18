@@ -36,12 +36,12 @@ const Login = () => {
 
   return (
     <div
-    className="flex items-center justify-center min-h-screen bg-gray-200 rounded-lg "
+    className="flex items-center justify-center min-h-screen bg-gray-200 rounded-lg shadow-xl p-8 rounded-l-lg rounded-r-lg  "
     style={{
       backgroundImage: 'url("https://scontent.flko11-1.fna.fbcdn.net/v/t39.30808-6/460499278_453298471193103_1927094701927232585_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=e1afaa&_nc_ohc=o03zHfGyIMAQ7kNvgGfBtaL&_nc_ht=scontent.flko11-1.fna&_nc_gid=AzcTdhXjOp7qhZinHC-YaZC&oh=00_AYBJufMNffiU7fTyuVGKRKk3_9Y2bui8soGXpxByjIqQlw&oe=66F75FB2")'
     }}
   >
-    <div className="p-12 max-w-lg mx-auto bg-white rounded-lg shadow-lg bg-opacity-80">
+    <div className="p-12 max-w-lg mx-auto bg-white rounded-2xl shadow-lg bg-opacity-80 ">
       <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Login</h1>
       <form onSubmit={formik.handleSubmit} className="space-y-6 ">
         {/* Email */}
@@ -54,7 +54,7 @@ const Login = () => {
             id="email"
             onChange={formik.handleChange}
             value={formik.values.email}
-            className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
+            className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
             placeholder="Email"
             required
           />
@@ -70,7 +70,7 @@ const Login = () => {
             id="password"
             onChange={formik.handleChange}
             value={formik.values.password}
-            className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
+            className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
             placeholder="Enter password"
             required
           />
@@ -80,7 +80,7 @@ const Login = () => {
         <div>
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-200"
+            className="flex justify-center bg-indigo-600 text-white px-6 py-3 rounded-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-200"
           >
             Login
           </button>

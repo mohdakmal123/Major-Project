@@ -26,25 +26,25 @@ const HomePage = () => {
     </a>
     <nav className="ml-auto flex gap-4 sm:gap-6">
       <a
-        className="text-sm font-medium hover:underline underline-offset-4"
+        className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
         href="signin"
       >
         Login
       </a>
       <a
-        className="text-sm font-medium hover:underline underline-offset-4"
+        className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
         href="signup"
       >
         SignUp
       </a>
       <a
-        className="text-sm font-medium hover:underline underline-offset-4"
+        className="text-sm font-medium hover:underline underline-offset-4  py-3 px-4"
         href="About"
       >
         About
       </a>
       <a
-        className="text-sm font-medium hover:underline underline-offset-4"
+        className="text-sm font-medium hover:underline underline-offset-4  py-3 px-4"
         href="ContactUs"
       >
         Contact
@@ -52,8 +52,15 @@ const HomePage = () => {
     </nav>
   </header>
   <main className="flex-1">
-    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-black text-white">
-      <div className="container px-4 md:px-6 mx-auto">
+  <section 
+  className="w-full mx-auto py-12 md:py-24 lg:py-32 xl:py-48 bg-black text-white bg-cover bg-center"
+  style={{
+    backgroundImage: 'url("https://i.pinimg.com/564x/a6/5f/bb/a65fbb897ddfffd954551360dd68f3e0.jpg")',
+  }}
+>
+      <div className="container px-4 md:px-6 mx-auto"
+      
+      >
         <div className="flex flex-col items-center space-y-4 text-center">
           <div className="space-y-2">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
@@ -65,12 +72,16 @@ const HomePage = () => {
             </p>
           </div>
           <div className="space-x-4">
-            <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-10 py-2 px-4">
-              Explore
-            </button>
-            <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4">
-              Learn More
-            </button>
+            <a className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-10 py-2 px-4"
+             href="template"
+            >
+              All Templates
+            </a>
+            <a className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"
+            href="AboutUs"
+            >
+              About Us
+            </a>
           </div>
         </div>
       </div>
@@ -80,8 +91,12 @@ const HomePage = () => {
         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
           Featured Templates
         </h2>
-        <div class="flex flex-col space-y-6 p-6">
-  <div class="rounded-lg border bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
+        <div class="flex flex-col space-y-6 p-6"
+        
+        >
+  <div class="rounded-lg border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6"
+  
+  >
     <h3 class="text-2xl font-semibold leading-none tracking-tight">React Template</h3>
     <img
       src="https://i.pinimg.com/enabled/564x/83/71/2b/83712bc0f934de891b2ea1e6d728e935.jpg"
@@ -93,7 +108,7 @@ const HomePage = () => {
     </button>
   </div>
 
-  <div class="rounded-lg border bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
+  <div class="rounded-lg border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
     <h3 class="text-2xl font-semibold leading-none tracking-tight">React Template</h3>
     <img
       src="/placeholder.svg"
@@ -105,7 +120,7 @@ const HomePage = () => {
     </button>
   </div>
 
-  <div class="rounded-lg border bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
+  <div class="rounded-lg border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
     <h3 class="text-2xl font-semibold leading-none tracking-tight">React Template</h3>
     <img
       src="/placeholder.svg"
@@ -120,6 +135,8 @@ const HomePage = () => {
 </div>
 
     </section>
+    
+
     <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6 mx-auto">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
@@ -145,7 +162,9 @@ const HomePage = () => {
               </p>
               <div className="flex justify-between items-center">
                 <span className="text-lg font-bold">$99.99</span>
-                <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-3">
+                <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+                href="#"
+                >
                   Add to Cart
                 </button>
               </div>
