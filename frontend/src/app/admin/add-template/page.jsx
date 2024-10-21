@@ -14,7 +14,6 @@ const AddTemplate = () => {
       name: '',
       author: '',
       version: '',
-      createdAt: '',
       image: '',
       price: '',
       codeSnippet: ''
@@ -132,6 +131,22 @@ const AddTemplate = () => {
             id="name"
             className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
             value={templateForm.values.name}
+            onChange={templateForm.handleChange}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="name" className="block text-lg font-semibold text-gray-800">
+            Version:
+          </label>
+          <input
+            type="text"
+            name="version"
+            placeholder="Enter Your Version"
+            id="version"
+            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
+            value={templateForm.values.version}
             onChange={templateForm.handleChange}
             required
           />

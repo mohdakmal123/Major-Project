@@ -1,6 +1,5 @@
 const express = require('express');
 const Model = require('../models/templateModel');
-const verifyToken = require('./verifyToken');
 
 const router = express.Router();
 

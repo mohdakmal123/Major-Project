@@ -5,10 +5,10 @@ const mySchema = new Schema({
         version: { type: String, unique: true },
         author: { type: String, required: true },
         image: String,
-        downloads: { type: String, unique: true },
-        updated: { type: Date, default: Date.now },
+        downloads: { type: Number, default: 0 },
         price: { type: Number, unique: true },
+        updated: { type: Date, default: Date.now },
         createdAt: { type: Date, default: Date.now }
 });
 
-module.exports = model('templates', mySchema); // users is collection name
+module.exports = model('templatesCollection', mySchema); // users is collection name

@@ -30,12 +30,12 @@ const Signup = () => {
 
   return (
     <div
-      className="flex items-center justify-center min-h-screen bg-gray-200 rounded-lg "
+      className="flex items-center justify-center min-h-screen bg-gray-200 rounded-lg shadow-xl p-8 rounded-l-lg rounded-r-lg  "
       style={{
         backgroundImage: 'url("")'
       }}
     >
-      <div className="p-12 max-w-lg mx-auto bg-white rounded-lg shadow-lg bg-opacity-80 ">
+      <div className="p-12 max-w-lg mx-auto bg-white rounded-2xl shadow-lg bg-opacity-80 ">
         <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Signup</h1>
         <form onSubmit={formik.handleSubmit} className="space-y-6">
           {/* Name */}
@@ -48,7 +48,7 @@ const Signup = () => {
               id="name"
               onChange={formik.handleChange}
               value={formik.values.name}
-              className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
+              className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
               placeholder="Name"
               required
             />
@@ -64,7 +64,7 @@ const Signup = () => {
               id="email"
               onChange={formik.handleChange}
               value={formik.values.email}
-              className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
+              className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
               placeholder="Email"
               required
             />
@@ -80,7 +80,7 @@ const Signup = () => {
               id="password"
               onChange={formik.handleChange}
               value={formik.values.password}
-              className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
+              className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
               placeholder="Enter password"
               required
             />
@@ -90,7 +90,7 @@ const Signup = () => {
           <div>
             <button
               type="submit"
-              className="w-full bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-200"
+              className="flex items-center justify-center w-56 bg-gray-100 bg-indigo-600 text-white px-6 py-3 rounded-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-200"
             >
               Signup
             </button>

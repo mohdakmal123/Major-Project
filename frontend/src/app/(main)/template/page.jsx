@@ -10,20 +10,6 @@ const TemplateCart = () => {
     const [isCartOpen, setIsCartOpen] = useState(false);
 
 
-
-    const templates = [
-        { id: 1, name: 'template 1', price: 50, img: 'https://via.placeholder.com/150' },
-        { id: 2, name: 'template 2', price: 60, img: 'https://via.placeholder.com/150' },
-        { id: 3, name: 'template 3', price: 60, img: 'https://via.placeholder.com/150' },
-        { id: 4, name: 'template 4', price: 60, img: 'https://via.placeholder.com/150' },
-        { id: 5, name: 'template 5', price: 60, img: 'https://via.placeholder.com/150' },
-        { id: 6, name: 'template 6', price: 60, img: 'https://via.placeholder.com/150' },
-        { id: 7, name: 'template 7', price: 60, img: 'https://via.placeholder.com/150' },
-        { id: 8, name: 'template 8', price: 60, img: 'https://via.placeholder.com/150' },
-        // Add more products as needed
-    ];
-
-
     const [templateList, setTemplateList] = useState([]);
 
     const templatesData = async () => {
