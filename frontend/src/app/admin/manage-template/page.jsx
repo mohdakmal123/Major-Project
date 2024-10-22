@@ -38,10 +38,12 @@ const ManageTemplate = () => {
       return <table className='w-full border-2 border-blue-500'>
         <thead className='text-left bg-blue-500 text-white'>
           <tr>
-            <th className='p-3 text-lg'>ID</th>
+            <th className='p-3 text-lg'>Title</th>
+            <th className='p-3 text-lg'>Description</th>
+            <th className='p-3 text-lg' >Author</th>
             <th className='p-3 text-lg'>Name</th>
-            <th className='p-3 text-lg' >Email</th>
-            <th className='p-3 text-lg'>City</th>
+            <th className='p-3 text-lg'>Price</th>
+            <th className='p-3 text-lg'>Version</th>
             <th colSpan={2}>Actions</th>
 
           </tr>
@@ -51,10 +53,12 @@ const ManageTemplate = () => {
             templateList.map((template) => {
               return <tr key={template._id} className='border border-blue-300'>
 
-                <td className='p-3'>{template.name}</td>
+                <td className='p-3'>{template.title}</td>
                 <td className='p-3'>{template.descripton}</td>
+                <td className='p-3'>{template.author}</td>
+                <td className='p-3'>{template.name}</td>
                 <td className='p-3'>{template.price}</td>
-                <td className='p-3'>{template.image}</td>
+                <td className='p-3'>{template.version}</td>
                 <td>
                   <button
                     onClick={() => { deleteTemplate(template._id) }}

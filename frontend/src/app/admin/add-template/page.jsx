@@ -59,12 +59,12 @@ const AddTemplate = () => {
 
 
   return (
-    <div className="min-h-screen p-6 flex items-center justify-center bg-gray-200 text-gray-800">
+    <div className="min-h-screen p-6 flex items-center justify-center bg-gray-200 ">
     <form
       onSubmit={templateForm.handleSubmit}
       className="w-full max-w-xl p-6 shadow-lg rounded-lg bg-white transition-all duration-300 ease-in-out"
     >
-      <h1 className="text-center text-3xl font-bold mb-8 text-gray-900">
+      <h1 className="text-center text-3xl font-bold mb-8 ">
         Add Template
       </h1>
       
@@ -79,7 +79,7 @@ const AddTemplate = () => {
             name="title"
             placeholder="Enter Title"
             id="title"
-            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
+            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-white border-gray-300  focus:ring-2 focus:ring-indigo-500"
             value={templateForm.values.title}
             onChange={templateForm.handleChange}
             required
@@ -96,7 +96,7 @@ const AddTemplate = () => {
             cols={30}
             rows={5}
             placeholder="Write your description..."
-            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
+            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-white border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
             value={templateForm.values.description}
             onChange={templateForm.handleChange}
             required
@@ -113,7 +113,7 @@ const AddTemplate = () => {
             cols={30}
             rows={5}
             placeholder="author..."
-            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
+            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-white border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
             value={templateForm.values.author}
             onChange={templateForm.handleChange}
             required
@@ -129,7 +129,7 @@ const AddTemplate = () => {
             name="name"
             placeholder="Enter Your Name"
             id="name"
-            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
+            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-whitebg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
             value={templateForm.values.name}
             onChange={templateForm.handleChange}
             required
@@ -145,7 +145,7 @@ const AddTemplate = () => {
             name="version"
             placeholder="Enter Your Version"
             id="version"
-            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
+            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-white border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
             value={templateForm.values.version}
             onChange={templateForm.handleChange}
             required
@@ -160,7 +160,7 @@ const AddTemplate = () => {
             type="file"
             name="image"
             id="image"
-            className="mt-2 w-full border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
+            className="mt-2 w-full border rounded-md focus:outline-none bg-white border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
             onChange={handleUpload}
             accept="image/*"
             required
@@ -176,7 +176,7 @@ const AddTemplate = () => {
             name="price"
             placeholder="Enter Your price"
             id="price"
-            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
+            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-whitebg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
             value={templateForm.values.price}
             onChange={templateForm.handleChange}
             required
@@ -193,7 +193,7 @@ const AddTemplate = () => {
             cols={30}
             rows={5}
             placeholder="Write your code here..."
-            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-gray-200 border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
+            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-white border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
             onChange={templateForm.handleChange}
             value={templateForm.values.codeSnippet}
             required

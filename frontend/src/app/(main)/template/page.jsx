@@ -1,6 +1,6 @@
 'use client';
 import axios from 'axios';
-import { useFormik } from 'formik';
+
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
@@ -26,7 +26,7 @@ const TemplateCart = () => {
 
 
     return (
-        <div className=" min-h-screen"
+        <div className="min-h-screen"
             style={{
                 backgroundImage:
                     'url("https://scontent.flko11-1.fna.fbcdn.net/o1/v/t0/f1/m340/genai_m4_eag_odn_v3:upload_img_17193227_09_19_2024_06_40_03_598177_6791406858107519216.jpeg?_nc_ht=scontent.flko11-1.fna.fbcdn.net&_nc_cat=106&ccb=9-4&oh=00_AYDegP-PsFB0vpt25oNjJYH7gpyfrvs1yq2L4qiJGCV-kw&oe=66EE11F7&_nc_sid=5b3566")'
@@ -88,7 +88,7 @@ const TemplateCart = () => {
                         }}
                     >
                         <img
-                            src={templates.img}
+                            src={templates.image}
                             alt={templates.name}
                             className="w-full h-40 object-cover mb-4 rounded"
                         />
