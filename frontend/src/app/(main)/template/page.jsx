@@ -24,7 +24,6 @@ const TemplateCart = () => {
     }, []);
 
 
-
     return (
         <div className="min-h-screen"
             style={{
@@ -94,7 +93,7 @@ const TemplateCart = () => {
                         />
                         <h2 className="text-lg font-bold">{templates.name}</h2>
                         <p className="text-gray-500 mb-4">₹{templates.price}</p>
-                        <Link href={'/'}>View More</Link>
+                        <Link href={'/template-details/'+templates._id}>View More</Link>
                     </div>
                 ))}
             </section>
