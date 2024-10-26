@@ -28,6 +28,7 @@ export default function BrowseTemplate() {
 
   return (
     <div className="min-h-screen bg-background">
+      
       {/* Navbar */}
       <nav className="bg-primary text-primary-foreground p-4">
         <div className="container mx-auto flex justify-between items-center">
