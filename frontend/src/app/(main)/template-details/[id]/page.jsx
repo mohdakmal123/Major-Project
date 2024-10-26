@@ -16,7 +16,7 @@ const Home = () => {
       const res = await axios.get('http://localhost:5000/template/getbyid/' + id);
       setSelectedTemplate(res.data);
     } catch (err) {
-      setError('Error fetching template details');
+      setError('Error fetching  details');
     } finally {
       setLoading(false);
     }
@@ -41,7 +41,7 @@ const Home = () => {
         React Template Details
       </h1>
 
-      <div className="w-full max-w-4xl p-4 bg-white rounded-lg shadow-lg"
+      <div className="w-full max-w-4xl p-4 rounded-lg border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6"
      
       >
         {/* Template Details */}
@@ -51,26 +51,24 @@ const Home = () => {
           <p className="text-red-500">{error}</p>
         ) : (
           selectedTemplate && (
-            <div>
-              <h2 className="text-3xl font-bold text-center text-green-800 mb-6">
-                {selectedTemplate.name}
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+            <div classname="rounded-lg border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
+              
+              <div className="">
                 {/* Image Section */}
                 <div className="col-span-4 flex justify-center">
                   <img
                     src={selectedTemplate.image || placeholderImage}
                     alt={selectedTemplate.name}
-                    className="w-80 h-80 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105"
+                    className="w-80 h-80 object-cover rounded-lg shadow-lg transition-transform transform "
                   />
                 </div>
 
                 {/* Product Info Section */}
-                <div className="col-span-8">
+                <div className="text-5xl text-center text-white shadow-lg p-4 mb-8 font-bold  rounded-lg">
                   <div className="mb-4">
                     <p className="font-bold text-2xl text-black">
-                   
-                      <span className="block mt-1 font-bold text-gray-700">{selectedTemplate.name}</span>
+                  
+                      <span className="block mt-1 font-bold text-black">{selectedTemplate.name}</span>
                     </p>
                   </div>
 
@@ -81,7 +79,7 @@ const Home = () => {
                     </p>
                   </div>
 
-                  <div className="mb-4">
+                  <div className="">
                     <p className="font-bold text-xl text-black">
                       Price:
                       <span className="block mt-1 text-green-600">₹ {selectedTemplate.price}</span>

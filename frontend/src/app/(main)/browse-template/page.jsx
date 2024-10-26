@@ -1,30 +1,43 @@
-"use client"
-import React, { useState, useEffect } from 'react'
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Search, ShoppingCart } from "lucide-react"
+"use client";
+import React, { useState, useEffect } from "react";
+import Link from 'next/link';
+import { Button } from "@/components/ui/button";
+import axios from 'axios';
+
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Search, ShoppingCart } from "lucide-react";
 
 // Simulated data for browsing items
-const items = [
-  { id: 1, name: 'Product 1', description: 'Description of Product 1', price: 50 },
-  { id: 2, name: 'Product 2', description: 'Description of Product 2', price: 100 },
-  { id: 3, name: 'Product 3', description: 'Description of Product 3', price: 150 },
-  { id: 4, name: 'Product 4', description: 'Description of Product 4', price: 200 },
-  { id: 5, name: 'Product 5', description: 'Description of Product 5', price: 250 },
-]
+const TemplateCart = () => {
+    const [cart, setCart] = useState([]);
+    const [isCartOpen, setIsCartOpen] = useState(false);
 
-export default function BrowseTemplate() {
-  const [search, setSearch] = useState('')
-  const [filteredItems, setFilteredItems] = useState(items)
 
-  useEffect(() => {
-    setFilteredItems(
-      items.filter(item =>
-        item.name.toLowerCase().includes(search.toLowerCase())
-      )
-    )
-  }, [search])
+    const [templateList, setTemplateList] = useState([]);
+
+    const templatesData = async () => {
+        const res = await axios.get('http://localhost:5000/template/getall');
+        console.log(res.status);
+        console.table(res.data);
+        setTemplateList(res.data);
+    }
+
+    useEffect(() => {
+        templatesData();
+    }, []);
+
+
+
+
+
+
+
 
   return (
     <div className="min-h-screen bg-background">
@@ -42,39 +55,43 @@ export default function BrowseTemplate() {
       {/* Search Bar and Items */}
       <main className="container mx-auto my-8 px-4">
         {/* Search Input */}
-        <div className="relative mb-6">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Search items"
-            className="pl-10"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </div>
+        
 
         {/* Browse Items */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map(item => (
-            <Card key={item.id}>
+          {templateList.map((templates) => (
+            <Card key={templates.id}>
               <CardHeader>
-                <CardTitle>{item.name}</CardTitle>
+              <img
+                            src={templates.image}
+                            alt={templates.name}
+                            className="w-full h-40 object-cover mb-4 rounded"
+                        />
+
+                <CardTitle>{templates.name}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">{item.description}</p>
+                <p className="text-muted-foreground">{templates.description}</p>
               </CardContent>
               <CardFooter className="flex justify-between">
-                <span className="text-green-600 font-semibold">${item.price}</span>
-                <Button>Add to Cart</Button>
+                <span className="text-green-600 font-semibold">
+                  ${templates.price}
+                </span>
+                <Link href={'/template-details/'+templates._id}>View More</Link>
+                <Button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">Add to Cart</Button>
               </CardFooter>
             </Card>
           ))}
         </div>
 
-        {filteredItems.length === 0 && (
-          <p className="text-center text-muted-foreground mt-8">No items found. Try a different search term.</p>
+        {templateList.length === 0 && (
+          <p className="text-center text-muted-foreground mt-8">
+            No items found. Try a different search term.
+          </p>
         )}
       </main>
     </div>
-  )
+  );
 }
+
+export default TemplateCart;
