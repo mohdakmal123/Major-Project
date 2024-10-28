@@ -71,7 +71,7 @@ const TemplateCart = () => {
                 <CardTitle>{templates.name}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">{templates.description}</p>
+                <p className="text-black">{templates.description}</p>
               </CardContent>
               <CardFooter className="flex justify-between">
                 <span className="text-green-600 font-semibold">
