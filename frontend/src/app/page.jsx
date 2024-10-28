@@ -73,7 +73,7 @@ const HomePage = () => {
               </div>
               <div className="space-x-4">
                 <a className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"
-                  href="template"
+                  href="browse-template"
                 >
                   All Templates
                 </a>
@@ -249,19 +249,63 @@ const HomePage = () => {
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-gray-500 dark:text-gray-400">
-          © 2024 Acme Inc. All rights reserved.
-        </p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <a className="text-xs hover:underline underline-offset-4" href="#">
-            Terms of Service
-          </a>
-          <a className="text-xs hover:underline underline-offset-4" href="#">
-            Privacy
-          </a>
-        </nav>
-      </footer>
+
+    {/* footer */}
+      <footer className="bg-black text-gray-300 py-8">
+      <div className="container mx-auto px-4">
+        {/* Top section */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-8 md:space-y-0">
+          {/* Logo and description */}
+          <div className="w-full md:w-1/3">
+            <h2 className="text-2xl font-bold mb-2">My Website</h2>
+            <p className="text-gray-300">
+              Your go-to platform for all things awesome. Connect, explore, and enjoy!
+            </p>
+          </div>
+
+          {/* Links */}
+          <div className="w-full md:w-2/3 flex flex-col md:flex-row justify-between">
+            {/* Column 1 */}
+            <div className="mb-6 md:mb-0">
+              <h3 className="font-semibold mb-2">Quick Links</h3>
+              <ul>
+                <li><a href="#" className="text-gray-300 hover:text-white">Home</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white">About Us</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white">Services</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white">Contact</a></li>
+              </ul>
+            </div>
+
+            {/* Column 2 */}
+            <div className="mb-6 md:mb-0">
+              <h3 className="font-semibold mb-2">Support</h3>
+              <ul>
+                <li><a href="#" className="text-gray-300 hover:text-white">Help Center</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white">FAQs</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white">Terms of Service</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white">Privacy Policy</a></li>
+              </ul>
+            </div>
+
+            {/* Column 3 */}
+            <div className="mb-6 md:mb-0">
+              <h3 className="font-semibold mb-2">Follow Us</h3>
+              <ul className="flex space-x-4">
+                <li><a href="#" className="text-gray-300 hover:text-white">Facebook</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white">Twitter</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white">Instagram</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white">LinkedIn</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom section */}
+        <div className="mt-8 border-t border-gray-700 pt-4 text-center md:text-left">
+          <p className="text-gray-300">&copy; 2024 My Website. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
 
 
     </div>

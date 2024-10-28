@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Menu, Search } from "lucide-react";
 
 const Header = () => {
-  const [isHomeDropdownOpen, setIsHomeDropdownOpen] = useState(false);
+  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
   const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
 
-  const toggleHomeDropdown = () => {
-    setIsHomeDropdownOpen(!isHomeDropdownOpen);
+  const toggleCategoryDropdown = () => {
+    setIsCategoryDropdownOpen(!isCategoryDropdownOpen);
   };
 
   const toggleMoreDropdown = () => {
@@ -38,20 +38,20 @@ const Header = () => {
           <div className="relative">
             <Button
               variant="link"
-              onClick={toggleHomeDropdown}
+              onClick={toggleCategoryDropdown}
               className="flex items-center space-x-2"
             >
-              <span>Home</span>
+              <span>Category</span>
               <Menu className="h-5 w-5" />
             </Button>
 
-            {isHomeDropdownOpen && (
+            {isCategoryDropdownOpen && (
               <div className="absolute left-0 mt-2 w-40 bg-white border rounded shadow-md z-10">
                 <Link href="/login">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Login</p>
+                  <p className="block px-4 py-2 hover:bg-gray-200">Type 1</p>
                 </Link>
                 <Link href="/signup">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Signup</p>
+                  <p className="block px-4 py-2 hover:bg-gray-200">Type 2</p>
                 </Link>
               </div>
             )}
