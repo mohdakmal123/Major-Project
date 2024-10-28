@@ -72,7 +72,7 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="space-x-4">
-                <a className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-10 py-2 px-4"
+                <a className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"
                   href="template"
                 >
                   All Templates
@@ -111,7 +111,7 @@ const HomePage = () => {
               <div class="rounded-lg border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
                 <h3 class="text-2xl font-semibold leading-none tracking-tight">React Template</h3>
                 <img
-                  src="/placeholder.svg"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgtXAMssaG_K3LlBTJcRVabKHndujUigS3Fg&s"
                   alt="Clothing"
                   class="w-full h-64 object-cover rounded-lg"
                 />
@@ -123,7 +123,7 @@ const HomePage = () => {
               <div class="rounded-lg border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
                 <h3 class="text-2xl font-semibold leading-none tracking-tight">React Template</h3>
                 <img
-                  src="/placeholder.svg"
+                  src="https://cdn.mos.cms.futurecdn.net/yeMcDgyFc2pA7jfV2UgjtL-1280-80.jpg.webp"
                   alt="Home & Garden"
                   class="w-full h-64 object-cover rounded-lg"
                 />
