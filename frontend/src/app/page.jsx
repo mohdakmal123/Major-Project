@@ -39,7 +39,7 @@ const HomePage = () => {
           </a>
           <a
             className="text-sm font-medium hover:underline underline-offset-4  py-3 px-4"
-            href="About"
+            href="AboutUs"
           >
             About
           </a>
@@ -111,8 +111,8 @@ const HomePage = () => {
               <div class="rounded-lg border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
                 <h3 class="text-2xl font-semibold leading-none tracking-tight">React Template</h3>
                 <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgtXAMssaG_K3LlBTJcRVabKHndujUigS3Fg&s"
-                  alt="Clothing"
+                  src="https://i.pinimg.com/564x/1e/fb/f4/1efbf4d23939c2bc900e2dfba11c1430.jpg"
+                  alt="Watches"
                   class="w-full h-64 object-cover rounded-lg"
                 />
                 <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-12 py-2 px-4 w-full">
