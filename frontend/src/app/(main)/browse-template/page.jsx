@@ -45,11 +45,8 @@ const TemplateCart = () => {
       {/* Navbar */}
       <nav className="bg-primary text-primary-foreground p-4">
         <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Browse Template</h1>
-          <Button variant="secondary" size="icon">
-            <ShoppingCart className="h-5 w-5" />
-            <span className="sr-only">Shopping cart</span>
-          </Button>
+          <h1 className="text-2xl font-sans font-bold justify justify-center text-center">Browse Template</h1>
+         
         </div>
       </nav>
 
