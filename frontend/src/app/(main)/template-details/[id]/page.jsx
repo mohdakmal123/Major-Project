@@ -37,7 +37,7 @@ const Home = () => {
 
     }}
     >
-      <h1 className="text-5xl text-center text-white shadow-lg p-4 mb-8 font-bold bg-green-800 rounded-lg">
+      <h1 className="text-5xl text-center text-black  p-4 mb-8 font-bold  rounded-lg">
         React Template Details
       </h1>
 
