@@ -1,7 +1,9 @@
 'use client'
-import axios from 'axios';
+import axios, { Axios } from 'axios';
+import { useFormik } from 'formik';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import StarRatings from 'react-star-ratings';
 
 const TemplateDetails = () => {
@@ -12,6 +14,24 @@ const TemplateDetails = () => {
   const { id } = useParams();
 
   const [rating, setRating] = useState(4)
+
+  const reviewForm = useFormik({
+    initialValues: {
+      review: '',
+    },
+    onSubmit: (values) => {
+      console.log(values);
+
+      axios.post('http://localhost:5000/review/add', values)
+        .then((result) => {
+          console.log(result.status);
+
+          toast.success('Review added Successfully')
+        }).catch((err) => {
+          toast.error('Some Error Occured')
+        });
+    },
+  })
 
   // Fetch product details from the server
   const fetchDetails = async () => {
@@ -44,7 +64,7 @@ const TemplateDetails = () => {
         React Template Details
       </h1>
 
-      <div className="w-full max-w-4xl p-4 rounded-lg border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6"
+      <div className="w-full max-w-4xl rounded-lg border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6"
 
       >
         {/* Template Details */}
@@ -54,7 +74,7 @@ const TemplateDetails = () => {
           <p className="text-red-500">{error}</p>
         ) : (
           selectedTemplate && (
-            <div classname="rounded-lg border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
+            <div className="rounded-lg border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
 
               <div className="">
                 {/* Image Section */}
@@ -104,6 +124,23 @@ const TemplateDetails = () => {
           numberOfStars={5}
           name='rating'
         />
+        <form onSubmit={reviewForm.handleSubmit}>
+          <div>
+
+            <h1>Reviews</h1>
+            <textarea
+              rows={10}
+              className='w-full p-5 mt-4 border-2 rounded-md'
+              name=""
+              id="review"
+              placeholder='Enter Your Review Here...'
+              value={reviewForm.values.review}
+              onChange={reviewForm.handleChange}
+            ></textarea>
+            <button type='submit'>Add Review</button>
+
+          </div>
+        </form>
 
       </div>
     </div>
