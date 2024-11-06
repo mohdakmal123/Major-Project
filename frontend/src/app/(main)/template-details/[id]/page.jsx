@@ -2,13 +2,16 @@
 import axios from 'axios';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import StarRatings from 'react-star-ratings';
 
-const Home = () => {
+const TemplateDetails = () => {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const { id } = useParams();
+
+  const [rating, setRating] = useState(4)
 
   // Fetch product details from the server
   const fetchDetails = async () => {
@@ -31,18 +34,18 @@ const Home = () => {
 
   return (
     <div className="bg-gradient-to-b from-green-300 to-blue-300 min-h-screen p-8 flex flex-col justify-center items-center"
-    style={{
-      backgroundImage:
-        'url("")'
+      style={{
+        backgroundImage:
+          'url("")'
 
-    }}
+      }}
     >
       <h1 className="text-5xl text-center text-black  p-4 mb-8 font-bold  rounded-lg">
         React Template Details
       </h1>
 
       <div className="w-full max-w-4xl p-4 rounded-lg border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6"
-     
+
       >
         {/* Template Details */}
         {loading ? (
@@ -52,7 +55,7 @@ const Home = () => {
         ) : (
           selectedTemplate && (
             <div classname="rounded-lg border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
-              
+
               <div className="">
                 {/* Image Section */}
                 <div className="col-span-4 flex justify-center">
@@ -67,7 +70,7 @@ const Home = () => {
                 <div className="text-5xl text-center text-white shadow-lg p-4 mb-8 font-bold  rounded-lg">
                   <div className="mb-4">
                     <p className="font-bold text-2xl text-black">
-                  
+
                       <span className="block mt-1 font-bold text-black">{selectedTemplate.name}</span>
                     </p>
                   </div>
@@ -93,9 +96,18 @@ const Home = () => {
             </div>
           )
         )}
+
+        <StarRatings
+          rating={rating}
+          starRatedColor="blue"
+          changeRating={setRating}
+          numberOfStars={5}
+          name='rating'
+        />
+
       </div>
     </div>
   );
 };
 
-export default Home;
+export default TemplateDetails;
