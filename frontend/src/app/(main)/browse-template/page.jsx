@@ -32,13 +32,6 @@ const TemplateCart = () => {
         templatesData();
     }, []);
 
-
-
-
-
-
-
-
   return (
     <div className="min-h-screen bg-background">
       

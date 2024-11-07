@@ -29,7 +29,7 @@ export default function ContactForm() {
   return (
     <div className="flex flex-col md:flex-row bg-gray-900 text-white rounded-lg overflow-hidden max-w-6xl mx-auto shadow-2xl">
       <div className="md:w-1/2 p-8 bg-[url('/placeholder.svg?height=600&width=600')] bg-cover bg-center relative">
-        <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+        <div className="absolute inset-0 bg-blue-800 bg-opacity-70"></div>
         <div className="relative z-10">
           <h2 className="text-4xl font-bold mb-6">Contact us</h2>
           <div className="mb-6">
