@@ -103,22 +103,7 @@ const AddTemplate = () => {
           />
         </div>
 
-        <div>
-          <label htmlFor="author" className="block text-lg font-semibold text-gray-800">
-            Author:
-          </label>
-          <textarea
-            id="author"
-            name="author"
-            cols={30}
-            rows={5}
-            placeholder="author..."
-            className="w-full mt-2 p-2 border rounded-md focus:outline-none bg-white border-gray-300 text-gray-800 focus:ring-2 focus:ring-indigo-500"
-            value={templateForm.values.author}
-            onChange={templateForm.handleChange}
-            required
-          />
-        </div>
+        
 
         <div>
           <label htmlFor="name" className="block text-lg font-semibold text-gray-800">

@@ -21,37 +21,39 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
+    <div classname="bg-black">
 
 
-      <header className="px-4 lg:px-6 h-14 flex items-center">
+      <header className="px-4 lg:px-6 h-14 flex bg-emerald-950  items-center">
         <a href="#" className="flex items-center justify-center">
 
-          <span className="sr-only">Acme Inc</span>
+
         </a>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
+        <nav className="ml-auto flex gap-2 ">
+
+
 
 
           <a
-            className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+            className="text-white font-bold py-2 px-4 rounded"
             href="signin"
           >
             Login
           </a>
           <a
-            className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+            className=" text-white font-bold py-2 px-4 rounded"
             href="signup"
           >
             SignUp
           </a>
           <a
-            className="text-sm font-medium hover:underline underline-offset-4  py-3 px-4"
+            className="text-white font-bold py-2 px-4 rounded"
             href="About"
           >
             About
           </a>
           <a
-            className="text-sm font-medium hover:underline underline-offset-4  py-3 px-4"
+            className="text-white font-bold py-2 px-4 rounded"
             href="ContactUs"
           >
             Contact
@@ -60,12 +62,12 @@ const HomePage = () => {
       </header>
       <main className="flex-1">
         <section
-          className="w-full mx-auto py-12 md:py-24 lg:py-32 xl:py-48 bg-black text-white bg-cover bg-center"
-          style={{
-            backgroundImage: 'url("https://i.pinimg.com/564x/a6/5f/bb/a65fbb897ddfffd954551360dd68f3e0.jpg")',
-          }}
+          className="w-full mx-auto py-12 bg-emerald-950 md:py-24 lg:py-32 xl:py-48 bg-black text-white bg-cover bg-center"
+        // style={{
+        //   backgroundImage: 'url("https://i.pinimg.com/564x/a6/5f/bb/a65fbb897ddfffd954551360dd68f3e0.jpg")',
+        // }}
         >
-          <div className="container px-4 md:px-6 mx-auto"
+          <div className="container px-4 md:px-6 mx-auto "
 
           >
             <div className="flex flex-col items-center space-y-4 text-center">
@@ -95,9 +97,9 @@ const HomePage = () => {
             </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 ">
-          <div className="container px-4 md:px-6 mx-auto">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
+        <section className="w-full py-12 md:py-24 lg:py-32   ">
+          <div className="container px-4 md:px-6 mx-auto ">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12 ">
               Featured Templates
             </h2>
             <div className="flex flex-col space-y-6 p-6 ">

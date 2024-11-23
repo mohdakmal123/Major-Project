@@ -76,7 +76,7 @@ const TemplateCart = () => {
                   ${templates.price}
                 </span>
                 <Link href={'/template-details/'+templates._id}>View More</Link>
-                <Button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">Add to Cart</Button>
+                <Button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">Buy Now</Button>
               </CardFooter>
             </Card>
           ))}

@@ -38,7 +38,7 @@ router.get('/getall', (req, res) => {
 });
 //name
 router.get('/getbyname/:name', (req, res) => {
-    Model.findOne({ email: req.params.name })
+    Model.findOne({ name: req.params.name })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -48,7 +48,7 @@ router.get('/getbyname/:name', (req, res) => {
 });
 ///version
 router.get('/getbyversion/:version', (req, res) => {
-    Model.find({ city: req.params.version })
+    Model.find({ version: req.params.version })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -59,7 +59,7 @@ router.get('/getbyversion/:version', (req, res) => {
 
 //author
 router.get('/getbyauthor/:author', (req, res) => {
-    Model.find({ city: req.params.author })
+    Model.find({ author: req.params.author })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -69,7 +69,7 @@ router.get('/getbyauthor/:author', (req, res) => {
 });
 //image
 router.get('/getbyimage/:image', (req, res) => {
-    Model.find({ city: req.params.image })
+    Model.find({ image: req.params.image })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -79,7 +79,7 @@ router.get('/getbyimage/:image', (req, res) => {
 });
 //downloads
 router.get('/getbydownloads/:downloads', (req, res) => {
-    Model.find({ city: req.params.downloads })
+    Model.find({ downloads: req.params.downloads })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -90,7 +90,7 @@ router.get('/getbydownloads/:downloads', (req, res) => {
 
 //updated
 router.get('/getbyupdated/:updated', (req, res) => {
-    Model.find({ city: req.params.updated })
+    Model.find({ updated: req.params.updated })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -100,7 +100,7 @@ router.get('/getbyupdated/:updated', (req, res) => {
 });
 //price
 router.get('/getbyprice/:price', (req, res) => {
-    Model.find({ city: req.params.price })
+    Model.find({ price: req.params.price })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -110,7 +110,7 @@ router.get('/getbyprice/:price', (req, res) => {
 });
 //createdAt
 router.get('/getbycreatedAt/:createdAt', (req, res) => {
-    Model.find({ city: req.params.createdAt })
+    Model.find({ createdAt: req.params.createdAt })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
