@@ -1,24 +1,12 @@
-// Model.js
-import React, { useState } from 'react';
-import Modal from 'react-modal';
+const { model, Schema } = require('../connection');
 
-// Set the app element for accessibility (important for screen readers)
-Modal.setAppElement('#root');
+const mySchema = new Schema({
+  user: { type: Schema.Types.ObjectId, ref: 'users' },
+  template: { type: Schema.Types.ObjectId, ref: 'templatesData' },
+  payentDetails: String,
+  intentId: { type: String, unique: true },
+  updated: { type: Date, default: Date.now },
+  createdAt: { type: Date, default: Date.now }
+});
 
-const Model = ({ isOpen, onRequestClose, title, content }) => {
-  return (
-    <Modal 
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      contentLabel="Example Modal"
-      className="modal"
-      overlayClassName="overlay"
-    >
-      <h2>{title}</h2>
-      <p>{content}</p>
-      <button onClick={onRequestClose}>Close</button>
-    </Modal>
-  );
-};
-
-export default Model;
+module.exports = model('orders', mySchema); // users is collection name
