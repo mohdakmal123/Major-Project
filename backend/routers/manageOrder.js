@@ -1,9 +1,5 @@
 const express = require('express');
-const Model = require('../models/userModel');
-
-const jwt = require('jsonwebtoken');
-const verifyToken = require('../middlewares/verifyToken');
-require('dotenv').config();
+const Model = require('./orderRouter');
 
 const router = express.Router();
 
@@ -28,7 +24,7 @@ router.post('/add', (req, res) => {
 router.get('/getall', (req, res) => {
 
     Model.find()
-        .then((result) => {
+    .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
             console.log(err);
@@ -38,7 +34,7 @@ router.get('/getall', (req, res) => {
 });
 //name
 router.get('/getbyname/:name', (req, res) => {
-    Model.findOne({ name: req.params.name })
+    Model.findOne({ email: req.params.name })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -48,7 +44,7 @@ router.get('/getbyname/:name', (req, res) => {
 });
 ///version
 router.get('/getbyversion/:version', (req, res) => {
-    Model.find({ version: req.params.version })
+    Model.find({ city: req.params.version })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -59,7 +55,7 @@ router.get('/getbyversion/:version', (req, res) => {
 
 //author
 router.get('/getbyauthor/:author', (req, res) => {
-    Model.find({ author: req.params.author })
+    Model.find({ city: req.params.author })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -69,7 +65,7 @@ router.get('/getbyauthor/:author', (req, res) => {
 });
 //image
 router.get('/getbyimage/:image', (req, res) => {
-    Model.find({ image: req.params.image })
+    Model.find({ city: req.params.image })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -79,7 +75,7 @@ router.get('/getbyimage/:image', (req, res) => {
 });
 //downloads
 router.get('/getbydownloads/:downloads', (req, res) => {
-    Model.find({ downloads: req.params.downloads })
+    Model.find({ city: req.params.downloads })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -90,7 +86,7 @@ router.get('/getbydownloads/:downloads', (req, res) => {
 
 //updated
 router.get('/getbyupdated/:updated', (req, res) => {
-    Model.find({ updated: req.params.updated })
+    Model.find({ city: req.params.updated })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -100,7 +96,7 @@ router.get('/getbyupdated/:updated', (req, res) => {
 });
 //price
 router.get('/getbyprice/:price', (req, res) => {
-    Model.find({ price: req.params.price })
+    Model.find({ city: req.params.price })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -110,7 +106,7 @@ router.get('/getbyprice/:price', (req, res) => {
 });
 //createdAt
 router.get('/getbycreatedAt/:createdAt', (req, res) => {
-    Model.find({ createdAt: req.params.createdAt })
+    Model.find({ city: req.params.createdAt })
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -127,6 +123,19 @@ router.get('/getbyid/:id', (req, res) => {
             console.log(err);
             res.status(500).json(err);
         });
+});
+
+// : preview
+
+router.get('/preview/:id' , async (req, res) => {
+try{
+  const template = await Template.findByid(req.params.id);
+  res.json(template);
+}
+catch (error) {
+    res.status(500).json({error: 'Template not found'});
+
+}
 });
 
 router.put('/update/:id', (req, res) => {
@@ -149,41 +158,5 @@ router.delete('/delete/:id', (req, res) => {
 
         });
 });
-router.post('/authenticate', (req, res) => {
-    Model.findOne(req.body)
-        .then((result) => {
-            if (result) {
-
-                const { _id, name, email, password, role } = result;
-
-                const payload = { _id, name, email, password };
-
-
-
-                // generate token
-                jwt.sign(
-                    payload,
-                    process.env.JWT_SECRET,
-                    { expiresIn: '2 days' },
-                    (err, token) => {
-                        if (err) {
-                            console.log(err);
-                            res.status(500).json(err);
-                        } else {
-                            res.status(200).json({ token, role, name, email });
-                        }
-                    }
-                )
-
-
-            } else {
-                res.status(401).json({ message: 'Invalid credentials' });
-            }
-        }).catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-
-        });
-})
 
 module.exports = router;

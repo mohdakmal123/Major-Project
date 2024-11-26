@@ -17,10 +17,10 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-red-400 text-primary-foreground p-4 shadow-md">
+    <header className="bg-emerald-950 text-primary-foreground p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <h1 className="text-2xl font-mono font-bold">TemplateWave</h1>
+        <h1 className="text-2xl text-white font-mono font-bold">TemplateWave</h1>
 
         {/* Search Bar */}
         <div className="relative w-1/3">
@@ -41,7 +41,7 @@ const Header = () => {
               onClick={toggleCategoryDropdown}
               className="flex items-center space-x-2"
             >
-              <span>Category</span>
+              <span className="text-white">Category</span>
               <Menu className="h-5 w-5" />
             </Button>
 
@@ -64,7 +64,7 @@ const Header = () => {
               onClick={toggleMoreDropdown}
               className="flex items-center space-x-2"
             >
-              <span>More</span>
+              <span className="text-white">More</span>
               <Menu className="h-5 w-5" />
             </Button>
 

@@ -40,10 +40,11 @@ const ManageTemplate = () => {
           <tr>
             <th className='p-3 text-lg'>Title</th>
             <th className='p-3 text-lg'>Description</th>
-            <th className='p-3 text-lg' >Author</th>
+           
             <th className='p-3 text-lg'>Name</th>
             <th className='p-3 text-lg'>Price</th>
             <th className='p-3 text-lg'>Version</th>
+            <th className='p-3 text-lg'>Code Snippet</th>
             <th colSpan={2}>Actions</th>
 
           </tr>
@@ -54,11 +55,11 @@ const ManageTemplate = () => {
               return <tr key={template._id} className='border border-blue-300'>
 
                 <td className='p-3'>{template.title}</td>
-                <td className='p-3'>{template.descripton}</td>
-                <td className='p-3'>{template.author}</td>
+                <td className='p-3'>{template.description}</td>
                 <td className='p-3'>{template.name}</td>
                 <td className='p-3'>{template.price}</td>
                 <td className='p-3'>{template.version}</td>
+                <td className='p-3'>{template.codeSnippet}</td>
                 <td>
                   <button
                     onClick={() => { deleteTemplate(template._id) }}

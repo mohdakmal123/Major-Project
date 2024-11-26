@@ -3,7 +3,9 @@ const express = require('express');
 const UserRouter = require('./routers/userRouter');
 const templateRouter = require('./routers/templateRouter');
 const reviewRouter = require('./routers/reviewRouter');
+const orderRouter = require('./routers/orderRouter');
 const cors = require('cors');
+const { default: mongoose } = require('mongoose');
 
 // initializing express
 const app = express();
@@ -17,8 +19,9 @@ app.use(cors({
 );
 app.use(express.json());
 app.use('/user', UserRouter);
-app.use('/template',templateRouter);
-app.use('/review',reviewRouter);
+app.use('/template', templateRouter);
+app.use('/review', reviewRouter);
+app.use('/order', orderRouter);
 
 
 // route or endpoint
@@ -39,6 +42,14 @@ app.get('/getall', (req, res) => {
 app.get('/getall', (req, res) => {
     res.send('Response from update');
 })
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/yourDatabaseName', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+
+
 app.listen(port, () => { console.log('server started') });
 
 

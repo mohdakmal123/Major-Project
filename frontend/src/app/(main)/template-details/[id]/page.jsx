@@ -1,15 +1,18 @@
 'use client'
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 import { useFormik } from 'formik';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import JsxParser from 'react-jsx-parser';
 import StarRatings from 'react-star-ratings';
 
 const TemplateDetails = () => {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+
 
   const { id } = useParams();
 
@@ -37,6 +40,8 @@ const TemplateDetails = () => {
   const fetchDetails = async () => {
     try {
       const res = await axios.get('http://localhost:5000/template/getbyid/' + id);
+      console.log(res.data);
+
       setSelectedTemplate(res.data);
     } catch (err) {
       setError('Error fetching  details');
@@ -104,18 +109,43 @@ const TemplateDetails = () => {
 
                   <div className="">
                     <p className="font-bold text-xl text-black">
+                      CodeSnippet:
+
+                      {/* <span className="block mt-1 text-green-600">{selectedTemplate.codeSnippet}</span> */}
+                      {/* <MyCodeBlock code={selectedTemplate.codeSnippet} language={jsx} /> */}
+
+
+                    </p>
+                  </div>
+
+                  <div className="">
+                    <p className="font-bold text-xl text-black">
                       Price:
                       <span className="block mt-1 text-green-600">₹ {selectedTemplate.price}</span>
                     </p>
                   </div>
 
+                  <div className="">
+                    <p className="font-bold text-xl text-black">
+                      Downloads:
+                      <span className="block mt-1 text-green-600">{selectedTemplate.downloads}</span>
+                    </p>
+                  </div>
+
                   {/* Buy Now Button */}
-                  <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">Add to Cart</button>
+                  <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">Buy Now</button>
                 </div>
               </div>
             </div>
           )
         )}
+        {
+          selectedTemplate !== null && (
+            <div className='snippet'>
+              <JsxParser jsx={selectedTemplate.codeSnippet} />
+            </div>
+          )
+        }
 
         <StarRatings
           rating={rating}

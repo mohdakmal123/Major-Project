@@ -125,6 +125,19 @@ router.get('/getbyid/:id', (req, res) => {
         });
 });
 
+// : preview
+
+router.get('/preview/:id' , async (req, res) => {
+try{
+  const template = await Template.findByid(req.params.id);
+  res.json(template);
+}
+catch (error) {
+    res.status(500).json({error: 'Template not found'});
+
+}
+});
+
 router.put('/update/:id', (req, res) => {
     Model.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then((result) => {
