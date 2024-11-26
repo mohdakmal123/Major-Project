@@ -5,7 +5,6 @@ const templateRouter = require('./routers/templateRouter');
 const reviewRouter = require('./routers/reviewRouter');
 const orderRouter = require('./routers/orderRouter');
 const cors = require('cors');
-const { default: mongoose } = require('mongoose');
 
 // initializing express
 const app = express();
@@ -41,20 +40,7 @@ app.get('/getall', (req, res) => {
 //update
 app.get('/getall', (req, res) => {
     res.send('Response from update');
-})
-
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/yourDatabaseName', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
 });
 
 
 app.listen(port, () => { console.log('server started') });
-
-
-
-
-
-
-

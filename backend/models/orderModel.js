@@ -1,11 +1,11 @@
 // models/Order.js
-const mongoose = require('mongoose');
+const { model, Schema, Types } = require('../connection');
 
-const orderSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+const orderSchema = new Schema({
+  user: { type: Types.ObjectId, ref: 'User', required: true },
   items: [
     {
-      templates: { type: mongoose.Schema.Types.ObjectId, ref: 'templates', required: true },
+      templates: { type: Types.ObjectId, ref: 'templates', required: true },
       quantity: { type: Number, required: true },
     },
   ],
@@ -14,4 +14,4 @@ const orderSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('Order', orderSchema);
+module.exports = model('Order', orderSchema);
