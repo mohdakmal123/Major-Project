@@ -1,17 +1,24 @@
-// models/Order.js
-const mongoose = require('mongoose');
+// Model.js
+import React, { useState } from 'react';
+import Modal from 'react-modal';
 
-const orderSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  items: [
-    {
-      templates: { type: mongoose.Schema.Types.ObjectId, ref: 'templates', required: true },
-      quantity: { type: Number, required: true },
-    },
-  ],
-  total: { type: Number, required: true },
-  status: { type: String, enum: ['Pending', 'Completed', 'Cancelled'], default: 'Pending' },
-  createdAt: { type: Date, default: Date.now },
-});
+// Set the app element for accessibility (important for screen readers)
+Modal.setAppElement('#root');
 
-module.exports = mongoose.model('Order', orderSchema);
+const Model = ({ isOpen, onRequestClose, title, content }) => {
+  return (
+    <Modal 
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      contentLabel="Example Modal"
+      className="modal"
+      overlayClassName="overlay"
+    >
+      <h2>{title}</h2>
+      <p>{content}</p>
+      <button onClick={onRequestClose}>Close</button>
+    </Modal>
+  );
+};
+
+export default Model;
