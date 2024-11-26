@@ -1,4 +1,3 @@
-
 'use client';
 import React, { useState, useEffect } from "react";
 import Link from 'next/link';
@@ -24,7 +23,7 @@ const HomePage = () => {
     <div classname="bg-black">
 
 
-      <header className="px-4 lg:px-6 h-14 flex bg-emerald-950  items-center">
+      <header className="px-4 lg:px-6 h-14 flex bg-lime-500  items-center">
         <a href="#" className="flex items-center justify-center">
 
 
@@ -62,7 +61,7 @@ const HomePage = () => {
       </header>
       <main className="flex-1">
         <section
-          className="w-full mx-auto py-12 bg-emerald-950 md:py-24 lg:py-32 xl:py-48 bg-black text-white bg-cover bg-center"
+          className="w-full mx-auto py-12 bg-lime-200 md:py-24 lg:py-32 xl:py-48 bg-black text-lime-800 bg-cover bg-center"
         // style={{
         //   backgroundImage: 'url("https://i.pinimg.com/564x/a6/5f/bb/a65fbb897ddfffd954551360dd68f3e0.jpg")',
         // }}
@@ -77,7 +76,7 @@ const HomePage = () => {
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
                   Welcome to TemplateWave
                 </h1>
-                <p className="mx-auto max-w-[700px] text-gray-300 md:text-xl">
+                <p className="mx-auto max-w-[700px] text-lime-600 md:text-xl">
                   Discover amazing templates across various categories. Shop now and
                   enjoy great deals!
                 </p>
@@ -183,14 +182,14 @@ const HomePage = () => {
       </main>
 
       {/* footer */}
-      <footer className="bg-black text-gray-300 py-8">
+      <footer className="bg-lime-500 text-lime-800 py-8">
         <div className="container mx-auto px-4">
           {/* Top section */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-8 md:space-y-0">
             {/* Logo and description */}
             <div className="w-full md:w-1/3">
-              <h2 className="text-2xl font-bold mb-2">My Website</h2>
-              <p className="text-gray-300">
+              <h2 className="text-2xl  font-bold mb-2">My Website</h2>
+              <p className="text-lime-">
                 Your go-to platform for all things awesome. Connect, explore, and enjoy!
               </p>
             </div>

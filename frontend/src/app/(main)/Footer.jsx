@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-emerald-950 text-white py-8">
+    <footer className="bg-lime-500 text-white py-8">
       <div className="container mx-auto px-4">
         {/* Top section */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-8 md:space-y-0">
