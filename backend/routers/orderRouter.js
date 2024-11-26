@@ -1,6 +1,5 @@
 const express = require('express');
 const Model = require('../models/orderModel');
-const orderController = require('../controllers/orderController');
 const jwt = require('jsonwebtoken');
 const verifyToken = require('./verifyToken');
 require('dotenv').config();

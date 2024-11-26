@@ -3,9 +3,9 @@ const express = require('express');
 const UserRouter = require('./routers/userRouter');
 const templateRouter = require('./routers/templateRouter');
 const reviewRouter = require('./routers/reviewRouter');
-const orderRoutes = require('./routers/manageOrder');
-const orderRoutes = require('./routers/orderRouter');
+const orderRouter = require('./routers/orderRouter');
 const cors = require('cors');
+const { default: mongoose } = require('mongoose');
 
 // initializing express
 const app = express();
@@ -21,7 +21,7 @@ app.use(express.json());
 app.use('/user', UserRouter);
 app.use('/template', templateRouter);
 app.use('/review', reviewRouter);
-app.use('/order', orderRoutes);
+app.use('/order', orderRouter);
 
 
 // route or endpoint
@@ -48,9 +48,6 @@ mongoose.connect('mongodb://localhost:27017/yourDatabaseName', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
-
-// Use order routes
-app.use('/orders', orderRoutes);
 
 
 app.listen(port, () => { console.log('server started') });
