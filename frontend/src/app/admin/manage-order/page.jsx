@@ -1,3 +1,4 @@
+'use client'
 import {
     Table,
     TableBody,
@@ -44,7 +45,7 @@ import {
     },
   ]
   
-  export function ManageOrderTable() {
+  export default function ManageOrderTable() {
     return (
       <Table>
         <TableCaption>A list of recent orders</TableCaption>
