@@ -33,7 +33,7 @@ const TemplateCart = () => {
     }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-lime-200">
       
       {/* Navbar */}
       <nav className="bg-primary text-primary-foreground p-4">

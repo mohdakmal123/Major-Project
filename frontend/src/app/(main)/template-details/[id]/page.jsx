@@ -58,7 +58,7 @@ const TemplateDetails = () => {
   const placeholderImage = 'https://via.placeholder.com/300';
 
   return (
-    <div className="bg-gradient-to-b from-green-300 to-blue-300 min-h-screen p-8 flex flex-col justify-center items-center"
+    <div className="bg-lime-200 min-h-screen p-8 flex flex-col justify-center items-center"
       style={{
         backgroundImage:
           'url("")'
