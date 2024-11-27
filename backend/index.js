@@ -5,7 +5,6 @@ const templateRouter = require('./routers/templateRouter');
 const reviewRouter = require('./routers/reviewRouter');
 const orderRouter = require('./routers/orderRouter');
 const cors = require('cors');
-const { default: mongoose } = require('mongoose');
 
 // initializing express
 const app = express();
@@ -28,5 +27,6 @@ app.use('/order', orderRouter);
 app.get('/', (req, res) => {
     res.send('Response from express')
 });
+
 
 app.listen(port, () => { console.log('server started') });
