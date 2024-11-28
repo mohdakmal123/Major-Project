@@ -30,18 +30,18 @@ const Home = () => {
   const placeholderImage = 'https://via.placeholder.com/300';
 
   return (
-    <div className="bg-gradient-to-b from-green-300 to-blue-300 min-h-screen p-8 flex flex-col justify-center items-center"
+    <div className="min-h-screen p-8 flex flex-col justify-center items-center"
     style={{
       backgroundImage:
         'url("")'
 
     }}
     >
-      <h1 className="text-5xl text-center text-white shadow-lg p-4 mb-8 font-bold bg-green-800 rounded-lg">
+      <h1 className="text-5xl text-center text-white shadow-lg p-4 mb-8 font-bold  rounded-lg">
         React Template Details
       </h1>
 
-      <div className="w-full max-w-4xl p-4 bg-white rounded-lg shadow-lg"
+      <div className="w-full max-w-4xl p-4 bg-black rounded-lg shadow-lg"
      
       >
         {/* Template Details */}

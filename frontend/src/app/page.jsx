@@ -23,7 +23,7 @@ const HomePage = () => {
     <div classname="bg-black">
 
 
-      <header className="px-4 lg:px-6 h-14 flex bg-lime-500  items-center">
+      <header className="px-4 lg:px-6 h-14 flex bg-lime-400  items-center">
         <a href="#" className="flex items-center justify-center">
 
 
@@ -97,13 +97,13 @@ const HomePage = () => {
           </div>
         </section>
         <section className="w-full bg-lime-100 py-12 md:py-24 lg:py-32   ">
-          <div className="container bg-lime-00 px-4 md:px-6 mx-auto ">
+          <div className="container  px-4 md:px-6 mx-auto ">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12 ">
               Featured Templates
             </h2>
             <div className="flex flex-col  space-y-6 p-6 ">
               {templateList.map((templates) => (
-                <div key={templates.id} className="rounded-2xl border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
+                <div key={templates.id} className="rounded-2xl border bg-white transform  transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
                   <h3 className="text-2xl font-semibold leading-none tracking-tight">{templates.name}</h3>
                   <img
                     src={templates.image}
@@ -112,7 +112,7 @@ const HomePage = () => {
                   />
                   <p className="text-black font-bold  mb-4">₹{templates.price}</p>
                   <Button className="flex justify-center bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-10 rounded  w-24">
-                    Add to Cart
+                    Buy Now
                   </Button>
 
                   <a className="flex space-x-4">
@@ -136,17 +136,16 @@ const HomePage = () => {
         </section>
 
 
-
-        <section className="w-full py-12 md:py-24 lg:py-32">
+        <section className="w-full py-12 bg-lime-100 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6 mx-auto">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
               New Arrivals
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-6">
+            <div className="grid grid-cols-1  sm:grid-cols-2 gap-6 p-6">
               {templateList.map((templates) => (
                 <div
                   key={templates.id}
-                  className="rounded-2xl border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6"
+                  className="rounded-2xl border bg-white transform  transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6"
                 >
                   <h3 className="text-2xl font-semibold leading-none tracking-tight">{templates.name}</h3>
                   <img

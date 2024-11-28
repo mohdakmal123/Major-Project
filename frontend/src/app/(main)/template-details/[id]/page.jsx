@@ -58,14 +58,14 @@ const TemplateDetails = () => {
   const placeholderImage = 'https://via.placeholder.com/300';
 
   return (
-    <div className="bg-lime-200 min-h-screen p-8 flex flex-col justify-center items-center"
+    <div className=" min-h-screen p-8 flex flex-col justify-center items-center"
       style={{
         backgroundImage:
           'url("")'
 
       }}
     >
-      <h1 className="text-5xl text-center text-black  p-4 mb-8 font-bold  rounded-lg">
+      <h1 className="text-5xl text-center  text-black  p-4 mb-8 font-bold  rounded-lg">
         React Template Details
       </h1>
 
@@ -79,17 +79,17 @@ const TemplateDetails = () => {
           <p className="text-red-500">{error}</p>
         ) : (
           selectedTemplate && (
-            <div className="rounded-lg border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
+            <div className="rounded-lg border bg-lime-200 transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
 
-              <div className="">
+              
                 {/* Image Section */}
-                <div className="col-span-4 flex justify-center">
+                <a className="col-span-4  flex justify-center">
                   <img
                     src={selectedTemplate.image || placeholderImage}
                     alt={selectedTemplate.name}
                     className="w-80 h-80 object-cover rounded-lg shadow-lg transition-transform transform "
                   />
-                </div>
+                </a>
 
                 {/* Product Info Section */}
                 <div className="text-5xl text-center text-white shadow-lg p-4 mb-8 font-bold  rounded-lg">
@@ -125,18 +125,18 @@ const TemplateDetails = () => {
                     </p>
                   </div>
 
-                  <div className="">
+                  <a className="">
                     <p className="font-bold text-xl text-black">
                       Downloads:
                       <span className="block mt-1 text-green-600">{selectedTemplate.downloads}</span>
                     </p>
-                  </div>
+                  </a>
 
                   {/* Buy Now Button */}
                   <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">Buy Now</button>
                 </div>
               </div>
-            </div>
+           
           )
         )}
         {

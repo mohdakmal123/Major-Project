@@ -30,7 +30,7 @@ const Signup = () => {
 
   return (
     <div
-      className="flex items-center justify-center min-h-screen bg-gray-200 rounded-lg shadow-xl p-8 rounded-l-lg rounded-r-lg  "
+      className="flex items-center justify-center min-h-screen bg-lime-100 rounded-lg shadow-xl p-8 rounded-l-lg rounded-r-lg  "
       style={{
         backgroundImage: 'url("")'
       }}
@@ -90,7 +90,7 @@ const Signup = () => {
           <div>
             <button
               type="submit"
-              className="flex items-center justify-center w-56 bg-gray-100 text-white px-6 py-3 rounded-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-200"
+              className="flex items-center justify-center w-56 bg-indigo-600 text-white px-6 py-3 rounded-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-200"
             >
               Signup
             </button>
