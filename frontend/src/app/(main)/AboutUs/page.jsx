@@ -1,89 +1,101 @@
 import React from "react";
 
-function ContactForm() {
+function AboutUs() {
   return (
-    <div className="bg-lime-300 flex  items-center justify-center min-h-screen">
-      <div className="max-w-5xl w-full bg-gray-800 rounded-2xl shadow-md overflow-hidden flex flex-col md:flex-row">
-        
-        {/* Left Section */}
-        <div className="bg-lime-200 rounded-lg text-white p-8 md:w-1/2 flex flex-col justify-between">
-          <div>
-            <h2 className="text-4xl text-black font-bold mb-4">Get in touch</h2>
-            <p className="text-black">mohdshahan171@gmail.com</p>
-            <p className="text-black my-2">+91 1234567892</p>
-            <p className="text-black">Los Angeles</p>
+    <div className="bg-gray-100 min-h-screen flex flex-col justify-center items-center">
+      {/* Hero Section */}
+      <section className="w-full bg-lime-500 text-white text-center py-16 px-8">
+        <h1 className="text-5xl font-bold mb-4">About Us</h1>
+        <p className="text-xl max-w-3xl mx-auto">
+          We are a passionate team dedicated to bringing eco-friendly solutions
+          to your doorstep. Our mission is to promote sustainability and help
+          people live greener, healthier lives.
+        </p>
+      </section>
+
+      {/* Team Section */}
+      <section className="w-full max-w-6xl py-16 px-8">
+        <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">
+          Meet Our Team
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {/* Team Member 1 */}
+          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+            <img
+              src="https://via.placeholder.com/150"
+              alt="Team Member"
+              className="w-32 h-32 mx-auto rounded-full mb-4"
+            />
+            <h3 className="text-xl font-semibold text-gray-800">Alice Green</h3>
+            <p className="text-gray-600">CEO & Founder</p>
           </div>
-          <p className="mt-6 text-black">Customer Service Department</p>
+
+          {/* Team Member 2 */}
+          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+            <img
+              src="https://via.placeholder.com/150"
+              alt="Team Member"
+              className="w-32 h-32 mx-auto rounded-full mb-4"
+            />
+            <h3 className="text-xl font-semibold text-gray-800">John Doe</h3>
+            <p className="text-gray-600">Chief Operating Officer</p>
+          </div>
+
+          {/* Team Member 3 */}
+          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+            <img
+              src="https://via.placeholder.com/150"
+              alt="Team Member"
+              className="w-32 h-32 mx-auto rounded-full mb-4"
+            />
+            <h3 className="text-xl font-semibold text-gray-800">Jane Smith</h3>
+            <p className="text-gray-600">Marketing Head</p>
+          </div>
         </div>
+      </section>
 
-        {/* Right Section */}
-        <div className="bg-lime-500 rounded-lg p-8 md:w-1/2">
-          <form className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block rounded-2xl text-gray-700 font-medium">
-                Your Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Henry Edison"
-                className="w-full p-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-300"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="phone" className="block text-gray-700 font-medium">
-                Phone Number (Optional)
-              </label>
-              <input
-                type="text"
-                id="phone"
-                name="phone"
-                placeholder="Phone number"
-                className="w-full p-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-300"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="inquiry" className="block text-gray-700 font-medium">
-                Inquiry Type
-              </label>
-              <select
-                id="inquiry"
-                name="inquiry"
-                className="w-full p-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-300"
-              >
-                <option value="partnership">Partnership</option>
-                <option value="support">Support</option>
-                <option value="feedback">Feedback</option>
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-gray-700 font-medium">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                placeholder="Your message..."
-                className="w-full p-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-300"
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-gray-900 text-white py-3 rounded-2xl hover:bg-gray-700 transition"
-            >
-              Send
-            </button>
-          </form>
+      {/* Values Section */}
+      <section className="w-full bg-gray-200 py-16 px-8">
+        <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">
+          Our Core Values
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="p-6 bg-white rounded-lg shadow-lg">
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              Sustainability
+            </h3>
+            <p className="text-gray-600">
+              We are committed to providing eco-friendly products and services
+              that promote a sustainable future.
+            </p>
+          </div>
+          <div className="p-6 bg-white rounded-lg shadow-lg">
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              Innovation
+            </h3>
+            <p className="text-gray-600">
+              Innovation is at the heart of everything we do, driving us to
+              create better, more efficient solutions.
+            </p>
+          </div>
+          <div className="p-6 bg-white rounded-lg shadow-lg">
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              Customer First
+            </h3>
+            <p className="text-gray-600">
+              Our customers are our top priority. We strive to exceed their
+              expectations with exceptional service.
+            </p>
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="w-full bg-lime-500 text-white py-8 text-center">
+        <p>&copy; 2024 Your Company. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
 
-export default ContactForm;
+export default AboutUs;

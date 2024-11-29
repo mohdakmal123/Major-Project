@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import axios from 'axios';
+import { Menu, Search } from "lucide-react";
+
+
 
 
 const HomePage = () => {
@@ -19,8 +22,23 @@ const HomePage = () => {
     templatesData();
   }, []);
 
+  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
+  const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
+
+  const toggleCategoryDropdown = () => {
+    setIsCategoryDropdownOpen(!isCategoryDropdownOpen);
+  };
+
+  const toggleMoreDropdown = () => {
+    setIsMoreDropdownOpen(!isMoreDropdownOpen);
+  };
+
+
   return (
     <div classname="bg-black">
+     
+
+
 
 
       <header className="px-4 lg:px-6 h-14 flex bg-lime-400  items-center">
@@ -30,8 +48,121 @@ const HomePage = () => {
         </a>
         <nav className="ml-auto flex gap-2 ">
 
+ {/* Home Dropdown */}
+ <div className="relative">
+            <Button
+              variant="link"
+              onClick={toggleCategoryDropdown}
+              className="flex items-center space-x-2"
+            >
+              <span className="text-white">Tailwind CSS</span>
+              <Menu className="h-5 w-5" />
+            </Button>
+
+            {isCategoryDropdownOpen && (
+              <div className="absolute left-0 mt-2 w-40 border border-lime-600 bg-lime-400 rounded-xl shadow-md z-10">
+                <Link href="">
+                  <p className="block px-4 py-2 hover:bg-gray-200">Dashboards</p>
+                </Link>
+                <Link href="">
+                  <p className="block px-4 py-2 hover:bg-gray-200">Premium Products</p>
+                </Link>
+               
+              </div>
+            )}
+          </div>
+
+          {/* More Dropdown */}
+          <div className="relative ">
+            <Button
+              variant="link"
+              onClick={toggleMoreDropdown}
+              className="flex items-center space-x-2"
+            >
+              <span className="text-white">Bootstrap</span>
+              <Menu className="h-5 w-5" />
+            </Button>
+
+            {isMoreDropdownOpen && (
+              <div className="absolute left-0 mt-2 w-40 bg-lime-400 border border-lime-600  rounded-xl shadow-md z-10">
+                <Link href="/about">
+                  <p className="block px-4 py-2 hover:bg-gray-200">Login Form</p>
+                </Link>
+                <Link href="/contact">
+                  <p className="block px-4 py-2 hover:bg-gray-200">UI Kits</p>
+                </Link>
+                <Link href="/services">
+                  <p className="block px-4 py-2 hover:bg-gray-200">Landing Pages</p>
+                </Link>
+              </div>
+            )}
+          </div>
+
+ {/* links */}
 
 
+  {/* "use client"
+
+import * as React from "react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+
+// Define the structure for FAQ items
+interface FAQItem {
+  question: string
+  answer: string
+}
+
+// Sample FAQ data
+const faqData: FAQItem[] = [
+  {
+    question: "What is React?",
+    answer: "React is a popular JavaScript library for building user interfaces, particularly single-page applications. It's used for handling the view layer for web and mobile apps."
+  },
+  {
+    question: "How do I install React?",
+    answer: "You can create a new React project using Create React App. Run 'npx create-react-app my-app' in your terminal, replace 'my-app' with your project name."
+  },
+  {
+    question: "What are React hooks?",
+    answer: "Hooks are functions that let you 'hook into' React state and lifecycle features from function components. They don't work inside classes — they let you use React without classes."
+  },
+  {
+    question: "What is JSX?",
+    answer: "JSX is a syntax extension for JavaScript. It was written to be used with React. JSX looks like HTML, but it's not HTML. It allows you to write HTML in React."
+  },
+  {
+    question: "What is the virtual DOM?",
+    answer: "The virtual DOM (VDOM) is a programming concept where an ideal, or 'virtual', representation of a UI is kept in memory and synced with the 'real' DOM by a library such as ReactDOM."
+  }
+]
+
+export default function FAQPanel() {
+  return (
+    <Card className="w-full max-w-3xl mx-auto">
+      <CardHeader>
+        <CardTitle className="text-2xl font-bold">Frequently Asked Questions</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Accordion type="single" collapsible className="w-full">
+          {faqData.map((faq, index) => (
+            <AccordionItem key={index} value={`item-${index}`}>
+              <AccordionTrigger>{faq.question}</AccordionTrigger>
+              <AccordionContent>{faq.answer}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </CardContent>
+    </Card>
+  )
+}
+
+ */}
 
           <a
             className="text-white font-bold py-2 px-4 rounded"
@@ -47,7 +178,7 @@ const HomePage = () => {
           </a>
           <a
             className="text-white font-bold py-2 px-4 rounded"
-            href="About"
+            href="AboutUs"
           >
             About
           </a>
@@ -243,3 +374,5 @@ const HomePage = () => {
 }
 
 export default HomePage;
+
+

@@ -41,18 +41,19 @@ const Header = () => {
               onClick={toggleCategoryDropdown}
               className="flex items-center space-x-2"
             >
-              <span className="text-white">Category</span>
+              <span className="text-white">Tailwind CSS</span>
               <Menu className="h-5 w-5" />
             </Button>
 
             {isCategoryDropdownOpen && (
               <div className="absolute left-0 mt-2 w-40 bg-white border rounded shadow-md z-10">
-                <Link href="/login">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Type 1</p>
+                <Link href="">
+                  <p className="block px-4 py-2 hover:bg-gray-200">Dashboards</p>
                 </Link>
-                <Link href="/signup">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Type 2</p>
+                <Link href="">
+                  <p className="block px-4 py-2 hover:bg-gray-200">Premium Products</p>
                 </Link>
+               
               </div>
             )}
           </div>
