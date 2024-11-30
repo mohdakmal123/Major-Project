@@ -49,14 +49,14 @@ const TemplateCart = () => {
         
 
         {/* Browse Items */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {templateList.map((templates) => (
-            <Card key={templates.id}>
+            <Card className='bg-white rounded-2xl' key={templates.id}>
               <CardHeader>
               <img
                             src={templates.image}
                             alt={templates.name}
-                            className="w-full h-40 object-cover mb-4 rounded"
+                            className="w-full h-40 object-cover  mb-4 rounded"
                         />
 
                 <CardTitle>{templates.name}</CardTitle>

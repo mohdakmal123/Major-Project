@@ -36,7 +36,7 @@ const Login = () => {
 
   return (
     <div
-    className="flex items-center justify-center min-h-screen bg-gray-200 rounded-lg shadow-xl p-8 rounded-l-lg rounded-r-lg  "
+    className="flex items-center justify-center min-h-screen bg-lime-100 rounded-lg shadow-xl p-8 rounded-l-lg rounded-r-lg  "
     style={{
       backgroundImage: 'url("https://scontent.flko11-1.fna.fbcdn.net/v/t39.30808-6/460499278_453298471193103_1927094701927232585_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=e1afaa&_nc_ohc=o03zHfGyIMAQ7kNvgGfBtaL&_nc_ht=scontent.flko11-1.fna&_nc_gid=AzcTdhXjOp7qhZinHC-YaZC&oh=00_AYBJufMNffiU7fTyuVGKRKk3_9Y2bui8soGXpxByjIqQlw&oe=66F75FB2")'
     }}
