@@ -1,5 +1,4 @@
 "use client"
-
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -73,7 +72,7 @@ export default function OrderForm() {
                 <Input placeholder="Description" />
                 <Input placeholder="Qty" type="number" className="w-full" />
                 <Input placeholder="Unit Price" type="number" step="0.01" />
-                <Input placeholder="Total Price" type="number" step="0.01" readOnly />
+                <Input placeholder="Total Price" type="number" step="0.01"  />
               </div>
             ))}
             <Button variant="outline" onClick={addItem} className="w-full mt-2">
@@ -180,7 +179,7 @@ export default function OrderForm() {
               </div>
               <div>
                 <Label htmlFor="total">Total:</Label>
-                <Input id="total" type="number" step="0.01" value={calculateTotal()} readOnly />
+                <Input id="total" type="number" step="0.01" value={calculateTotal()}  />
               </div>
             </div>
           </div>
@@ -190,7 +189,7 @@ export default function OrderForm() {
           Thank you
         </div>
 
-        <Button className="w-full">Submit Order</Button>
+        <Button className="w-full py-3 px-6 rounded-2xl text-lg font-semibold text-white  bg-lime-600 hover:bg-lime-700 transition-all duration-300 ">Submit Order</Button>
       </CardContent>
     </Card>
   )
