@@ -14,19 +14,17 @@ const port = 5000;
 app.use(cors({
     origin: 'http://localhost:3000'
 })
-
 );
+
 app.use(express.json());
 app.use('/user', UserRouter);
 app.use('/template', templateRouter);
 app.use('/review', reviewRouter);
 app.use('/order', orderRouter);
 
-
 // route or endpoint
 app.get('/', (req, res) => {
     res.send('Response from express')
 });
-
 
 app.listen(port, () => { console.log('server started') });
