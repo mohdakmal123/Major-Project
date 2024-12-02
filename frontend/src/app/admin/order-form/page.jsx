@@ -11,6 +11,32 @@ import { useFormik } from 'formik';
 import { Button } from "@/components/ui/button"
 
 
+
+
+
+const orderForm = useFormik({
+  initialValues: {
+    title: '',
+    description: '',
+    name: '',
+    Date: '',
+     price: '',
+     
+  },
+  onSubmit: (values) => {
+    console.log(values);
+
+    axios.post('http://localhost:5000/order/add', values)
+      .then((result) => {
+        console.log(result.status);
+
+        toast.success('Order placed Successfully')
+      }).catch((err) => {
+        toast.error('Some Error Occured')
+      });
+  },
+})
+
 export default function OrderForm() {
   const [items, setItems] = useState([{ description: "", qty: "", unitPrice: "", totalPrice: "" }])
   const [subtotal, setSubtotal] = useState(0)
@@ -35,7 +61,7 @@ export default function OrderForm() {
             <Input id="date" type="date" />
           </div>
           <div>
-            <Label htmlFor="order">Order #:</Label>
+            <Label htmlFor="order">Order :</Label>
             <Input id="order" />
           </div>
         </div>
@@ -55,7 +81,7 @@ export default function OrderForm() {
                 <Input id="email" type="email" />
               </div>
               <div>
-                <Label htmlFor="phone">Phone #:</Label>
+                <Label htmlFor="phone">Phone :</Label>
                 <Input id="phone" type="tel" />
               </div>
             </div>
@@ -82,7 +108,31 @@ export default function OrderForm() {
         {/* Bottom Sections */}
         <div className="grid grid-cols-3 gap-4">
           {/* Delivery */}
-         
+          <div className="space-y-2">
+            <h3 className="font-semibold">Delivery</h3>
+            <div className="space-y-2">
+              <div className="flex items-center space-x-2">
+                <Checkbox id="local-drop" />
+                <label htmlFor="local-drop">Local Drop off</label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Checkbox id="local-pickup" />
+                <label htmlFor="local-pickup">Local Pick up</label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Checkbox id="shipping" />
+                <label htmlFor="shipping">Shipping</label>
+              </div>
+              <div>
+                <Label htmlFor="ship-number">Ship N:</Label>
+                <Input id="ship-number" />
+              </div>
+              <div>
+                <Label htmlFor="ship-date">Ship Date:</Label>
+                <Input id="ship-date" type="date" />
+              </div>
+            </div>
+          </div>
 
           {/* Payment */}
           <div className="space-y-2">
@@ -95,6 +145,10 @@ export default function OrderForm() {
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="card" id="card" />
                 <label htmlFor="card">Card</label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="paytm" id="paytm" />
+                <label htmlFor="paypal">Paytm</label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="paypal" id="paypal" />
