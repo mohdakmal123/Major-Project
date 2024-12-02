@@ -10,28 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { useFormik } from 'formik';
 import { Button } from "@/components/ui/button"
 
-const orderForm = useFormik({
-  initialValues: {
-    title: '',
-    description: '',
-    name: '',
-    Date: '',
-     price: '',
-     
-  },
-  onSubmit: (values) => {
-    console.log(values);
 
-    axios.post('http://localhost:5000/order/add', values)
-      .then((result) => {
-        console.log(result.status);
-
-        toast.success('Order placed Successfully')
-      }).catch((err) => {
-        toast.error('Some Error Occured')
-      });
-  },
-})
 
 export default function OrderForm() {
   const [items, setItems] = useState([{ description: "", qty: "", unitPrice: "", totalPrice: "" }])
@@ -46,6 +25,29 @@ export default function OrderForm() {
   const addItem = () => {
     setItems([...items, { description: "", qty: "", unitPrice: "", totalPrice: "" }])
   }
+
+  const orderForm = useFormik({
+    initialValues: {
+      title: '',
+      description: '',
+      name: '',
+      Date: '',
+       price: '',
+       
+    },
+    onSubmit: (values) => {
+      console.log(values);
+  
+      axios.post('http://localhost:5000/order/add', values)
+        .then((result) => {
+          console.log(result.status);
+  
+          toast.success('Order placed Successfully')
+        }).catch((err) => {
+          toast.error('Some Error Occured')
+        });
+    },
+  });
 
   return (
     <Card className="w-full max-w-4xl mx-auto">
