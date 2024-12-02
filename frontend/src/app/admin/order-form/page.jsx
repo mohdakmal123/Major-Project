@@ -4,9 +4,34 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import axios from 'axios';
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
+import { useFormik } from 'formik';
 import { Button } from "@/components/ui/button"
+
+const orderForm = useFormik({
+  initialValues: {
+    title: '',
+    description: '',
+    name: '',
+    Date: '',
+     price: '',
+     
+  },
+  onSubmit: (values) => {
+    console.log(values);
+
+    axios.post('http://localhost:5000/order/add', values)
+      .then((result) => {
+        console.log(result.status);
+
+        toast.success('Order placed Successfully')
+      }).catch((err) => {
+        toast.error('Some Error Occured')
+      });
+  },
+})
 
 export default function OrderForm() {
   const [items, setItems] = useState([{ description: "", qty: "", unitPrice: "", totalPrice: "" }])
@@ -64,28 +89,20 @@ export default function OrderForm() {
         </div>
 
         {/* Order Details */}
-        <div className="space-y-4">
+        <div className="space-y-6">
           <h2 className="font-semibold">Order Details</h2>
-          <div className="space-y-2">
+          <div className="space-y-6">
             {items.map((item, index) => (
-              <div key={index} className="grid grid-cols-4 gap-2">
-                <Input placeholder="Description" />
-                <Input placeholder="Qty" type="number" className="w-full" />
-                <Input placeholder="Unit Price" type="number" step="0.01" />
-                <Input placeholder="Total Price" type="number" step="0.01"  />
+              <div key={index} className="grid grid-cols-2 gap-2">
+                <Input  placeholder="Description" />
               </div>
             ))}
-            <Button variant="outline" onClick={addItem} className="w-full mt-2">
-              Add Item
-            </Button>
+            
           </div>
         </div>
 
         {/* Notes */}
-        <div className="space-y-2">
-          <Label htmlFor="notes">Notes:</Label>
-          <Textarea id="notes" />
-        </div>
+        
 
         {/* Bottom Sections */}
         <div className="grid grid-cols-3 gap-4">
@@ -147,16 +164,7 @@ export default function OrderForm() {
           <div className="space-y-2">
             <h3 className="font-semibold">Amount</h3>
             <div className="space-y-2">
-              <div>
-                <Label htmlFor="subtotal">Subtotal:</Label>
-                <Input 
-                  id="subtotal" 
-                  type="number" 
-                  step="0.01" 
-                  value={subtotal} 
-                  onChange={(e) => setSubtotal(parseFloat(e.target.value) || 0)} 
-                />
-              </div>
+              
               <div>
                 <Label htmlFor="taxes">Taxes:</Label>
                 <Input 
@@ -167,16 +175,7 @@ export default function OrderForm() {
                   onChange={(e) => setTaxes(parseFloat(e.target.value) || 0)} 
                 />
               </div>
-              <div>
-                <Label htmlFor="shipping-cost">Shipping:</Label>
-                <Input 
-                  id="shipping-cost" 
-                  type="number" 
-                  step="0.01" 
-                  value={shipping} 
-                  onChange={(e) => setShipping(parseFloat(e.target.value) || 0)} 
-                />
-              </div>
+              
               <div>
                 <Label htmlFor="total">Total:</Label>
                 <Input id="total" type="number" step="0.01" value={calculateTotal()}  />
