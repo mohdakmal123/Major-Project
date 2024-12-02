@@ -2,6 +2,14 @@
 const { model, Schema, Types } = require('../connection');
 
 const orderSchema = new Schema({
+  date: { type: Date, default: Date.now },
+  order: { type: String, required: true },
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  phone: { type: String, required: true },
+  address: { type: String, required: true },
+  
+
   user: { type: Types.ObjectId, ref: 'User', required: true },
   items: [
     {
@@ -11,7 +19,7 @@ const orderSchema = new Schema({
   ],
   total: { type: Number, required: true },
   status: { type: String, enum: ['Pending', 'Completed', 'Cancelled'], default: 'Pending' },
-  createdAt: { type: Date, default: Date.now },
+  
 });
 
 module.exports = model('Order', orderSchema);

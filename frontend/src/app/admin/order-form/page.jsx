@@ -32,7 +32,7 @@ export default function OrderForm() {
             <Input id="date" type="date" />
           </div>
           <div>
-            <Label htmlFor="order">Order #:</Label>
+            <Label htmlFor="order">Order :</Label>
             <Input id="order" />
           </div>
         </div>
@@ -52,7 +52,7 @@ export default function OrderForm() {
                 <Input id="email" type="email" />
               </div>
               <div>
-                <Label htmlFor="phone">Phone #:</Label>
+                <Label htmlFor="phone">Phone :</Label>
                 <Input id="phone" type="tel" />
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function OrderForm() {
                 <label htmlFor="shipping">Shipping</label>
               </div>
               <div>
-                <Label htmlFor="ship-number">Ship N#:</Label>
+                <Label htmlFor="ship-number">Ship N:</Label>
                 <Input id="ship-number" />
               </div>
               <div>
@@ -129,8 +129,8 @@ export default function OrderForm() {
                 <label htmlFor="card">Card</label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="check" id="check" />
-                <label htmlFor="check">Check</label>
+                <RadioGroupItem value="paytm" id="paytm" />
+                <label htmlFor="paypal">Paytm</label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="paypal" id="paypal" />
