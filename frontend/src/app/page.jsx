@@ -242,16 +242,16 @@ export default function FAQPanel() {
                     className="w-full h-64 object-cover rounded-lg"
                   />
                   <p className="text-black font-bold  mb-4">₹{templates.price}</p>
-                  <Button className="flex justify-center bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-10 rounded  w-24">
+                  <Button className="flex justify-center bg-lime-600 hover:bg-purple-700 text-white font-bold py-2 px-10 rounded  w-24">
                     Buy Now
                   </Button>
 
                   <a className="flex space-x-4">
 
-                    <Link href={'/template-details/' + templates._id} className="text-center bg-purple-300 mt-2 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"> {/* Centering View More */}
+                    <Link href={'/template-details/' + templates._id} className="text-center bg-lime-200 mt-2 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"> {/* Centering View More */}
                       View More
                     </Link>
-                    <Link href={'#' + templates._id} className="text-center mt-2 inline-flex bg-purple-300 items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"> {/* Centering View More */}
+                    <Link href={'#' + templates._id} className="text-center mt-2 inline-flex bg-lime-200 items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"> {/* Centering View More */}
                       Preview
                     </Link>
 
@@ -288,8 +288,8 @@ export default function FAQPanel() {
 
                     <p className="text-black font-bold mb-4">₹{templates.price}</p>
 
-                    <Button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-10 rounded w-full">
-                      Add to Cart
+                    <Button className="bg-lime-600 hover:bg-lime-700 text-white font-bold py-2 px-10 rounded w-full">
+                      Buy Now
                     </Button>
                     <a className="flex space-x-4  ">
 
