@@ -10,6 +10,31 @@ import { Button } from "@/components/ui/button"
 
 
 
+
+
+const orderForm = useFormik({
+  initialValues: {
+    title: '',
+    description: '',
+    name: '',
+    Date: '',
+     price: '',
+     
+  },
+  onSubmit: (values) => {
+    console.log(values);
+
+    axios.post('http://localhost:5000/order/add', values)
+      .then((result) => {
+        console.log(result.status);
+
+        toast.success('Order placed Successfully')
+      }).catch((err) => {
+        toast.error('Some Error Occured')
+      });
+  },
+})
+
 export default function OrderForm() {
   const [items, setItems] = useState([{ description: "", qty: "", unitPrice: "", totalPrice: "" }])
   const [subtotal, setSubtotal] = useState(0)
@@ -23,29 +48,6 @@ export default function OrderForm() {
   const addItem = () => {
     setItems([...items, { description: "", qty: "", unitPrice: "", totalPrice: "" }])
   }
-
-  const orderForm = useFormik({
-    initialValues: {
-      title: '',
-      description: '',
-      name: '',
-      Date: '',
-       price: '',
-       
-    },
-    onSubmit: (values) => {
-      console.log(values);
-  
-      axios.post('http://localhost:5000/order/add', values)
-        .then((result) => {
-          console.log(result.status);
-  
-          toast.success('Order placed Successfully')
-        }).catch((err) => {
-          toast.error('Some Error Occured')
-        });
-    },
-  });
 
   return (
     <Card className="w-full max-w-4xl mx-auto">
@@ -81,10 +83,7 @@ export default function OrderForm() {
                 <Input id="phone" type="tel" />
               </div>
             </div>
-            <div>
-              <Label htmlFor="address">Address:</Label>
-              <Input id="address" />
-            </div>
+           
           </div>
         </div>
 
