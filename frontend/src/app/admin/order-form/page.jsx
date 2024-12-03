@@ -9,40 +9,42 @@ import { useFormik } from 'formik';
 import { Button } from "@/components/ui/button"
 
 
-
-
-
-const orderForm = useFormik({
-  initialValues: {
-    title: '',
-    description: '',
-    name: '',
-    Date: '',
-     price: '',
-     
-  },
-  onSubmit: (values) => {
-    console.log(values);
-
-    axios.post('http://localhost:5000/order/add', values)
-      .then((result) => {
-        console.log(result.status);
-
-        toast.success('Order placed Successfully')
-      }).catch((err) => {
-        toast.error('Some Error Occured')
-      });
-  },
-})
-
 export default function OrderForm() {
+
+  const orderForm = useFormik({
+    initialValues: {
+      order: '',
+      description: '',
+      name: '',
+      email: '',
+      date: '',
+      phone: '',
+      address: '',
+      payment: '',
+      amount: '',
+
+    },
+    onSubmit: (values) => {
+      console.log(values);
+
+      axios.post('http://localhost:5000/order/add', values)
+        .then((result) => {
+          console.log(result.status);
+
+          toast.success('Order placed Successfully')
+        }).catch((err) => {
+          toast.error('Some Error Occured')
+        });
+    },
+  })
+
   const [items, setItems] = useState([{ description: "", qty: "", unitPrice: "", totalPrice: "" }])
-  const [subtotal, setSubtotal] = useState(0)
+  const [total, setTotal] = useState(0)
   const [taxes, setTaxes] = useState(0)
-  const [shipping, setShipping] = useState(0)
+  
 
   const calculateTotal = () => {
-    return (subtotal + taxes + shipping).toFixed(2)
+    return (total + taxes ).toFixed(2)
   }
 
   const addItem = () => {
@@ -50,9 +52,13 @@ export default function OrderForm() {
   }
 
   return (
+    
     <Card className="w-full max-w-4xl mx-auto">
+      
       <CardHeader>
+        
         <CardTitle className="text-2xl font-bold">ORDER FORM</CardTitle>
+        
         <div className="grid grid-cols-2 gap-4">
           <div>
             <Label htmlFor="date">Date:</Label>
@@ -83,7 +89,7 @@ export default function OrderForm() {
                 <Input id="phone" type="tel" />
               </div>
             </div>
-           
+
           </div>
         </div>
 
@@ -93,19 +99,18 @@ export default function OrderForm() {
           <div className="space-y-6">
             {items.map((item, index) => (
               <div key={index} className="grid grid-cols-2 gap-2">
-                <Input  placeholder="Description" />
+                <Input placeholder="Description" />
               </div>
             ))}
-            
+
           </div>
         </div>
 
-        {/* Notes */}
-        
+
 
         {/* Bottom Sections */}
         <div className="grid grid-cols-3 gap-4">
-          
+
           {/* Payment */}
           <div className="space-y-2">
             <h3 className="font-semibold">Payment</h3>
@@ -122,7 +127,7 @@ export default function OrderForm() {
                 <RadioGroupItem value="paytm" id="paytm" />
                 <label htmlFor="paypal">Paytm</label>
               </div>
-              
+
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="other" id="other" />
                 <label htmlFor="other">Other</label>
@@ -134,21 +139,21 @@ export default function OrderForm() {
           <div className="space-y-2">
             <h3 className="font-semibold">Amount</h3>
             <div className="space-y-2">
-              
+
               <div>
                 <Label htmlFor="taxes">Taxes:</Label>
-                <Input 
-                  id="taxes" 
-                  type="number" 
-                  step="0.01" 
-                  value={taxes} 
-                  onChange={(e) => setTaxes(parseFloat(e.target.value) || 0)} 
+                <Input
+                  id="taxes"
+                  type="number"
+                  step="0.01"
+                  value={taxes}
+                  onChange={(e) => setTaxes(parseFloat(e.target.value) || 0)}
                 />
               </div>
-              
+
               <div>
                 <Label htmlFor="total">Total:</Label>
-                <Input id="total" type="number" step="0.01" value={calculateTotal()}  />
+                <Input id="total" type="number" step="0.01" value={calculateTotal()} />
               </div>
             </div>
           </div>
