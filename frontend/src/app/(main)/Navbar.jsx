@@ -3,10 +3,14 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, Search } from "lucide-react";
+import { useRouter } from "next/navigation"; // For client-side navigation in Next.js 13+
 
 const Header = () => {
   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
   const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const router = useRouter(); // Next.js router
 
   const toggleCategoryDropdown = () => {
     setIsCategoryDropdownOpen(!isCategoryDropdownOpen);
@@ -14,6 +18,22 @@ const Header = () => {
 
   const toggleMoreDropdown = () => {
     setIsMoreDropdownOpen(!isMoreDropdownOpen);
+  };
+
+  const handleInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
   };
 
   return (
@@ -27,9 +47,15 @@ const Header = () => {
           <input
             type="text"
             placeholder="Search..."
+            value={searchQuery}
+            onChange={handleInputChange}
+            onKeyPress={handleKeyPress}
             className="border p-2 w-full rounded-lg"
           />
-          <Search className="absolute right-3 top-3 h-5 w-5 text-gray-500" />
+          <Search
+            className="absolute right-3 top-3 h-5 w-5 text-gray-500 cursor-pointer"
+            onClick={handleSearch}
+          />
         </div>
 
         {/* Navigation */}
@@ -53,7 +79,6 @@ const Header = () => {
                 <Link href="">
                   <p className="block px-4 py-2 hover:bg-gray-200">Premium Products</p>
                 </Link>
-               
               </div>
             )}
           </div>
