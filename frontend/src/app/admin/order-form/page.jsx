@@ -9,31 +9,34 @@ import { useFormik } from 'formik';
 import { Button } from "@/components/ui/button"
 
 
+export default function OrderForm() {
 
+  const orderForm = useFormik({
+    initialValues: {
+      order: '',
+      description: '',
+      name: '',
+      email: '',
+      date: '',
+      phone: '',
+      address: '',
+      payment: '',
+      amount: '',
 
+    },
+    onSubmit: (values) => {
+      console.log(values);
 
-const orderForm = useFormik({
-  initialValues: {
-    title: '',
-    description: '',
-    name: '',
-    Date: '',
-     price: '',
-     
-  },
-  onSubmit: (values) => {
-    console.log(values);
+      axios.post('http://localhost:5000/order/add', values)
+        .then((result) => {
+          console.log(result.status);
 
-    axios.post('http://localhost:5000/order/add', values)
-      .then((result) => {
-        console.log(result.status);
-
-        toast.success('Order placed Successfully')
-      }).catch((err) => {
-        toast.error('Some Error Occured')
-      });
-  },
-})
+          toast.success('Order placed Successfully')
+        }).catch((err) => {
+          toast.error('Some Error Occured')
+        });
+    },
+  })
 
   const [items, setItems] = useState([{ description: "", qty: "", unitPrice: "", totalPrice: "" }])
   const [total, setTotal] = useState(0)
@@ -48,34 +51,6 @@ const orderForm = useFormik({
     setItems([...items, { description: "", qty: "", unitPrice: "", totalPrice: "" }])
   }
 
-  const OrderForm = useFormik({
-    initialValues: {
-      name: '',
-      description: '',
-      date: '',
-      phone: '',
-      email: '',
-      payment: '',
-      price: '',
-      taxes: '',
-      total: ''
-    },
-    onSubmit: (values) => {
-      console.log(values);
-
-      axios.post('http://localhost:5000/order/add', values)
-        .then((result) => {
-          console.log(result.status);
-
-          toast.success('Template added Successfully')
-        }).catch((err) => {
-          toast.error('Some Error Occured')
-        });
-    },
-  })
-
-
-
   return (
     
     <Card className="w-full max-w-4xl mx-auto">
@@ -87,11 +62,26 @@ const orderForm = useFormik({
         <div className="grid grid-cols-2 gap-4">
           <div>
             <Label htmlFor="date">Date:</Label>
-            <Input id="date" type="date" />
+            <Input 
+            name="date"
+            placeholder="date"
+            id="date" 
+            type="date"
+            className="w-full mt-2 p-2 border rounded-2xl focus:outline-none bg-white border-gray-300  focus:ring-2 focus:ring-indigo-500"
+            value={templateForm.values.title}
+            onChange={templateForm.handleChange}
+            required />
           </div>
           <div>
             <Label htmlFor="order">Order :</Label>
-            <Input id="order" />
+            <Input name="order"
+            placeholder="order"
+            id="order" 
+            type="order"
+            className="w-full mt-2 p-2 border rounded-2xl focus:outline-none bg-white border-gray-300  focus:ring-2 focus:ring-indigo-500"
+            value={templateForm.values.title}
+            onChange={templateForm.handleChange}
+            required/>
           </div>
         </div>
       </CardHeader>
@@ -102,16 +92,37 @@ const orderForm = useFormik({
           <div className="grid gap-4">
             <div>
               <Label htmlFor="name">Name:</Label>
-              <Input id="name" />
+              <Input name="name"
+              placeholder="name"
+              id="name" 
+              type="name"
+              className="w-full mt-2 p-2 border rounded-2xl focus:outline-none bg-white border-gray-300  focus:ring-2 focus:ring-indigo-500"
+              value={templateForm.values.title}
+              onChange={templateForm.handleChange}
+              required  />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="email">Email:</Label>
-                <Input id="email" type="email" />
+                <Input name="email"
+                placeholder="email"
+                id="email" 
+                type="email"
+                className="w-full mt-2 p-2 border rounded-2xl focus:outline-none bg-white border-gray-300  focus:ring-2 focus:ring-indigo-500"
+              value={templateForm.values.title}
+              onChange={templateForm.handleChange}
+              required/>
               </div>
               <div>
                 <Label htmlFor="phone">Phone :</Label>
-                <Input id="phone" type="tel" />
+                <Input name="phone"
+                placeholder="phone"
+                id="phone"
+                type="tel"
+                className="w-full mt-2 p-2 border rounded-2xl focus:outline-none bg-white border-gray-300  focus:ring-2 focus:ring-indigo-500"
+              value={templateForm.values.title}
+              onChange={templateForm.handleChange}
+              required/>
               </div>
             </div>
 
@@ -135,32 +146,6 @@ const orderForm = useFormik({
 
         {/* Bottom Sections */}
         <div className="grid grid-cols-3 gap-4">
-          {/* Delivery */}
-          <div className="space-y-2">
-            <h3 className="font-semibold">Delivery</h3>
-            <div className="space-y-2">
-              <div className="flex items-center space-x-2">
-                <Checkbox id="local-drop" />
-                <label htmlFor="local-drop">Local Drop off</label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox id="local-pickup" />
-                <label htmlFor="local-pickup">Local Pick up</label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox id="shipping" />
-                <label htmlFor="shipping">Shipping</label>
-              </div>
-              <div>
-                <Label htmlFor="ship-number">Ship N:</Label>
-                <Input id="ship-number" />
-              </div>
-              <div>
-                <Label htmlFor="ship-date">Ship Date:</Label>
-                <Input id="ship-date" type="date" />
-              </div>
-            </div>
-          </div>
 
           {/* Payment */}
           <div className="space-y-2">
