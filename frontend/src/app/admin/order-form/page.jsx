@@ -62,26 +62,11 @@ export default function OrderForm() {
         <div className="grid grid-cols-2 gap-4">
           <div>
             <Label htmlFor="date">Date:</Label>
-            <Input 
-            name="date"
-            placeholder="date"
-            id="date" 
-            type="date"
-            className="w-full mt-2 p-2 border rounded-2xl focus:outline-none bg-white border-gray-300  focus:ring-2 focus:ring-indigo-500"
-            value={templateForm.values.title}
-            onChange={templateForm.handleChange}
-            required />
+            <Input id="date" type="date" />
           </div>
           <div>
             <Label htmlFor="order">Order :</Label>
-            <Input name="order"
-            placeholder="order"
-            id="order" 
-            type="order"
-            className="w-full mt-2 p-2 border rounded-2xl focus:outline-none bg-white border-gray-300  focus:ring-2 focus:ring-indigo-500"
-            value={templateForm.values.title}
-            onChange={templateForm.handleChange}
-            required/>
+            <Input id="order" />
           </div>
         </div>
       </CardHeader>
@@ -92,37 +77,16 @@ export default function OrderForm() {
           <div className="grid gap-4">
             <div>
               <Label htmlFor="name">Name:</Label>
-              <Input name="name"
-              placeholder="name"
-              id="name" 
-              type="name"
-              className="w-full mt-2 p-2 border rounded-2xl focus:outline-none bg-white border-gray-300  focus:ring-2 focus:ring-indigo-500"
-              value={templateForm.values.title}
-              onChange={templateForm.handleChange}
-              required  />
+              <Input id="name" />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="email">Email:</Label>
-                <Input name="email"
-                placeholder="email"
-                id="email" 
-                type="email"
-                className="w-full mt-2 p-2 border rounded-2xl focus:outline-none bg-white border-gray-300  focus:ring-2 focus:ring-indigo-500"
-              value={templateForm.values.title}
-              onChange={templateForm.handleChange}
-              required/>
+                <Input id="email" type="email" />
               </div>
               <div>
                 <Label htmlFor="phone">Phone :</Label>
-                <Input name="phone"
-                placeholder="phone"
-                id="phone"
-                type="tel"
-                className="w-full mt-2 p-2 border rounded-2xl focus:outline-none bg-white border-gray-300  focus:ring-2 focus:ring-indigo-500"
-              value={templateForm.values.title}
-              onChange={templateForm.handleChange}
-              required/>
+                <Input id="phone" type="tel" />
               </div>
             </div>
 
@@ -135,7 +99,11 @@ export default function OrderForm() {
           <div className="space-y-6">
             {items.map((item, index) => (
               <div key={index} className="grid grid-cols-2 gap-2">
-                <Input placeholder="Description" />
+                <Input placeholder="Description"
+                id="details"
+                value={orderForm.values.details}
+                onChange={orderForm.handleChange}
+                />
               </div>
             ))}
 
@@ -182,14 +150,20 @@ export default function OrderForm() {
                   id="taxes"
                   type="number"
                   step="0.01"
-                  value={taxes}
-                  onChange={(e) => setTaxes(parseFloat(e.target.value) || 0)}
+                  value={orderForm.values.taxes}
+                  onChange={orderForm.handleChange}
+                  required
+                
                 />
               </div>
 
               <div>
                 <Label htmlFor="total">Total:</Label>
-                <Input id="total" type="number" step="0.01" value={calculateTotal()} />
+                <Input id="total" type="number" step="0.01" 
+                
+                value={orderForm.values.total}
+                onChange={orderForm.handleChange}
+                required />
               </div>
             </div>
           </div>
