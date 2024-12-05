@@ -10,33 +10,6 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { useFormik } from 'formik';
 import { Button } from "@/components/ui/button"
 
-
-
-
-
-const orderForm = useFormik({
-  initialValues: {
-    title: '',
-    description: '',
-    name: '',
-    Date: '',
-     price: '',
-     
-  },
-  onSubmit: (values) => {
-    console.log(values);
-
-    axios.post('http://localhost:5000/order/add', values)
-      .then((result) => {
-        console.log(result.status);
-
-        toast.success('Order placed Successfully')
-      }).catch((err) => {
-        toast.error('Some Error Occured')
-      });
-  },
-})
-
 export default function OrderForm() {
   const [items, setItems] = useState([{ description: "", qty: "", unitPrice: "", totalPrice: "" }])
   const [subtotal, setSubtotal] = useState(0)
@@ -50,6 +23,34 @@ export default function OrderForm() {
   const addItem = () => {
     setItems([...items, { description: "", qty: "", unitPrice: "", totalPrice: "" }])
   }
+
+  const OrderForm = useFormik({
+    initialValues: {
+      name: '',
+      description: '',
+      date: '',
+      phone: '',
+      email: '',
+      payment: '',
+      price: '',
+      taxes: '',
+      total: ''
+    },
+    onSubmit: (values) => {
+      console.log(values);
+
+      axios.post('http://localhost:5000/order/add', values)
+        .then((result) => {
+          console.log(result.status);
+
+          toast.success('Template added Successfully')
+        }).catch((err) => {
+          toast.error('Some Error Occured')
+        });
+    },
+  })
+
+
 
   return (
     <Card className="w-full max-w-4xl mx-auto">
@@ -108,31 +109,7 @@ export default function OrderForm() {
         {/* Bottom Sections */}
         <div className="grid grid-cols-3 gap-4">
           {/* Delivery */}
-          <div className="space-y-2">
-            <h3 className="font-semibold">Delivery</h3>
-            <div className="space-y-2">
-              <div className="flex items-center space-x-2">
-                <Checkbox id="local-drop" />
-                <label htmlFor="local-drop">Local Drop off</label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox id="local-pickup" />
-                <label htmlFor="local-pickup">Local Pick up</label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox id="shipping" />
-                <label htmlFor="shipping">Shipping</label>
-              </div>
-              <div>
-                <Label htmlFor="ship-number">Ship N:</Label>
-                <Input id="ship-number" />
-              </div>
-              <div>
-                <Label htmlFor="ship-date">Ship Date:</Label>
-                <Input id="ship-date" type="date" />
-              </div>
-            </div>
-          </div>
+        
 
           {/* Payment */}
           <div className="space-y-2">
