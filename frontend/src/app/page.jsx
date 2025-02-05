@@ -65,7 +65,7 @@ const HomePage = () => {
             </Button>
 
             {isCategoryDropdownOpen && (
-              <div className="absolute left-0 mt-2 w-40 border border-lime-600 bg-lime-400 rounded-xl shadow-md z-10">
+              <div className="absolute left-0 mt-2 w-40 border border-lime-100 bg-lime-200 rounded-xl shadow-md z-10">
                 <Link href="">
                   <p className="block px-4 py-2 hover:bg-gray-200">Dashboards</p>
                 </Link>
@@ -89,7 +89,7 @@ const HomePage = () => {
             </Button>
 
             {isMoreDropdownOpen && (
-              <div className="absolute left-0 mt-2 w-40 bg-lime-400 border border-lime-600  rounded-xl shadow-md z-10">
+              <div className="absolute left-0 mt-2 w-40 bg-lime-200 border border-lime-100  rounded-xl shadow-md z-10">
                 <Link href="/about">
                   <p className="block px-4 py-2 hover:bg-gray-200">Login Form</p>
                 </Link>

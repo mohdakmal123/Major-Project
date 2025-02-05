@@ -90,7 +90,7 @@ const Signup = () => {
           <div>
             <button
               type="submit"
-              className="flex items-center justify-center w-56 bg-indigo-600 text-white px-6 py-3 rounded-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-200"
+              className="flex items-center justify-center w-56 bg-lime-600 text-white px-6 py-3 rounded-xl hover:bg-lime-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-200"
             >
               Signup
             </button>
