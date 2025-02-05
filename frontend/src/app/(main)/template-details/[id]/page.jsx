@@ -58,18 +58,14 @@ const TemplateDetails = () => {
   const placeholderImage = 'https://via.placeholder.com/300';
 
   return (
-    <div className=" min-h-screen p-8 flex flex-col justify-center items-center"
-      style={{
-        backgroundImage:
-          'url("")'
-
-      }}
+    <div className=" min-h-screen p-8 flex bg-lime-100 flex-col justify-center items-center"
+     
     >
       <h1 className="text-5xl text-center  text-black  p-4 mb-8 font-bold  rounded-lg">
-        React Template Details
+       Template Details
       </h1>
 
-      <div className="w-full max-w-4xl rounded-lg border transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6"
+      <div className="w-full max-w-4xl rounded-lg border  bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6"
 
       >
         {/* Template Details */}
@@ -79,7 +75,7 @@ const TemplateDetails = () => {
           <p className="text-red-500">{error}</p>
         ) : (
           selectedTemplate && (
-            <div className="rounded-lg border bg-lime-200 transform hover:scale-105 transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
+            <div className="rounded-lg border bg-lime-200  bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
 
               
                 {/* Image Section */}
@@ -92,7 +88,7 @@ const TemplateDetails = () => {
                 </a>
 
                 {/* Product Info Section */}
-                <div className="text-5xl text-center text-white shadow-lg p-4 mb-8 font-bold  rounded-lg">
+                <div className="text-5xl bg-lime-300 text-center text-white shadow-lg p-4 mb-8 font-bold  rounded-lg">
                   <div className="mb-4">
                     <p className="font-bold text-2xl text-black">
 
