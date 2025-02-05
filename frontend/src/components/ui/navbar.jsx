@@ -17,7 +17,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-emerald-950 text-primary-foreground p-4 shadow-md">
+    <header className="bg-lime-500 text-primary-foreground p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <h1 className="text-2xl text-white font-mono font-bold">TemplateWave</h1>

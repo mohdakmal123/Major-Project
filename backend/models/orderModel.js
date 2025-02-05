@@ -7,12 +7,10 @@ const orderSchema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
   phone: { type: String, required: true },
-  address: { type: String, required: true },
   description: { type: String, required: true },
   payment: { type: String, required: true },
-  amount: { type: Number,},
-
-  user: { type: Types.ObjectId, ref: 'User', required: true },
+  amount: { type: Number, requirde: true },
+  user: { type: Types.ObjectId, ref: 'users', required: true },
   items: [
     {
       templates: { type: Types.ObjectId, ref: 'templates', required: true },
@@ -21,7 +19,7 @@ const orderSchema = new Schema({
   ],
   total: { type: Number, required: true },
   status: { type: String, enum: ['Pending', 'Completed', 'Cancelled'], default: 'Pending' },
-  
+
 });
 
 module.exports = model('Order', orderSchema);

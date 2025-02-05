@@ -11,7 +11,7 @@ import {
   } from "@/components/ui/table"
   import { Badge } from "@/components/ui/badge"
   import { Button } from "@/components/ui/button"
-
+  import { Table, TableBody, TableCaption } from "@/components/ui/table";
   import { Eye } from 'lucide-react'
   
   

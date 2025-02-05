@@ -6,8 +6,6 @@ import axios from 'axios';
 import { Menu, Search } from "lucide-react";
 
 
-
-
 const HomePage = () => {
   const [templateList, setTemplateList] = useState([]);
 
@@ -164,41 +162,16 @@ const HomePage = () => {
                 <Link href="">
                   <p className="block px-4 py-2 hover:bg-gray-200">Dashboards</p>
                 </Link>
-                <Link href="">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Figma</p>
-                </Link>
-                <Link href="">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Forms</p>
-                </Link>
-                <Link href="">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Wordpress</p>
-                </Link>
-                <Link href="">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Tailwind CSS</p>
-                </Link>
-                <Link href="">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Dashboards</p>
-                </Link>
-               
               </div>
             )}
           </div>
 
-
-
-
-
         <section
-          className="w-full mx-auto py-12 bg-lime-200 md:py-24 lg:py-32 xl:py-48 bg-black text-lime-800 bg-cover bg-center"
+          className="w-full mx-auto py-12 bg-lime-200 md:py-24 lg:py-32 xl:py-48  text-lime-800 bg-cover bg-center"
         // style={{
         //   backgroundImage: 'url("https://i.pinimg.com/564x/a6/5f/bb/a65fbb897ddfffd954551360dd68f3e0.jpg")',
         // }}
         >
-
-
-          
-
-
           <div className="container px-4 md:px-6 mx-auto "
 
           >
@@ -295,7 +268,7 @@ const HomePage = () => {
                     </Button>
                     <a className="flex space-x-4  ">
 
-                      <Link href={'/template-details/' + templates._id} className="text-center mt-2 bg-purple-300 rounded-2xl inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"> {/* Centering View More */}
+                      <Link href={'/template-details/' + templates._id} className="text-center mt-2 bg-purple-300 rounded-2xl inline-flex items-center justify-center  text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"> {/* Centering View More */}
                         View More
                       </Link>
                       <Link href={'#' + templates._id} className="text-center mt-2 inline-flex items-center bg-purple-300 justify-center  text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"> {/* Centering View More */}
