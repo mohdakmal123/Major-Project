@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect } from "react";
 import Link from 'next/link';
-import { Button } from "@/components/ui/button";
 import axios from 'axios';
 import { Menu, Search } from "lucide-react";
 
@@ -39,28 +38,22 @@ const HomePage = () => {
 
   return (
     <div classname="bg-black">
-     
-
-
-
 
       <header className="px-4 lg:px-6 h-14 flex bg-lime-400  items-center">
         <a href="#" className="flex items-center justify-center">
-
-
         </a>
         <nav className="ml-auto flex gap-2 ">
 
- {/* Home Dropdown */}
- <div className="relative">
-            <Button
+          {/* Home Dropdown */}
+          <div className="relative">
+            <button
               variant="link"
               onClick={toggleCategoryDropdown}
               className="flex items-center space-x-2"
             >
               <span className="text-white">Tailwind CSS</span>
               <Menu className="h-5 w-5" />
-            </Button>
+            </button>
 
             {isCategoryDropdownOpen && (
               <div className="absolute left-0 mt-2 w-40 border border-lime-100 bg-lime-200 rounded-xl shadow-md z-10">
@@ -70,21 +63,21 @@ const HomePage = () => {
                 <Link href="">
                   <p className="block px-4 py-2 hover:bg-gray-200">Premium Products</p>
                 </Link>
-               
+
               </div>
             )}
           </div>
 
           {/* More Dropdown */}
           <div className="relative ">
-            <Button
+            <button
               variant="link"
               onClick={toggleMoreDropdown}
               className="flex items-center space-x-2"
             >
               <span className="text-white">Bootstrap</span>
               <Menu className="h-5 w-5" />
-            </Button>
+            </button>
 
             {isMoreDropdownOpen && (
               <div className="absolute left-0 mt-2 w-40 bg-lime-200 border border-lime-100  rounded-xl shadow-md z-10">
@@ -101,10 +94,10 @@ const HomePage = () => {
             )}
           </div>
 
- {/* links */}
+          {/* links */}
 
 
-  
+
 
           <a
             className="text-white font-bold py-2 px-4 rounded"
@@ -134,37 +127,37 @@ const HomePage = () => {
       </header>
       <main className="flex-1">
 
-{/* Home Dropdown */}
-<div className="relative bg-lime-200">
-            <Button
-              variant="link"
-              onClick={toggleoneMoreDropdown}
-              className="flex items-center"
-            >
-              <span className="text-white"></span>
-              <Menu className="h-5 w-5" />
-            </Button>
+        {/* Home Dropdown */}
+        <div className="relative bg-lime-200">
+          <button
+            variant="link"
+            onClick={toggleoneMoreDropdown}
+            className="flex items-center"
+          >
+            <span className="text-white"></span>
+            <Menu className="h-5 w-5" />
+          </button>
 
-            {isoneMoreDropdownOpen && (
-              <div className="absolute left-0 mt-2 w-40 border border-black-600 bg-lime-100 rounded-xl shadow-md z-10">
-                <Link href="">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Figma</p>
-                </Link>
-                <Link href="">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Forms</p>
-                </Link>
-                <Link href="">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Wordpress</p>
-                </Link>
-                <Link href="">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Tailwind CSS</p>
-                </Link>
-                <Link href="">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Dashboards</p>
-                </Link>
-              </div>
-            )}
-          </div>
+          {isoneMoreDropdownOpen && (
+            <div className="absolute left-0 mt-2 w-40 border border-black-600 bg-lime-100 rounded-xl shadow-md z-10">
+              <Link href="">
+                <p className="block px-4 py-2 hover:bg-gray-200">Figma</p>
+              </Link>
+              <Link href="">
+                <p className="block px-4 py-2 hover:bg-gray-200">Forms</p>
+              </Link>
+              <Link href="">
+                <p className="block px-4 py-2 hover:bg-gray-200">Wordpress</p>
+              </Link>
+              <Link href="">
+                <p className="block px-4 py-2 hover:bg-gray-200">Tailwind CSS</p>
+              </Link>
+              <Link href="">
+                <p className="block px-4 py-2 hover:bg-gray-200">Dashboards</p>
+              </Link>
+            </div>
+          )}
+        </div>
 
         <section
           className="w-full mx-auto py-12 bg-lime-200 md:py-24 lg:py-32 xl:py-48  text-lime-800 bg-cover bg-center"
@@ -217,9 +210,9 @@ const HomePage = () => {
                     className="w-full h-64 object-cover rounded-lg"
                   />
                   <p className="text-black font-bold  mb-4">₹{templates.price}</p>
-                  <Button className="flex justify-center bg-lime-600 hover:bg-purple-700 text-white font-bold py-2 px-10 rounded  w-24">
+                  <button className="flex justify-center bg-lime-600 hover:bg-purple-700 text-white font-bold py-2 px-10 rounded  w-24">
                     Buy Now
-                  </Button>
+                  </button>
 
                   <a className="flex space-x-4">
 
@@ -263,9 +256,9 @@ const HomePage = () => {
 
                     <p className="text-black font-bold mb-4">₹{templates.price}</p>
 
-                    <Button className="bg-lime-600 hover:bg-lime-700 text-white font-bold py-2 px-10 rounded w-full">
+                    <button className="bg-lime-600 hover:bg-lime-700 text-white font-bold py-2 px-10 rounded w-full">
                       Buy Now
-                    </Button>
+                    </button>
                     <a className="flex space-x-4  ">
 
                       <Link href={'/template-details/' + templates._id} className="text-center mt-2 bg-purple-300 rounded-2xl inline-flex items-center justify-center  text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"> {/* Centering View More */}
