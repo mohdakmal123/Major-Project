@@ -7,16 +7,16 @@ import { Button } from "@/components/ui/button"
 
 const navItems = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
-  { name: "Contact", href: "/contact" },
+  { name: "About", href: "/AboutUs" },
+  { name: "Feedback", href: "/feedback" },
+  { name: "Contact", href: "/ContactUs" },
 ]
 
 export function OrderNavbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="text-black shadow-lg  bg-lime-600 hover:bg-lime-700 transition-all duration-300">
+    <nav className="text-black shadow-lg  bg-lime-600 transition-all duration-300">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between">
           <div className="flex space-x-7">
@@ -33,9 +33,9 @@ export function OrderNavbar() {
               ))}
             </div>
           </div>
-          <div className="hidden md:flex items-center space-x-3 bg-lime-600 hover:bg-lime-700 transition-all duration-300">
-            <Button variant="">Login</Button>
-            <Button>Sign Up</Button>
+          <div className="hidden md:flex items-center space-x-3 bg-lime-600">
+            <a href="/signin"><Button variant="" className=" hover:text-green-500  hover:bg-lime-700 transition-all duration-300">Login</Button></a>
+            <a href="/signup"><Button variant="" className=" hover:text-green-500  hover:bg-lime-700 transition-all duration-300" >Sign Up</Button></a>
           </div>
           <div className="md:hidden flex items-center">
             <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
