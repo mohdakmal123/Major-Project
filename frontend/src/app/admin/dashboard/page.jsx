@@ -61,7 +61,7 @@ export default function DashboardPage() {
           </Card>
         </Link>
 
-        <Link href={"/subscriptions"}>
+        <Link href={"/monthlySubscriptions"}>
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Subscriptions</CardTitle>
@@ -110,6 +110,7 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
         </Link>
+        <Link  href="/monthlyavgsessionduration">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Avg. Session Duration</CardTitle>
@@ -131,6 +132,7 @@ export default function DashboardPage() {
             <p className="text-xs text-muted-foreground">+7.4% from last week</p>
           </CardContent>
         </Card>
+        </Link>
       </div>
       <Tabs defaultValue="overview" className="space-y-4">
         <TabsList>

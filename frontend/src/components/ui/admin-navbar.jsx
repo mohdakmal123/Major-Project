@@ -16,7 +16,7 @@ export function OrderNavbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="text-black shadow-lg  bg-lime-600 transition-all duration-300">
+    <nav className="text-black shadow-lg bg-lime-600 transition-all duration-300">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between">
           <div className="flex space-x-7">

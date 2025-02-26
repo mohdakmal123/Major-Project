@@ -2,7 +2,9 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>Monthly users</div>
+    <div>
+      Monthly Active users
+      </div>
   )
 }
 
