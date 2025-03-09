@@ -68,6 +68,7 @@ const TemplateCart = () => {
                 <span className="text-green-600 font-semibold">
                   ${templates.price}
                 </span>
+                
                 <Link href={'/template-details/'+templates._id}>View More</Link>
 
 
