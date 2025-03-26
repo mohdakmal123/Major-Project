@@ -22,10 +22,10 @@ const OrderManagement = () => {
     };
 
     return (
-        <div style={{ fontFamily: 'Arial, sans-serif', margin: '20px', padding: '20px', backgroundColor: '#f4f4f4' }}>
-            <div style={{ maxWidth: '600px', background: 'white', padding: '20px', borderRadius: '10px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}>
+        <div className=''>
+            <div className=''>
                 <h2>Manage Orders</h2>
-                <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px' }}>
+                <table className=''>
                     <thead>
                         <tr>
                             <th style={styles.th}>Order ID</th>

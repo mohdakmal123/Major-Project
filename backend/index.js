@@ -27,4 +27,8 @@ app.get('/', (req, res) => {
     res.send('Response from express')
 });
 
+// payment script
+
+
+
 app.listen(port, () => { console.log('server started') });

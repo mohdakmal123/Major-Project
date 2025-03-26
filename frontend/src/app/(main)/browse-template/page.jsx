@@ -32,6 +32,39 @@ const TemplateCart = () => {
         templatesData();
     }, []);
 
+
+
+    const handlePayment = () => {
+      const options = {
+        key: 'YOUR_RAZORPAY_KEY_ID', // Replace with your Razorpay Key ID
+        amount: 1000, // Amount in paisa (1000 = ₹10)
+        currency: 'INR',
+        name: 'Sample Product',
+        description: 'A great product to buy',
+        image: 'https://via.placeholder.com/150',
+        handler: function (response) {
+          alert('Payment Successful! Payment ID: ' + response.razorpay_payment_id);
+        },
+        prefill: {
+          name: 'Customer Name',
+          email: 'customer@example.com',
+          contact: '9999999999'
+        },
+        theme: {
+          color: '#3399cc'
+        }
+      };
+  
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    };
+  
+
+
+
+
+
+
   return (
     <div className="min-h-screen bg-lime-200">
       
@@ -73,7 +106,12 @@ const TemplateCart = () => {
 
 
                 
-                <Link href="/user/checkOut"  className="bg-lime-500 hover:bg-lime-600 text-white font-bold py-2 px-4 rounded">Buy Now</Link>
+                <button id="buyNow" className="bg-lime-500 hover:bg-lime-600 text-white font-bold py-2 px-4 rounded">Buy Now</button>
+
+
+
+
+                
               </CardFooter>
             </Card>
           ))}
