@@ -61,53 +61,10 @@ const Header = () => {
         {/* Navigation */}
         <nav className="flex items-center space-x-6">
           {/* Home Dropdown */}
-          <div className="relative">
-            <Button
-              variant="link"
-              onClick={toggleCategoryDropdown}
-              className="flex items-center space-x-2"
-            >
-              <span className="text-white">Tailwind CSS</span>
-              <Menu className="h-5 w-5" />
-            </Button>
-
-            {isCategoryDropdownOpen && (
-              <div className="absolute left-0 mt-2 w-40 bg-white border rounded shadow-md z-10">
-                <Link href="">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Dashboards</p>
-                </Link>
-                <Link href="">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Premium Products</p>
-                </Link>
-              </div>
-            )}
-          </div>
+          
 
           {/* More Dropdown */}
-          <div className="relative">
-            <Button
-              variant="link"
-              onClick={toggleMoreDropdown}
-              className="flex items-center space-x-2"
-            >
-              <span className="text-white">More</span>
-              <Menu className="h-5 w-5" />
-            </Button>
-
-            {isMoreDropdownOpen && (
-              <div className="absolute left-0 mt-2 w-40 bg-white border rounded shadow-md z-10">
-                <Link href="/about">
-                  <p className="block px-4 py-2 hover:bg-gray-200">About Us</p>
-                </Link>
-                <Link href="/contact">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Contact</p>
-                </Link>
-                <Link href="/services">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Services</p>
-                </Link>
-              </div>
-            )}
-          </div>
+          
         </nav>
       </div>
     </header>

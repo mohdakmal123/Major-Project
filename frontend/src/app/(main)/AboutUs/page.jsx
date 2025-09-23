@@ -1,4 +1,6 @@
+'use client'
 import React from "react";
+import Image from "next/image";
 
 function AboutUs() {
   return (
@@ -22,34 +24,34 @@ function AboutUs() {
           {/* Team Member 1 */}
           <div className="bg-white rounded-lg shadow-lg p-6 text-center">
             <img
-              src="https://via.placeholder.com/150"
+              src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/39261fbbefa65d409eb3d909/b5f9e7f9-f0cf-42fb-96c9-3156bc7d64a2.jpg"
               alt="Team Member"
               className="w-32 h-32 mx-auto rounded-full mb-4"
             />
-            <h3 className="text-xl font-semibold text-gray-800">Alice Green</h3>
-            <p className="text-gray-600">CEO & Founder</p>
+            <h3 className="text-xl font-semibold text-gray-800">Bob Brown</h3>
+            <p className="text-gray-600">Creative Leader</p>
           </div>
 
           {/* Team Member 2 */}
           <div className="bg-white rounded-lg shadow-lg p-6 text-center">
             <img
-              src="https://via.placeholder.com/150"
+              src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/0e453705dc725e089d6e2749/1.jpg"
               alt="Team Member"
               className="w-32 h-32 mx-auto rounded-full mb-4"
             />
-            <h3 className="text-xl font-semibold text-gray-800">John Doe</h3>
-            <p className="text-gray-600">Chief Operating Officer</p>
+            <h3 className="text-xl font-semibold text-gray-800">Nick Dark</h3>
+            <p className="text-gray-600">Sales Manager</p>
           </div>
 
           {/* Team Member 3 */}
           <div className="bg-white rounded-lg shadow-lg p-6 text-center">
             <img
-              src="https://via.placeholder.com/150"
+              src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/b2d43da24f4b52ff8a5d69df/vbvb.jpg"
               alt="Team Member"
               className="w-32 h-32 mx-auto rounded-full mb-4"
             />
-            <h3 className="text-xl font-semibold text-gray-800">Jane Smith</h3>
-            <p className="text-gray-600">Marketing Head</p>
+            <h3 className="text-xl font-semibold text-gray-800">Adrian Scold</h3>
+            <p className="text-gray-600">Developer</p>
           </div>
         </div>
       </section>

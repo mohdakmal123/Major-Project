@@ -11,7 +11,7 @@ import {
   } from "@/components/ui/table"
   import { Badge } from "@/components/ui/badge"
   import { Button } from "@/components/ui/button"
-  import { Table, TableBody, TableCaption } from "@/components/ui/table";
+  
   import { Eye } from 'lucide-react'
   
   
@@ -49,6 +49,10 @@ import {
   
   export default function ManageOrderTable() {
     return (
+       <div>
+        <div className='max-w-[80%] mx-auto shadow-lg rounded-lg p-5'>
+          <h1 className='text-center font-bold text-3xl mt-5 h-20'>Manage Orders</h1>
+          
       <Table>
         <TableCaption>A list of recent orders</TableCaption>
         <TableHeader>
@@ -89,6 +93,9 @@ import {
           ))}
         </TableBody>
       </Table>
+      </div>
+      </div>
+
     )
   }
   

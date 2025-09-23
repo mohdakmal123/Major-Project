@@ -1,346 +1,198 @@
 'use client';
 import React, { useState, useEffect } from "react";
-import Link from 'next/link';
-import axios from 'axios';
-import { Menu, Search } from "lucide-react";
-
+import Link from "next/link";
+import axios from "axios";
 
 const HomePage = () => {
   const [templateList, setTemplateList] = useState([]);
 
-  const templatesData = async () => {
-    const res = await axios.get('http://localhost:5000/template/getall');
-    console.log(res.status);
-    console.table(res.data);
-    setTemplateList(res.data);
-  }
-
   useEffect(() => {
-    templatesData();
+    const fetchTemplates = async () => {
+      const res = await axios.get("http://localhost:5000/template/getall");
+      setTemplateList(res.data);
+    };
+    fetchTemplates();
   }, []);
 
-  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
-  const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
-  const [isoneMoreDropdownOpen, setIsoneMoreDropdownOpen] = useState(false);
-
-  const toggleCategoryDropdown = () => {
-    setIsCategoryDropdownOpen(!isCategoryDropdownOpen);
-  };
-
-  const toggleMoreDropdown = () => {
-    setIsMoreDropdownOpen(!isMoreDropdownOpen);
-  };
-
-  const toggleoneMoreDropdown = () => {
-    setIsoneMoreDropdownOpen(!isoneMoreDropdownOpen);
-  };
-
-
   return (
-    <div classname="bg-black">
-
-      <header className="px-4 lg:px-6 h-14 flex bg-lime-400  items-center">
-        <a href="#" className="flex items-center justify-center">
-        </a>
-        <nav className="ml-auto flex gap-2 ">
-
-          {/* Home Dropdown */}
-          <div className="relative">
-            <button
-              variant="link"
-              onClick={toggleCategoryDropdown}
-              className="flex items-center space-x-2"
-            >
-              <span className="text-white">Tailwind CSS</span>
-              <Menu className="h-5 w-5" />
-            </button>
-
-            {isCategoryDropdownOpen && (
-              <div className="absolute left-0 mt-2 w-40 border border-lime-100 bg-lime-200 rounded-xl shadow-md z-10">
-                <Link href="">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Dashboards</p>
-                </Link>
-                <Link href="">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Premium Products</p>
-                </Link>
-
-              </div>
-            )}
-          </div>
-
-          {/* More Dropdown */}
-          <div className="relative ">
-            <button
-              variant="link"
-              onClick={toggleMoreDropdown}
-              className="flex items-center space-x-2"
-            >
-              <span className="text-white">Bootstrap</span>
-              <Menu className="h-5 w-5" />
-            </button>
-
-            {isMoreDropdownOpen && (
-              <div className="absolute left-0 mt-2 w-40 bg-lime-200 border border-lime-100  rounded-xl shadow-md z-10">
-                <Link href="/about">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Login Form</p>
-                </Link>
-                <Link href="/contact">
-                  <p className="block px-4 py-2 hover:bg-gray-200">UI Kits</p>
-                </Link>
-                <Link href="/services">
-                  <p className="block px-4 py-2 hover:bg-gray-200">Landing Pages</p>
-                </Link>
-              </div>
-            )}
-          </div>
-
-          {/* links */}
-
-
-
-
-          <a
-            className="text-white font-bold py-2 px-4 rounded"
-            href="signin"
-          >
-            Login
-          </a>
-          <a
-            className=" text-white font-bold py-2 px-4 rounded"
-            href="signup"
-          >
-            SignUp
-          </a>
-          <a
-            className="text-white font-bold py-2 px-4 rounded"
-            href="AboutUs"
-          >
-            About
-          </a>
-          <a
-            className="text-white font-bold py-2 px-4 rounded"
-            href="ContactUs"
-          >
-            Contact
-          </a>
-        </nav>
-      </header>
-      <main className="flex-1">
-
-        {/* Home Dropdown */}
-        <div className="relative bg-lime-200">
-          <button
-            variant="link"
-            onClick={toggleoneMoreDropdown}
-            className="flex items-center"
-          >
-            <span className="text-white"></span>
-            <Menu className="h-5 w-5" />
-          </button>
-
-          {isoneMoreDropdownOpen && (
-            <div className="absolute left-0 mt-2 w-40 border border-black-600 bg-lime-100 rounded-xl shadow-md z-10">
-              <Link href="">
-                <p className="block px-4 py-2 hover:bg-gray-200">Figma</p>
-              </Link>
-              <Link href="">
-                <p className="block px-4 py-2 hover:bg-gray-200">Forms</p>
-              </Link>
-              <Link href="">
-                <p className="block px-4 py-2 hover:bg-gray-200">Wordpress</p>
-              </Link>
-              <Link href="">
-                <p className="block px-4 py-2 hover:bg-gray-200">Tailwind CSS</p>
-              </Link>
-              <Link href="">
-                <p className="block px-4 py-2 hover:bg-gray-200">Dashboards</p>
-              </Link>
-            </div>
-          )}
+    <div className="bg-gray-50 text-gray-800">
+      {/* Header */}
+      <header className="sticky top-0 z-50 bg-gradient-to-r from-green-600 to-lime-500 shadow-md">
+        <div className="container mx-auto flex justify-between items-center px-6 py-4">
+          <Link href="/" className="text-2xl font-bold text-white">
+            TemplateWave
+          </Link>
+          <nav className="flex items-center gap-6 text-white font-medium">
+            <Link href="/signin" className="hover:text-yellow-200 transition">
+              Login
+            </Link>
+            <Link href="/signup" className="hover:text-yellow-200 transition">
+              SignUp
+            </Link>
+            <Link href="/AboutUs" className="hover:text-yellow-200 transition">
+              About
+            </Link>
+            <Link href="/ContactUs" className="hover:text-yellow-200 transition">
+              Contact
+            </Link>
+          </nav>
         </div>
+      </header>
 
-        <section
-          className="w-full mx-auto py-12 bg-lime-200 md:py-24 lg:py-32 xl:py-48  text-lime-800 bg-cover bg-center"
-        // style={{
-        //   backgroundImage: 'url("https://i.pinimg.com/564x/a6/5f/bb/a65fbb897ddfffd954551360dd68f3e0.jpg")',
-        // }}
-        >
-          <div className="container px-4 md:px-6 mx-auto "
-
-          >
-            <div className="flex flex-col items-center space-y-4 text-center">
-
-
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                  Welcome to TemplateWave
-                </h1>
-                <p className="mx-auto max-w-[700px] text-lime-600 md:text-xl">
-                  Discover amazing templates across various categories. Shop now and
-                  enjoy great deals!
-                </p>
-              </div>
-              <div className="space-x-4">
-                <a className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"
-                  href="browse-template"
-                >
-                  All Templates
-                </a>
-                <a className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"
-                  href="AboutUs"
-                >
-                  About Us
-                </a>
-              </div>
-            </div>
+      {/* Hero */}
+      <section className="relative bg-gradient-to-r from-lime-100 to-green-50 py-20">
+        <div className="container mx-auto text-center px-6">
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-4 text-gray-800">
+            Discover Premium Templates
+          </h1>
+          <p className="text-lg md:text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
+            Ready-made designs for portfolios, businesses, and personal projects.
+            Save time, customize easily, and launch faster.
+          </p>
+          <div className="flex justify-center gap-4">
+            <Link
+              href="/browse-template"
+              className="px-6 py-3 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition"
+            >
+              Browse Templates
+            </Link>
+            <Link
+              href="/AboutUs"
+              className="px-6 py-3 bg-green-600 text-white border border-green-600 rounded-lg shadow hover:bg-gray-100 transition"
+            >
+              Learn More
+            </Link>
           </div>
-        </section>
-        <section className="w-full bg-lime-100 py-12 md:py-24 lg:py-32   ">
-          <div className="container  px-4 md:px-6 mx-auto ">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12 ">
-              Featured Templates
-            </h2>
-            <div className="flex flex-col  space-y-6 p-6 ">
-              {templateList.map((templates) => (
-                <div key={templates.id} className="rounded-2xl border bg-white transform  transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6">
-                  <h3 className="text-2xl font-semibold leading-none tracking-tight">{templates.name}</h3>
-                  <img
-                    src={templates.image}
-                    alt={templates.name}
-                    className="w-full h-64 object-cover rounded-lg"
-                  />
-                  <p className="text-black font-bold  mb-4">₹{templates.price}</p>
-                  <button className="flex justify-center bg-lime-600 hover:bg-purple-700 text-white font-bold py-2 px-10 rounded  w-24">
+        </div>
+      </section>
+
+      {/* Featured Templates */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
+            Featured Templates
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {templateList.map((template) => (
+              <div
+                key={template._id}
+                className="rounded-xl border bg-white shadow hover:shadow-lg transition transform hover:-translate-y-1 p-6 flex flex-col"
+              >
+                <img
+                  src={template.image}
+                  alt={template.name}
+                  className="w-full h-52 object-cover rounded-md mb-4"
+                />
+                <h3 className="text-xl font-semibold mb-2">{template.name}</h3>
+                <p className="text-green-700 font-bold mb-4">
+                  ₹{template.price}
+                </p>
+                <div className="mt-auto flex flex-col gap-3">
+                  <button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition">
                     Buy Now
                   </button>
-
-                  <a className="flex space-x-4">
-
-                    <Link href={'/template-details/' + templates._id} className="text-center bg-lime-200 mt-2 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"> {/* Centering View More */}
+                  <div className="flex gap-2">
+                    <Link
+                      href={`/template-details/${template._id}`}
+                      className="w-1/2 text-center bg-lime-200 hover:bg-lime-300 text-gray-800 py-2 rounded-lg transition"
+                    >
                       View More
                     </Link>
-                    <Link href={'#' + templates._id} className="text-center mt-2 inline-flex bg-lime-200 items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"> {/* Centering View More */}
+                    <Link
+                      href={`#${template._id}`}
+                      className="w-1/2 text-center bg-purple-200 hover:bg-purple-300 text-gray-800 py-2 rounded-lg transition"
+                    >
                       Preview
                     </Link>
-
-                  </a>
-
-
-
-
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-
-        <section className="w-full py-12 bg-lime-100 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6 mx-auto">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
-              New Arrivals
-            </h2>
-            <div className="grid grid-cols-1  sm:grid-cols-2 gap-6 p-6">
-              {templateList.map((templates) => (
-                <div
-                  key={templates.id}
-                  className="rounded-2xl border bg-white transform  transition-transform duration-200 bg-card text-card-foreground shadow-sm flex flex-col space-y-4 p-6"
-                >
-                  <h3 className="text-2xl font-semibold leading-none tracking-tight">{templates.name}</h3>
-                  <img
-                    src={templates.image}
-                    alt={templates.name}
-                    className="w-full h-64 object-cover rounded-lg"
-                  />
-                  <div className="flex flex-col items-center mt-auto"> {/* Centering the buttons */}
-
-                    <p className="text-black font-bold mb-4">₹{templates.price}</p>
-
-                    <button className="bg-lime-600 hover:bg-lime-700 text-white font-bold py-2 px-10 rounded w-full">
-                      Buy Now
-                    </button>
-                    <a className="flex space-x-4  ">
-
-                      <Link href={'/template-details/' + templates._id} className="text-center mt-2 bg-purple-300 rounded-2xl inline-flex items-center justify-center  text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"> {/* Centering View More */}
-                        View More
-                      </Link>
-                      <Link href={'#' + templates._id} className="text-center mt-2 inline-flex items-center bg-purple-300 justify-center  text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-10 py-2 px-4"> {/* Centering View More */}
-                        Preview
-                      </Link>
-
-                    </a>
-
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-      </main>
-
-      {/* footer */}
-      <footer className="bg-lime-500 text-lime-800 py-8">
-        <div className="container mx-auto px-4">
-          {/* Top section */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-8 md:space-y-0">
-            {/* Logo and description */}
-            <div className="w-full md:w-1/3">
-              <h2 className="text-2xl  font-bold mb-2">My Website</h2>
-              <p className="text-lime-">
-                Your go-to platform for all things awesome. Connect, explore, and enjoy!
-              </p>
-            </div>
-
-            {/* Links */}
-            <div className="w-full md:w-2/3 flex flex-col md:flex-row justify-between">
-              {/* Column 1 */}
-              <div className="mb-6 md:mb-0">
-                <h3 className="font-semibold mb-2">Quick Links</h3>
-                <ul>
-                  <li><a href="#" className="text-gray-300 hover:text-white">Home</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white">About Us</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white">Services</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white">Contact</a></li>
-                </ul>
               </div>
-
-              {/* Column 2 */}
-              <div className="mb-6 md:mb-0">
-                <h3 className="font-semibold mb-2">Support</h3>
-                <ul>
-                  <li><a href="#" className="text-gray-300 hover:text-white">Help Center</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white">FAQs</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white">Terms of Service</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white">Privacy Policy</a></li>
-                </ul>
-              </div>
-
-              {/* Column 3 */}
-              <div className="mb-6 md:mb-0">
-                <h3 className="font-semibold mb-2">Follow Us</h3>
-                <ul className="flex space-x-4">
-                  <li><a href="#" className="text-gray-300 hover:text-white">Facebook</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white">Twitter</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white">Instagram</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white">LinkedIn</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom section */}
-          <div className="mt-8 border-t border-gray-700 pt-4 text-center md:text-left">
-            <p className="text-gray-300">&copy; 2024 My Website. All rights reserved.</p>
+            ))}
           </div>
         </div>
+      </section>
+
+      {/* New Arrivals */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
+            New Arrivals
+          </h2>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {templateList.map((template) => (
+              <div
+                key={template._id}
+                className="rounded-xl border bg-white shadow hover:shadow-lg transition transform hover:-translate-y-1 p-6 flex flex-col"
+              >
+                <img
+                  src={template.image}
+                  alt={template.name}
+                  className="w-full h-52 object-cover rounded-md mb-4"
+                />
+                <h3 className="text-xl font-semibold mb-2">{template.name}</h3>
+                <p className="text-green-700 font-bold mb-4">
+                  ₹{template.price}
+                </p>
+                <div className="mt-auto flex flex-col gap-3">
+                  <button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition">
+                    Buy Now
+                  </button>
+                  <div className="flex gap-2">
+                    <Link
+                      href={`/template-details/${template._id}`}
+                      className="w-1/2 text-center bg-purple-200 hover:bg-purple-300 text-gray-800 py-2 rounded-lg transition"
+                    >
+                      View More
+                    </Link>
+                    <Link
+                      href={`#${template._id}`}
+                      className="w-1/2 text-center bg-purple-200 hover:bg-purple-300 text-gray-800 py-2 rounded-lg transition"
+                    >
+                      Preview
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-green-700 text-white py-10">
+        <div className="container mx-auto px-6 grid md:grid-cols-3 gap-8">
+          <div>
+            <h2 className="text-xl font-bold mb-2">TemplateWave</h2>
+            <p className="text-gray-200">
+              Your go-to platform for premium templates. Design faster, launch
+              smarter.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold mb-2">Quick Links</h3>
+            <ul className="space-y-1 text-gray-200">
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/AboutUs">About Us</Link></li>
+              <li><Link href="/ContactUs">Contact</Link></li>
+              <li><Link href="/signup">Sign Up</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-semibold mb-2">Follow Us</h3>
+            <ul className="flex gap-4">
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">LinkedIn</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="text-center text-gray-300 mt-6 border-t border-gray-600 pt-4">
+          © 2025 TemplateWave. All rights reserved.
+        </div>
       </footer>
-
-
     </div>
-  )
-}
+  );
+};
 
 export default HomePage;
-
-
